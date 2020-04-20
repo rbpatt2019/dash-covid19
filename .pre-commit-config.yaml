@@ -1,0 +1,21 @@
+default_language_version:
+  python: python3.7
+
+fail_fast: true
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: stable
+  hooks:
+  - id: trailing-whitespace
+  - id: fix-encoding-pragma
+  - id: check-yaml
+  - id: check-toml
+- repo: https://github.com/timothycrosley/isort
+  rev: stable
+  hooks:
+  - id: isort
+- repo: https://github.com/psf/black
+  rev: stable
+  hooks:
+  - id: black
