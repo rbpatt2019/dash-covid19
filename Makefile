@@ -12,7 +12,7 @@ clean:
 develop:
 	poetry install
 
-install: 
+install:
 	poetry install --no-dev
 
 format: clean
@@ -47,7 +47,7 @@ major: test
 	git tag $(grep version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
 	git push origin master --tags
 
-dist: clean 
+dist: clean
 	poetry build
 
 release: dist

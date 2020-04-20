@@ -6,7 +6,7 @@ For contributors
 Comments, criticisms, and concerns are always welcome! If you would like to help with development, please follow the steps below.
 This project depends on `Poetry <https://poetry.eustace.io` for all things dependency and development related. Make sure it's installed, or else all this will fail. It's an awesome tool, I highly recommend you check it out!
 
-Clone the repo 
+Clone the repo
 --------------
 
 .. code:: sh
@@ -44,7 +44,7 @@ Checkout the `Makefile <https://github.com/rbpatt2019/dash-covid19/blob/master/M
 And contribute!
 ---------------
 
-Once you're ready to share your changes, fork the repository on github. Then, add it as a remote to the repo and push the changes there. 
+Once you're ready to share your changes, fork the repository on github. Then, add it as a remote to the repo and push the changes there.
 
 .. code:: sh
 

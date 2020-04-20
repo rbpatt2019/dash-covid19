@@ -1,14 +1,14 @@
 ToDonePY - A basic command-line tast manager
 ============================================
 
-.. image:: https://www.repostatus.org/badges/latest/inactive.svg
-   :alt: Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.
-   :target: https://www.repostatus.org/#inactive   
+.. image:: https://www.repostatus.org/badges/latest/concept.svg
+   :alt: Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.
+   :target: https://www.repostatus.org/#concept
 
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
    :target: https://www.gnu.org/licenses/gpl-3.0
    :alt: GPLv3 License
-   
+
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/ambv/black
    :alt: Codestyle: Black
@@ -35,7 +35,7 @@ Installation
 ------------
 
 This project has not yet been formally released/deployed.
-    
+
 If you would like to contribute to development, please see `CONTRIBUTING.rst <https://github.com/rbpatt2019/dash-covid19/blob/master/CONTRIBUTING.rst`.
 
 Usage
