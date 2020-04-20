@@ -5,17 +5,17 @@ fail_fast: true
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: stable
+  rev: v2.5.0
   hooks:
   - id: trailing-whitespace
   - id: fix-encoding-pragma
   - id: check-yaml
   - id: check-toml
 - repo: https://github.com/timothycrosley/isort
-  rev: stable
+  rev: 4.3.21-2
   hooks:
   - id: isort
 - repo: https://github.com/psf/black
-  rev: stable
+  rev: 19.10b0
   hooks:
   - id: black
