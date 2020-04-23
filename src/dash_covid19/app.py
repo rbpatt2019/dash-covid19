@@ -7,13 +7,20 @@ external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
+colors = {"background": "#111111", "text": "#7fdbff"}
+
 app.layout = html.Div(
+    style={"backgroundColor": colors["background"]},
     children=[
-        html.H1(children="Hello Dash"),
+        html.H1(
+            children="Hello Dash",
+            style={"textAlign": "center", "color": colors["text"]},
+        ),
         html.Div(
             children="""
         Dash: Because hot-reloading is awesome.
-    """
+    """,
+            style={"textAlign": "center", "color": colors["text"]},
         ),
         dcc.Graph(
             id="example-graph",
@@ -27,10 +34,15 @@ app.layout = html.Div(
                         "name": u"Montréal",
                     },
                 ],
-                "layout": {"title": "Remember to write for the change!"},
+                "layout": {
+                    "title": "Remember to write for the change!",
+                    "plot_bgcolor": colors["background"],
+                    "paper_bgcolor": colors["background"],
+                    "font": {"color": colors["text"]},
+                },
             },
         ),
-    ]
+    ],
 )
 
 if __name__ == "__main__":
