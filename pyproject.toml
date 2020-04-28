@@ -34,6 +34,7 @@ pytest-instafail = "^0.4.1"
 pytest-mypy = "^0.6.1"
 pytest-runner = "^5.2"
 pre-commit = "^2.2.0"
+toml = "^0.10.0"
 
 [tool.isort]
 multi_line_output = 3
