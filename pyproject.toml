@@ -28,13 +28,13 @@ coverage = "^5.1"
 isort = "^4.3.21"
 mypy = "^0.770"
 mypy-extensions = "^0.4.3"
-pyflakes = "^2.2.0"
 pytest-cov = "^2.8.1"
 pytest-instafail = "^0.4.1"
 pytest-mypy = "^0.6.1"
 pytest-runner = "^5.2"
 pre-commit = "^2.2.0"
 toml = "^0.10.0"
+pylint = "^2.5.0"
 
 [tool.isort]
 multi_line_output = 3
