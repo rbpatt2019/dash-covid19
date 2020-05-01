@@ -48,9 +48,9 @@ major: test
 	git push origin master --tags
 
 stage: clean
-	git push stage master
+	git push origin staging
 
 deploy: clean
-	git push pro master
+	git push origin master
 
 .PHONY: clean develop install format lint test patch minor major stage deploy
