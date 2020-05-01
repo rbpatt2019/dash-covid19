@@ -1,1 +1,1 @@
-web: gunicorn dash-covid19.app:app
+web: gunicorn app:app
