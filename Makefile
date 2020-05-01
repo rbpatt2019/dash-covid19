@@ -47,10 +47,10 @@ major: test
 	git tag $(grep version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
 	git push origin master --tags
 
-dist: clean
-	poetry build
+stage: clean
+	git push stage master
 
-release: dist
-	poetry publish
+deploy: clean
+	git push pro master
 
-.PHONY: clean develop install format lint test patch minor major dist release
+.PHONY: clean develop install format lint test patch minor major stage deploy
