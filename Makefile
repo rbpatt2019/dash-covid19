@@ -20,7 +20,7 @@ format: clean
 	poetry run black src
 
 lint: format
-	poetry run pyflakes src
+	poetry run pylint src
 	poetry check
 
 test: lint
