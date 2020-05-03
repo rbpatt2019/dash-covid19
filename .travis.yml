@@ -22,7 +22,6 @@ deploy:
   strategy: git
   on:
     all_branches: true
-    tags: true
     python: 3.8
 after_success:
 - codecov
