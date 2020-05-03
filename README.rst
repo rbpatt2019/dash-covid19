@@ -13,6 +13,10 @@ ToDonePY - A basic command-line tast manager
    :alt: Python 3.8
    :target: https://docs.python.org/3/contents.html
 
+.. image:: https://travis-ci.org/rbpatt2019/dash-covid19.svg?branch=master
+   :target: https://travis-ci.org/rbpatt2019/dash-covid19
+   :alt: Travis Build Status
+
 .. image:: https://pyup.io/repos/github/rbpatt2019/dash-covid19/shield.svg
      :target: https://pyup.io/repos/github/rbpatt2019/dash-covid19/
      :alt: Updates
