@@ -17,6 +17,10 @@ ToDonePY - A basic command-line tast manager
    :target: https://travis-ci.org/rbpatt2019/dash-covid19
    :alt: Travis Build Status
 
+.. image:: https://codecov.io/gh/rbpatt2019/dash-covid19/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/rbpatt2019/dash-covid19
+   :alt: Test Coverage
+
 .. image:: https://pyup.io/repos/github/rbpatt2019/dash-covid19/shield.svg
      :target: https://pyup.io/repos/github/rbpatt2019/dash-covid19/
      :alt: Updates
