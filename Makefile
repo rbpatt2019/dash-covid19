@@ -16,11 +16,11 @@ install:
 	poetry install --no-dev
 
 format: clean
-	poetry run isort -rc app.py dash_covid19/
-	poetry run black app.py dash_covid19/
+	poetry run isort -rc dash_covid19/
+	poetry run black dash_covid19/
 
 lint: format
-	poetry run pylint app.py dash_covid19/
+	poetry run pylint dash_covid19/
 	poetry check
 
 test: lint
