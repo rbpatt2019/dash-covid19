@@ -16,15 +16,15 @@ install:
 	poetry install --no-dev
 
 format: clean
-	poetry run isort -rc app.py dash-covid19/
-	poetry run black app.py dash-covid19/
+	poetry run isort -rc app.py dash_covid19/
+	poetry run black app.py dash_covid19/
 
 lint: format
-	poetry run pylint app.py dash-covid19/
+	poetry run pylint app.py dash_covid19/
 	poetry check
 
 test: lint
-	pytest --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=dash-covid19/ --cov-report term
+	pytest --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=dash_covid19/ --cov-report term
 
 patch: test
 	poetry version patch
