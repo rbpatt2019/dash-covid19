@@ -9,6 +9,10 @@ ToDonePY - A basic command-line tast manager
    :target: https://www.gnu.org/licenses/gpl-3.0
    :alt: GPLv3 License
 
+.. image:: https://pyup.io/repos/github/rbpatt2019/dash-covid19/shield.svg
+     :target: https://pyup.io/repos/github/rbpatt2019/dash-covid19/
+     :alt: Updates
+
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/ambv/black
    :alt: Codestyle: Black
