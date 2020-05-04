@@ -1,9 +1,9 @@
-For contributors {#contributing}
+For contributors
 ================
 
 Comments, criticisms, and concerns are always welcome! If you would like
 to help with development, please follow the steps below. This project
-depends on [Poetry \<https://poetry.eustace.io]{.title-ref} for all
+depends on [Poetry](https://poetry.eustace.io) for all
 things dependency and development related. Make sure it\'s installed, or
 else all this will fail. It\'s an awesome tool, I highly recommend you
 check it out!
@@ -20,7 +20,7 @@ Make a new environment
 ----------------------
 
 Follow your own protocol! One option, using
-[pyenv-virtualenv]{.title-ref}, is:
+[pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv), is:
 
 ``` {.sh}
 pyenv virtualenv ToDonePy
@@ -33,9 +33,9 @@ Regardless of how you do it, run the following once its created:
 make develop
 ```
 
-I have [poetry]{.title-ref} configured to create its virtualenvs in
-[\~/.pyenv/versions/]{.title-ref}, so the above automatically creates my
-environment. Then, I use [pyenv local]{.title-ref} to set this
+I have `poetry` configured to create its virtualenvs in
+`\~/.pyenv/versions/`, so the above automatically creates my
+environment. Then, I use `pyenv local` to set this
 virtualenv in the root of the project!
 
 Start developing
