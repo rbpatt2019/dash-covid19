@@ -3,7 +3,7 @@ click==7.1.2
 dash==1.11.0
 dash-core-components==1.9.1
 dash-html-components==1.0.3
-dash-renderer==1.4.0
+dash-renderer==1.4.1
 dash-table==4.6.2
 flask==1.1.2
 flask-compress==1.5.0
