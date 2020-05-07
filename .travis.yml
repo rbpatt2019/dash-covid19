@@ -17,7 +17,8 @@ deploy:
     staging: dash-covid19-stage
   strategy: git
   on:
-    all_branches: true
+    branch: master
+    tag: true
     python: 3.8
 after_success:
 - codecov
