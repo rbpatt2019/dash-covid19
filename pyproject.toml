@@ -17,7 +17,7 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.8"
-dash = "^1.11.0"
+dash = {extras = ["testing"], version = "^1.12.0"}
 pandas = "^1.0.3"
 
 [tool.poetry.dev-dependencies]
