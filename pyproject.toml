@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "An interactive Dash app for viewing the WHO's Covid-19 data"
 authors = ["rbpatt2019 <ryan.patterson.2015@gmail.com>"]
 license = "GPL-3.0+"
-readme = "README.rst"
+readme = "README.md"
 repository = "https://github.com/rbpatt2019/dash-covid19"
 classifiers=[
         "Development Status :: 1 - Planning",
@@ -19,7 +19,6 @@ classifiers=[
 python = "^3.8"
 dash = "^1.11.0"
 pandas = "^1.0.3"
-gunicorn = "^20.0.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -36,6 +35,8 @@ pytest-runner = "^5.2"
 pre-commit = "^2.2.0"
 toml = "^0.10.0"
 pylint = "^2.5.0"
+gunicorn = "^20.0.4"
+selenium = "^3.141.0"
 
 [tool.isort]
 multi_line_output = 3
