@@ -9,15 +9,24 @@ install:
 - poetry install
 script: make test
 deploy:
-  provider: heroku
-  api_key:
-    secure: w3JtTBBqI/GSw10bEqwmo7KsZQY7qjKCf03fFV2T/Cv5KNXtnyToX0bNRnFDWZgm+Fn61hBv+VucfvLVza7ZxDDCAWKSMXpumGkZ01qWxusa5m75pZ4ymq58FMJ6y7R5RK1ytLM+6PCu1eEx6S2lpotzlXBe1F5shpIGB8VrB4a7Vd44niKEkPcokzpbMrqapOIcCTQg0lem8cuBtcKEDMHmjYOCb50HQw6R62xySQL2+xq6NGn9nEWuREe2g1XS0KWo88BS+ikNPRU7NYvfl1kuPUdkWaWhgjZ/V/CRpUq2QCxwiQx6+p9DAUckYxgGW1XIX2izIJNTzi8MEWGLL7mBefm6zLwoBI7d8H3twePKNFZKr3c2RQvuLvg9wMbctzoz7votem2n2fG0WXUOTNhTAs1fpbBvwxo1hUsdCU4jh3U9U+LPFh/ws0E61e9cp6NR3941OC07H5YGHy62dT6GRcX3IcCsthrw144v5kuke/LbhBR2Zi17Lsdft4qEbCIG8yDkPh1sac1Zc9ACrw7l1+00f5v4Hu5rWS7qGwcfTJ2AsiMG6dcx4CVh89jbwpb22Z3sQqwjBKB8TrXncBP5/Gn7tTO4DZquKfS0q6tDICiDz0Ap9vAuXGNImsNn7PTkgZfkqviixs2BQ6UdA6JFSUUx90eqeH+Fvoc/RdU=
-  app:
-    master: dash-covid19-pro
-    staging: dash-covid19-stage
-  strategy: git
-  on:
-    all_branches: true
-    python: 3.8
+  - provider: heroku
+    api_key:
+      secure: w3JtTBBqI/GSw10bEqwmo7KsZQY7qjKCf03fFV2T/Cv5KNXtnyToX0bNRnFDWZgm+Fn61hBv+VucfvLVza7ZxDDCAWKSMXpumGkZ01qWxusa5m75pZ4ymq58FMJ6y7R5RK1ytLM+6PCu1eEx6S2lpotzlXBe1F5shpIGB8VrB4a7Vd44niKEkPcokzpbMrqapOIcCTQg0lem8cuBtcKEDMHmjYOCb50HQw6R62xySQL2+xq6NGn9nEWuREe2g1XS0KWo88BS+ikNPRU7NYvfl1kuPUdkWaWhgjZ/V/CRpUq2QCxwiQx6+p9DAUckYxgGW1XIX2izIJNTzi8MEWGLL7mBefm6zLwoBI7d8H3twePKNFZKr3c2RQvuLvg9wMbctzoz7votem2n2fG0WXUOTNhTAs1fpbBvwxo1hUsdCU4jh3U9U+LPFh/ws0E61e9cp6NR3941OC07H5YGHy62dT6GRcX3IcCsthrw144v5kuke/LbhBR2Zi17Lsdft4qEbCIG8yDkPh1sac1Zc9ACrw7l1+00f5v4Hu5rWS7qGwcfTJ2AsiMG6dcx4CVh89jbwpb22Z3sQqwjBKB8TrXncBP5/Gn7tTO4DZquKfS0q6tDICiDz0Ap9vAuXGNImsNn7PTkgZfkqviixs2BQ6UdA6JFSUUx90eqeH+Fvoc/RdU=
+    app:
+      master: dash-covid19-pro
+    strategy: git
+    on:
+      branch: master
+      tags: true
+      python: 3.8
+  - provider: heroku
+    api_key:
+      secure: w3JtTBBqI/GSw10bEqwmo7KsZQY7qjKCf03fFV2T/Cv5KNXtnyToX0bNRnFDWZgm+Fn61hBv+VucfvLVza7ZxDDCAWKSMXpumGkZ01qWxusa5m75pZ4ymq58FMJ6y7R5RK1ytLM+6PCu1eEx6S2lpotzlXBe1F5shpIGB8VrB4a7Vd44niKEkPcokzpbMrqapOIcCTQg0lem8cuBtcKEDMHmjYOCb50HQw6R62xySQL2+xq6NGn9nEWuREe2g1XS0KWo88BS+ikNPRU7NYvfl1kuPUdkWaWhgjZ/V/CRpUq2QCxwiQx6+p9DAUckYxgGW1XIX2izIJNTzi8MEWGLL7mBefm6zLwoBI7d8H3twePKNFZKr3c2RQvuLvg9wMbctzoz7votem2n2fG0WXUOTNhTAs1fpbBvwxo1hUsdCU4jh3U9U+LPFh/ws0E61e9cp6NR3941OC07H5YGHy62dT6GRcX3IcCsthrw144v5kuke/LbhBR2Zi17Lsdft4qEbCIG8yDkPh1sac1Zc9ACrw7l1+00f5v4Hu5rWS7qGwcfTJ2AsiMG6dcx4CVh89jbwpb22Z3sQqwjBKB8TrXncBP5/Gn7tTO4DZquKfS0q6tDICiDz0Ap9vAuXGNImsNn7PTkgZfkqviixs2BQ6UdA6JFSUUx90eqeH+Fvoc/RdU=
+    app:
+      staging: dash-covid19-stage
+    strategy: git
+    on:
+      branch: staging
+      python: 3.8
 after_success:
 - codecov
