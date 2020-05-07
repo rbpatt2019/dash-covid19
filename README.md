@@ -45,8 +45,9 @@ If you would like to contribute to development, please see the [instructions](CO
 Usage
 -----
 
-The app will provide an iteractive iterface to filter data by country
-and date.
+The currently, the app provides little interface other than a buttin that I am using as I integrating Travis, Percy, etc.
+
+Eventually, it will provde a graphic interface that allows the end-user to visualise and filter Covid-19 data.
 
 Recent Changes
 --------------
