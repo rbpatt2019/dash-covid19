@@ -37,6 +37,7 @@ toml = "^0.10.0"
 pylint = "^2.5.0"
 gunicorn = "^20.0.4"
 selenium = "^3.141.0"
+percy-python-selenium = "^0.1.2"
 
 [tool.isort]
 multi_line_output = 3

@@ -502,6 +502,18 @@ version = "2.0.2"
 requests = ">=2.14.0"
 
 [[package]]
+category = "dev"
+description = "Python client for visual regression testing with Percy (https://percy.io)."
+name = "percy-python-selenium"
+optional = false
+python-versions = "*"
+version = "0.1.2"
+
+[package.dependencies]
+requests = ">=2.0.0,<3.0.0"
+selenium = ">=3.0.0,<4.0.0"
+
+[[package]]
 category = "main"
 description = "An open-source, interactive graphing library for Python"
 name = "plotly"
@@ -871,7 +883,7 @@ python-versions = "*"
 version = "1.12.1"
 
 [metadata]
-content-hash = "425e0be9767dd8a5bae6b3a27d06564b720aa11ef35a6d8ca6135b8ec5da075e"
+content-hash = "f605ad3bc9fc9d88bf1fd963ab7480e8d258276c0bc98ce8190b91f78c8fd737"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1218,6 +1230,10 @@ pathspec = [
 percy = [
     {file = "percy-2.0.2-py2.py3-none-any.whl", hash = "sha256:c1647b768810e9453220a7721a5d52cec560dee913d13c1e29b713703f4f223e"},
     {file = "percy-2.0.2.tar.gz", hash = "sha256:6238612dc401fa5c221c0ad7738f7ea43e48fe2695f6423e785ee2bc940f021d"},
+]
+percy-python-selenium = [
+    {file = "percy-python-selenium-0.1.2.tar.gz", hash = "sha256:e90626e0eb1be478b4e869d16348dd02091a769544e47d4f7cb2b7c2f019e36c"},
+    {file = "percy_python_selenium-0.1.2-py2-none-any.whl", hash = "sha256:05eec1d5954557e7d3f131019c88c11448a84d9dc1d3558a13f023bdbf557c67"},
 ]
 plotly = [
     {file = "plotly-4.7.0-py2.py3-none-any.whl", hash = "sha256:1f19b790217460df5274268a8261ed797f323e605c94a6644ca510a1e96e9467"},
