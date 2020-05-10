@@ -1,6 +1,9 @@
 dist: xenial
 addons:
   chrome: stable
+env:
+  global:
+    secure: BnDXWqWxRfroBNEk/nXZ4zLrml7OsQ36yfCN8gGsZhHvKswJfnRuE5l1SHkDXZMl/m0XA14y1EgNjeRbbVhFRkfUis7cmS/+z2Iz2+XNeH0w4gHFk8FMUijeL5Dhsem+H/tcxdPfQghIB4uvnp8uiVVVMay7rD7QRfHKW8uvw6kxYpMRAtdaSxW+8Sm+7Dbkt/tKyWVUzl1rJThCkG9vQHoN4EQ4IewzGXzgBP+z8irDosrLYDQCyIfQooRqUz+conOAPJ5VOVfcEMNZ+dQ5dhVjIMzGDg2BBKVRiPTlvmoKB31Eaj/I8RbJZTOQIwrNu62lKkvkY3QUP8BzoQ9FQ/+32b2vGJrOnmguTPjHtgQlXoFHMshMF25/JhtesjUp1tN7ATSfdbc0bLaIBIPWp6jiTq+Z0VB21w11zjBYgi97lROtEPBFcg6CjFOrf3Tr1A1v3surHU9gKX9rUXuIWycyf55MDH3/FAzjoikOULQZ5edO7i2yzzIBM2LNaXXJ+kC8VpqGIQ1Y/nHYln/e0vHyacrgi5f85fEMF1P3KkpJOgYUCOeWU3IJefxlpBB9uYn/Lia3duH3sp4xjca6GQ6Wm2emrxt+aaOO3OqiLqXiN7Ig+8X8/5UdUBqHqbj5/Zfy/HAhd1B571HKbhH9raAUa1/UMzwPrWNrPvGV/20=
 language: python
 python:
 - 3.8
@@ -10,9 +13,11 @@ before_install:
 install:
 - poetry install
 before_script:
-- CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome |\.[0-9]+ )//g'`
+- CHROME_MAIN_VERSION=`google-chrome-stable --version | sed -E 's/(^Google Chrome
+  |\.[0-9]+ )//g'`
 - CHROMEDRIVER_VERSION=`curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAIN_VERSION"`
-- curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
+- curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
+  -O
 - unzip chromedriver_linux64.zip -d ~/bin
 script: make test
 deploy:
