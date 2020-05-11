@@ -1,3 +1,12 @@
+VERSION := $(shell grep VERSION pyproject.toml | \
+sed -n 1p | \
+awk '/VERSION/{print $$NF}' | \
+tr -d '"' | \
+awk '{print "v"$$0}')
+
+v_test:
+	echo $(VERSION)
+
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
@@ -27,24 +36,24 @@ test: lint
 	pytest --webdriver Chrome --headless --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=dash_covid19/ --cov-report term
 
 patch: test
-	poetry version patch
+	poetry VERSION patch
 	git add pyproject.toml
-	git commit -m "Version bump"
-	git tag $(grep version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
+	git commit -m "VERSION bump"
+	git tag $(VERSION)
 	git push origin master --tags
 
 minor: test
-	poetry version minor
+	poetry VERSION minor
 	git add pyproject.toml
-	git commit -m "Version bump"
-	git tag $(grep version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
+	git commit -m "VERSION bump"
+	git tag $(VERSION)
 	git push origin master --tags
 
 major: test
-	poetry version major
+	poetry VERSION major
 	git add pyproject.toml
-	git commit -m "Version bump"
-	git tag $(grep version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
+	git commit -m "VERSION bump"
+	git tag $(VERSION)
 	git push origin master --tags
 
 .PHONY: clean develop install format lint test patch minor major stage deploy
