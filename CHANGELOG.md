@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.2.1 & v0.2.2
+---------------
+
+- Correct deployment issues to `Heorku`
+
 v0.2.0
 ------
 
