@@ -46,7 +46,7 @@ If you would like to contribute to development, please see the [instructions](CO
 Usage
 -----
 
-The currently, the app provides little interface other than a buttin that I am using as I integrating Travis, Percy, etc.
+Having now fully integrated Travis, Code-cov, PyUp, and Percy, development is beginning on a UI.
 
 Eventually, it will provde a graphic interface that allows the end-user to visualise and filter Covid-19 data.
 
@@ -54,7 +54,7 @@ Recent Changes
 --------------
 
 Please see the
-[CHANGELOG](https://github.com/rbpatt2019/dash-covid19/blob/master/CHANGELOG.rst)
+[CHANGELOG](https://github.com/rbpatt2019/dash-covid19/blob/master/CHANGELOG.md)
 
 Next Steps
 ----------
