@@ -1,8 +1,3 @@
-VERSION=$(shell grep version pyproject.toml | sed -n 1p | awk '/version/ {print $$3}' | tr -d '"' | awk '{print "v"$$0}')
-
-v_test:
-	echo $(VERSION)
-
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
@@ -35,21 +30,21 @@ patch: test
 	poetry version patch
 	git add pyproject.toml
 	git commit -m "VERSION bump"
-	git tag $(VERSION)
+	git tag $(shell grep version pyproject.toml | sed -n 1p | awk '/version/ {print $$3}' | tr -d '"' | awk '{print "v"$$0}')
 	git push origin master --tags
 
 minor: test
 	poetry version minor
 	git add pyproject.toml
 	git commit -m "VERSION bump"
-	git tag $(VERSION)
+	git tag $(shell grep version pyproject.toml | sed -n 1p | awk '/version/ {print $$3}' | tr -d '"' | awk '{print "v"$$0}'))
 	git push origin master --tags
 
 major: test
 	poetry version major
 	git add pyproject.toml
 	git commit -m "VERSION bump"
-	git tag $(VERSION)
+	git tag $(shell grep version pyproject.toml | sed -n 1p | awk '/version/ {print $$3}' | tr -d '"' | awk '{print "v"$$0}'))
 	git push origin master --tags
 
 .PHONY: clean develop install format lint test patch minor major
