@@ -18,25 +18,22 @@ classifiers=[
 [tool.poetry.dependencies]
 python = "^3.8"
 dash = {extras = ["testing"], version = "^1.12.0"}
-pandas = "^1.0.3"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
 black = "^19.10b0"
-codecov = "^2.0.22"
-coverage = "^5.1"
 isort = "^4.3.21"
+pylint = "^2.5.2"
 mypy = "^0.770"
 mypy-extensions = "^0.4.3"
+codecov = "^2.0.22"
+coverage = "^5.1"
+pytest = "5.3.5"
 pytest-cov = "^2.8.1"
 pytest-instafail = "^0.4.1"
-pytest-mypy = "^0.6.1"
+pytest-mypy = "^0.6.2"
 pytest-runner = "^5.2"
-pre-commit = "^2.2.0"
-toml = "^0.10.0"
-pylint = "^2.5.0"
+pre-commit = "^2.3.0"
 gunicorn = "^20.0.4"
-selenium = "^3.141.0"
 
 [tool.isort]
 multi_line_output = 3
