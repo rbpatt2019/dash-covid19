@@ -21,5 +21,4 @@ def test_dcap001_btn_click(dash_duo):
     btn.click()
     dash_duo.wait_for_text_to_equal("#out", "Clicked: 2")
 
-    assert dash_duo.get_logs() == [], "browser console should contain no error"
     dash_duo.percy_snapshot("dcap001-layout")
