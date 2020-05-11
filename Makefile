@@ -36,24 +36,24 @@ test: lint
 	pytest --webdriver Chrome --headless --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=dash_covid19/ --cov-report term
 
 patch: test
-	poetry VERSION patch
+	poetry version patch
 	git add pyproject.toml
 	git commit -m "VERSION bump"
 	git tag $(VERSION)
 	git push origin master --tags
 
 minor: test
-	poetry VERSION minor
+	poetry version minor
 	git add pyproject.toml
 	git commit -m "VERSION bump"
 	git tag $(VERSION)
 	git push origin master --tags
 
 major: test
-	poetry VERSION major
+	poetry version major
 	git add pyproject.toml
 	git commit -m "VERSION bump"
 	git tag $(VERSION)
 	git push origin master --tags
 
-.PHONY: clean develop install format lint test patch minor major stage deploy
+.PHONY: clean develop install format lint test patch minor major
