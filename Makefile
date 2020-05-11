@@ -1,8 +1,4 @@
-VERSION := $(shell grep VERSION pyproject.toml | \
-sed -n 1p | \
-awk '/VERSION/{print $$NF}' | \
-tr -d '"' | \
-awk '{print "v"$$0}')
+VERSION=$(shell grep version pyproject.toml | sed -n 1p | awk '/version/ {print $$3}' | tr -d '"' | awk '{print "v"$$0}')
 
 v_test:
 	echo $(VERSION)

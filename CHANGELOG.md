@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.2.3
+------
+
+- Correct Makefile tagging issues
+
 v0.2.1 & v0.2.2
 ---------------
 
