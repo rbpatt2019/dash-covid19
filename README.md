@@ -3,8 +3,9 @@ dash-covid19: A Dash App for WHO Data
 
 [![Project Status: Concept -- Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://docs.python.org/3/contents.html)
+[![Heroku Deploy Status](https://heroku-badge.herokuapp.com/?app=dash-covid19-pro)](https://dash-covid19-pro.herokuapp.com/)
 [![Travis Build Status](https://travis-ci.org/rbpatt2019/dash-covid19.svg?branch=master)](https://travis-ci.org/rbpatt2019/dash-covid19)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/rbpatt2019/dash-covid19)
 [![Test Coverage](https://codecov.io/gh/rbpatt2019/dash-covid19/branch/master/graph/badge.svg)](https://codecov.io/gh/rbpatt2019/dash-covid19)
 [![Updates](https://pyup.io/repos/github/rbpatt2019/dash-covid19/shield.svg)](https://pyup.io/repos/github/rbpatt2019/dash-covid19/)
 [![Codestyle: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
@@ -45,7 +46,7 @@ If you would like to contribute to development, please see the [instructions](CO
 Usage
 -----
 
-The currently, the app provides little interface other than a buttin that I am using as I integrating Travis, Percy, etc.
+Having now fully integrated Travis, Code-cov, PyUp, and Percy, development is beginning on a UI.
 
 Eventually, it will provde a graphic interface that allows the end-user to visualise and filter Covid-19 data.
 
@@ -53,7 +54,7 @@ Recent Changes
 --------------
 
 Please see the
-[CHANGELOG](https://github.com/rbpatt2019/dash-covid19/blob/master/CHANGELOG.rst)
+[CHANGELOG](https://github.com/rbpatt2019/dash-covid19/blob/master/CHANGELOG.md)
 
 Next Steps
 ----------
