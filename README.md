@@ -3,7 +3,6 @@ dash-covid19: A Dash App for WHO Data
 
 [![Project Status: Concept -- Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://docs.python.org/3/contents.html)
 [![Heroku Deploy Status](https://heroku-badge.herokuapp.com/?app=dash-covid19-pro)](https://dash-covid19-pro.herokuapp.com/)
 [![Travis Build Status](https://travis-ci.org/rbpatt2019/dash-covid19.svg?branch=master)](https://travis-ci.org/rbpatt2019/dash-covid19)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/rbpatt2019/dash-covid19)
