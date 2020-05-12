@@ -24,6 +24,9 @@ format: clean
 lint: format
 	poetry run pylint dash_covid19/
 	poetry check
+	poetry export --without-hashes --dev -f requirements.txt > requirements.txt
+	git add requirements.txt
+	git commit -m 'Update requirements'
 
 test: lint
 	pytest --webdriver Chrome --headless --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=dash_covid19/ --cov-report term
