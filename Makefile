@@ -1,5 +1,18 @@
 VERSION=$$(grep version pyproject.toml | sed -n 1p | awk '/version/ {print $$3}' | tr -d '"' | awk '{print "v"$$0}')
 
+define requirements
+poetry export --without-hashes --dev -f requirements.txt -o requirements.txt
+git add requirements.txt
+git commit -m 'Update requirements.txt'
+endef
+
+define tags
+git add pyproject.toml
+git commit -m "VERSION bump"
+git tag $(VERSION)
+git push origin master --tags
+endef
+
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
@@ -10,6 +23,14 @@ clean:
 	rm -rf build/
 	rm -rf dist/
 	rm -rf .eggs/
+
+reqs:
+	$(requirements)
+update:
+	poetry update
+	git add poetry.lock
+	git commit -m 'Update dependencies'
+	$(requirements)
 
 develop:
 	poetry install
@@ -30,23 +51,14 @@ test: lint
 
 patch: test
 	poetry version patch
-	git add pyproject.toml
-	git commit -m "VERSION bump"
-	git tag $(VERSION)
-	git push origin master --tags
+	$(tags)
 
 minor: test
 	poetry version minor
-	git add pyproject.toml
-	git commit -m "VERSION bump"
-	git tag $(VERSION)
-	git push origin master --tags
+	$(tags)
 
 major: test
 	poetry version major
-	git add pyproject.toml
-	git commit -m "VERSION bump"
-	git tag $(VERSION)
-	git push origin master --tags
+	$(tags)
 
-.PHONY: clean develop install format lint test patch minor major
+.PHONY: clean reqs update develop install format lint test patch minor major
