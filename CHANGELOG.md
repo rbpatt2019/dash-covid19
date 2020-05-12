@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.3.0
+------
+
+- First ingetration of real data, displayed in a table
+
 v0.2.3 & v0.2.4
 ---------------
 
