@@ -1,24 +1,14 @@
 # -*- coding: utf-8 -*-
 import dash
-import dash_html_components as html
 from dash.testing.application_runners import import_app
-from dash_covid19 import __version__
 
 
-def test_dcap001_btn_click(dash_duo):
+def test_dcap001_table_pagination(dash_duo):
     app = import_app("dash_covid19.app")
 
     dash_duo.start_server(app)
 
-    # Wait for button to initialise
-    btn = dash_duo.wait_for_element_by_css_selector("#click-me")
-
-    # Click it and check output
-    btn.click()
-    dash_duo.wait_for_text_to_equal("#out", "Clicked: 1")
-
-    # Should increment when clicked multiple times
-    btn.click()
-    dash_duo.wait_for_text_to_equal("#out", "Clicked: 2")
-
-    dash_duo.percy_snapshot("dcap001-layout")
+    # Check table loads
+    # Elect not to use percy here as data will change daily...
+    # As all other features are implemented natively, elect not to test
+    dash_duo.wait_for_element_by_id("data-table", timeout=10)
