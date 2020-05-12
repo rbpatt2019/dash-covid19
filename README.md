@@ -61,7 +61,8 @@ for any questions you may have about the data.
 Usage
 -----
 
-Having now fully integrated Travis, Code-cov, PyUp, and Percy, development is beginning on a UI.
+Currently, the app displays the data in an interactive table that allows the user to sort columns and delete those they aren't interested in.
+Don't worry! You can always get the columns back by refreshing the page.
 
 Eventually, it will provde a graphic interface that allows the end-user to visualise and filter Covid-19 data.
 
