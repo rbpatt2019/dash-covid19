@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import dash
+import dash_core_components as dcc
 import dash_html_components as html
+import dash_table as table
+import pandas as pd
 from dash.dependencies import Input, Output
-from dash.exceptions import PreventUpdate
 
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 
@@ -10,20 +12,25 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
-counts = {"clicks": 0}
-
-app.layout = html.Div(
-    [html.Div("My test layout", id="out"), html.Button("click me", id="click-me")]
+data = pd.read_csv(
+    "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
 )
 
 
-@app.callback(Output("out", "children"), [Input("click-me", "n_clicks")])
-def on_click(n_clicks):
-    if n_clicks is None:
-        raise PreventUpdate
-
-    counts["clicks"] += 1
-    return "Clicked: {}".format(n_clicks)
+app.layout = html.Div(
+    [
+        table.DataTable(
+            id="data-table",
+            columns=[{"name": i, "id": i, "deletable": True} for i in data.columns],
+            data=data.to_dict("records"),
+            sort_action="native",
+            filter_action="native",
+            page_action="native",
+            page_current=0,
+            page_size=25,
+        ),
+    ]
+)
 
 
 if __name__ == "__main__":
