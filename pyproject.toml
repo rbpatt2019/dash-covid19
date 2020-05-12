@@ -45,7 +45,10 @@ use_parentheses = "True"
 line_length = 88
 
 [tool.pylint.messages_control]
-disable = "C"
+disable = """,
+C,
+W0611,
+"""
 
 [build-system]
 requires = ["poetry>=0.12"]
