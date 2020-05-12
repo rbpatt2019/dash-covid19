@@ -5,9 +5,9 @@ import dash_table as table
 from dash_covid19.app import data
 
 layouts = {
-    "/data-table": html.Div(
+    "data-table": html.Div(
         [
-            html.H3("Data Table"),
+            html.H5("Data Table"),
             table.DataTable(
                 id="data-table",
                 columns=[{"name": i, "id": i, "deletable": True} for i in data.columns],
@@ -18,21 +18,7 @@ layouts = {
                 page_current=0,
                 page_size=25,
             ),
-            dcc.Link("Go to Explorer", href="/explorer"),
         ]
     ),
-    "/explorer": html.Div(
-        [
-            html.H3("Explorer"),
-            dcc.Markdown("## Graph to go here"),
-            dcc.Link("Go to data table", href="/data-table"),
-        ]
-    ),
-    "404": html.Div(
-        [
-            html.H3("404"),
-            dcc.Link("Go to data table", href="/data-table"),
-            dcc.Link("Go to explorer", href="/explorer"),
-        ]
-    ),
+    "explorer": html.Div([html.H5("Explorer"), html.H6("## Graph to go here")]),
 }
