@@ -3,12 +3,18 @@ import dash
 from dash.testing.application_runners import import_app
 
 
-def test_dcap001_table_pagination(dash_duo):
-    app = import_app("dash_covid19.app")
+def test_dcin001_tab_navigation(dash_duo):
+    app = import_app("dash_covid19.index")
 
     dash_duo.start_server(app)
 
-    # Check table loads
-    # Elect not to use percy here as data will change daily...
-    # As all other features are implemented natively, elect not to test
-    dash_duo.wait_for_element_by_id("data-table", timeout=10)
+    # Check defaults to explorer
+    # wait to load, assert value, percy
+    dash_duo.wait_for_text_to_equal("#header-explorer", "Explorer")
+    dash_duo.percy_snapshot("dcin001-explorer")
+
+    # Check change correctly
+    # Click, wait, assert, percy
+    dash_duo.click_at_coord_fractions("#nav-tab-2", 0.5, 0.5)
+    dash_duo.wait_for_text_to_equal("#header-data-table", "Data Table")
+    dash_duo.percy_snapshot("dcin001-data-table")
