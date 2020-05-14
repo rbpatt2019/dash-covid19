@@ -11,10 +11,10 @@ def test_dcin001_tab_navigation(dash_duo):
     # Check defaults to explorer
     # wait to load, assert value, percy
     dash_duo.wait_for_contains_text("#exp-header", "Explorer")
-    # dash_duo.percy_snapshot("dcin001-graph")
+    dash_duo.percy_snapshot("dcin001-graph")
 
     # # Check change correctly
     # # Click, wait, assert, percy
     dash_duo.click_at_coord_fractions("#nav-tab-2", 0.5, 0.5)
-    # dash_duo.wait_for_contains_text("#header-data-table", "Data Table")
-    # dash_duo.percy_snapshot("dcin001-data-table")
+    dash_duo.wait_for_contains_text("#dt-header", "Data Table")
+    dash_duo.percy_snapshot("dcin001-data-table")
