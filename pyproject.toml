@@ -7,8 +7,9 @@ license = "GPL-3.0+"
 readme = "README.md"
 repository = "https://github.com/rbpatt2019/dash-covid19"
 classifiers=[
-        "Development Status :: 1 - Planning",
-        "Intended Audience :: Developers",
+        "Development Status :: 2 - Pre-Alpha",
+        "Intended Audience :: Science/Research",
+        "Intended Audience :: Healthcare Indeustry",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Natural Language :: English",
         "Operating System :: Unix",
@@ -44,7 +45,16 @@ use_parentheses = "True"
 line_length = 88
 
 [tool.pylint.messages_control]
-disable = "C"
+disable = """,
+C,
+W0611,
+"""
+
+[tool.coverage.report]
+exclude_lines = [
+        "if __name__ == .__main__.:",
+]
+show_missing = true
 
 [build-system]
 requires = ["poetry>=0.12"]
