@@ -36,8 +36,8 @@ layouts = {
     ),
     "explorer": html.Div(
         [
-            html.H5("Explorer", id="header-explorer"),
-            html.H6("Graph to go here", id="explorer"),
+            html.H5("Explorer", id="header-graph"),
+            html.H6("Graph to go here", id="graph"),
         ]
     ),
 }
