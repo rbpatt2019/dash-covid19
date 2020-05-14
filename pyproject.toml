@@ -50,6 +50,12 @@ C,
 W0611,
 """
 
+[tool.coverage.report]
+exclude_lines = [
+        "if __name__ == .__main__.:",
+]
+show_missing = true
+
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
