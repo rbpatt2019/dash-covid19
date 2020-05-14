@@ -5,6 +5,31 @@ import dash_table as table
 from dash_covid19.app import data
 
 layouts = {
+    "app": html.Div(
+        [
+            dcc.Tabs(
+                id="navigation",
+                value="explorer",
+                parent_className="nav-tabs",
+                className="nav-tabs-container",
+                children=[
+                    dcc.Tab(
+                        label="Explorer",
+                        value="explorer",
+                        className="nav-tab",
+                        selected_className="nav-tab--selected",
+                    ),
+                    dcc.Tab(
+                        label="Data Table",
+                        value="data-table",
+                        className="nav-tab",
+                        selected_className="nav-tab--selected",
+                    ),
+                ],
+            ),
+            html.Div(id="page-content"),
+        ]
+    ),
     "data-table": html.Div(
         [
             html.H5("Data Table"),
