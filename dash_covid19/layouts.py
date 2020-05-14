@@ -20,10 +20,11 @@ layouts = {
         ]
     ),
     "data-table": html.Div(
-        [
-            html.H5("Data Table", id="header-data-table"),
+        id="dt",
+        children=[
+            html.H5("Data Table", id="dt-header"),
             table.DataTable(
-                id="data-table",
+                id="dt-data",
                 columns=[{"name": i, "id": i, "deletable": True} for i in data.columns],
                 data=data.to_dict("records"),
                 sort_action="native",
@@ -32,12 +33,13 @@ layouts = {
                 page_current=0,
                 page_size=25,
             ),
-        ]
+        ],
     ),
     "explorer": html.Div(
-        [
-            html.H5("Explorer", id="header-graph"),
-            html.H6("Graph to go here", id="graph"),
-        ]
+        id="exp",
+        children=[
+            html.H5("Explorer", id="exp-header"),
+            html.H6("Graph to go here", id="exp-graph"),
+        ],
     ),
 }
