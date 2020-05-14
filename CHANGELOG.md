@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.4.0
+------
+
+- Migrate to multi-page layout
+
 v0.3.0
 ------
 
