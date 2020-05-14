@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
-import dash_covid19.callbacks
 import dash_html_components as html
 from dash.dependencies import Input, Output
 from dash_covid19.app import app
