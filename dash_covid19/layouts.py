@@ -2,6 +2,7 @@
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table as table
+
 from dash_covid19.app import data
 
 layouts = {
@@ -10,21 +11,9 @@ layouts = {
             dcc.Tabs(
                 id="navigation",
                 value="explorer",
-                parent_className="nav-tabs",
-                className="nav-tabs-container",
                 children=[
-                    dcc.Tab(
-                        label="Explorer",
-                        value="explorer",
-                        className="nav-tab",
-                        selected_className="nav-tab--selected",
-                    ),
-                    dcc.Tab(
-                        label="Data Table",
-                        value="data-table",
-                        className="nav-tab",
-                        selected_className="nav-tab--selected",
-                    ),
+                    dcc.Tab(id="nav-tab-1", label="Explorer", value="explorer",),
+                    dcc.Tab(id="nav-tab-2", label="Data Table", value="data-table",),
                 ],
             ),
             html.Div(id="page-content"),
@@ -32,7 +21,7 @@ layouts = {
     ),
     "data-table": html.Div(
         [
-            html.H5("Data Table"),
+            html.H5("Data Table", id="header-data-table"),
             table.DataTable(
                 id="data-table",
                 columns=[{"name": i, "id": i, "deletable": True} for i in data.columns],
@@ -45,5 +34,10 @@ layouts = {
             ),
         ]
     ),
-    "explorer": html.Div([html.H5("Explorer"), html.H6("## Graph to go here")]),
+    "explorer": html.Div(
+        [
+            html.H5("Explorer", id="header-explorer"),
+            html.H6("Graph to go here", id="explorer"),
+        ]
+    ),
 }
