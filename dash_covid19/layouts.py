@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import plotly.express as px
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table as table
@@ -6,14 +7,6 @@ import dash_table as table
 
 def init_layouts(dash_app, df):
     """Initialise layouts and return default"""
-
-    # Might move this
-    # Hack as dcc.Slider does not support pd.dateTime or str
-    x_dates = list(range(len(df["date"].dt.date.unique())))
-    dict_dates = {
-        x: date.strftime("%Y-%m-%d")
-        for x, date in list(zip(x_dates, sorted(df["date"].dt.date.unique())))[::7]
-    }
 
     layouts = {
         "app": html.Div(
@@ -55,14 +48,16 @@ def init_layouts(dash_app, df):
         "explorer": html.Div(
             id="exp",
             children=[
-                dcc.Graph(id="exp-world-map"),
-                dcc.Slider(
-                    id="exp-date-slider",
-                    min=x_dates[0],
-                    max=x_dates[-1],
-                    value=x_dates[0],
-                    marks=dict_dates,
-                    step=None,
+                dcc.Graph(
+                    id="exp-world-map",
+                    figure=px.scatter_geo(
+                        df,
+                        locations="iso_code",
+                        hover_name="location",
+                        size="total_cases",
+                        animation_frame=df.date.astype(str),
+                        projection="natural earth",
+                    ),
                 ),
             ],
             style={"width": "90%", "display": "inline-block"},
