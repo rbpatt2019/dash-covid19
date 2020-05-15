@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from dash.dependencies import Input, Output
 
-from dash_covid19.app import app
 from dash_covid19.layouts import layouts
 
 
