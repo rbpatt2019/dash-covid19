@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dash-covid19"
-version = "0.4.0"
+version = "0.4.1"
 description = "An interactive Dash app for viewing Covid-19 data"
 authors = ["rbpatt2019 <ryan.patterson.2015@gmail.com>"]
 license = "GPL-3.0+"
