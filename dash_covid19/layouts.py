@@ -12,14 +12,17 @@ def init_layouts(dash_app, df):
                 dcc.Tabs(
                     id="navigation",
                     value="explorer",
+                    vertical=True,
                     children=[
                         dcc.Tab(id="nav-tab-1", label="Explorer", value="explorer",),
                         dcc.Tab(
                             id="nav-tab-2", label="Data Table", value="data-table",
                         ),
                     ],
+                    parent_style={"float": "left"},
+                    style={"width": "90%"},
                 ),
-                html.Div(id="page-content"),
+                html.Div(id="page-content", style={"float": "left"}),
             ]
         ),
         "data-table": html.Div(
