@@ -46,7 +46,7 @@ lint: format
 	poetry run pylint dash_covid19/
 	poetry check
 
-test: lint
+test: clean
 	pytest --webdriver Chrome --headless --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=dash_covid19/ --cov-report term
 
 patch: test
