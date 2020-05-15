@@ -9,6 +9,7 @@ from dash_covid19.layouts import init_layouts
 data = pd.read_csv(
     "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
 )
+data["date"] = pd.to_datetime(data["date"])
 
 
 def create_app():
