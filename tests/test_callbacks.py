@@ -3,8 +3,8 @@ import dash
 from dash.testing.application_runners import import_app
 
 
-def test_dcin001_tab_navigation(dash_duo):
-    app = import_app("dash_covid19.index")
+def test_dccb001_tab_navigation(dash_duo):
+    app = import_app("wsgi")
 
     dash_duo.start_server(app)
 
