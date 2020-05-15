@@ -22,7 +22,7 @@ def init_layouts(dash_app, df):
                     parent_style={"float": "left"},
                     style={"width": "90%"},
                 ),
-                html.Div(id="page-content", style={"float": "left"}),
+                html.Div(id="page-content"),
             ]
         ),
         "data-table": html.Div(
@@ -42,6 +42,7 @@ def init_layouts(dash_app, df):
                     page_size=25,
                 ),
             ],
+            style={"width": "50%", "display": "inline-block"},
         ),
         "explorer": html.Div(
             id="exp",
@@ -49,6 +50,7 @@ def init_layouts(dash_app, df):
                 html.H5("Explorer", id="exp-header"),
                 html.H6("Graph to go here", id="exp-graph"),
             ],
+            style={"width": "50%", "display": "inline-block"},
         ),
     }
 
