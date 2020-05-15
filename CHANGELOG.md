@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v0.4.1
+------
+- Switch to factory layout. No impact on user.
+
 v0.4.0
 ------
 
