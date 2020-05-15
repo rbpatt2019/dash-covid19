@@ -3,7 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_table as table
 
-from dash_covid19.app import data
+from dash_covid19 import data
 
 layouts = {
     "app": html.Div(
