@@ -3,13 +3,14 @@ import pandas as pd
 from dash import Dash
 
 
+# Make sure data is global, as is needed by layouts
+data = pd.read_csv(
+    "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
+)
+
+
 def create_app():
     """Initialise the dash app"""
-
-    # Read in data
-    data = pd.read_csv(
-        "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
-    )
 
     # Create app
     app = Dash(
