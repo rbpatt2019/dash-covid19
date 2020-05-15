@@ -10,7 +10,7 @@ data = pd.read_csv(
     "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
 )
 data["date"] = pd.to_datetime(data["date"])
-data = data.fillna(0)
+data = data.fillna(0).sort_values(by="date")
 
 
 def create_app():
