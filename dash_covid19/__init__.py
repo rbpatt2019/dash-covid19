@@ -2,6 +2,8 @@
 import pandas as pd
 from dash import Dash
 
+from dash_covid19.callbacks import init_callbacks
+from dash_covid19.layouts import init_layouts
 
 # Make sure data is global, as is needed by layouts
 data = pd.read_csv(
@@ -20,11 +22,8 @@ def create_app():
     )
 
     # Now that app is created, import callbacks and layouts
-    from dash_covid19.layouts import layouts
-
-    app.layout = layouts["app"]
-
-    import dash_covid19.callbacks
+    app, layouts = init_layouts(app, data)
+    init_callbacks(app, layouts)
 
     # Create server instance
     server = app.server
