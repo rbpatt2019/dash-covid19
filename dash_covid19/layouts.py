@@ -16,7 +16,7 @@ def init_layouts(dash_app, df):
                     value="explorer",
                     vertical=True,
                     children=[
-                        dcc.Tab(id="nav-tab-1", label="Explorer", value="explorer",),
+                        dcc.Tab(id="nav-tab-1", label="Explorer", value="explorer"),
                         dcc.Tab(
                             id="nav-tab-2", label="Data Table", value="data-table",
                         ),
@@ -26,24 +26,6 @@ def init_layouts(dash_app, df):
                 ),
                 html.Div(id="page-content"),
             ]
-        ),
-        "data-table": html.Div(
-            id="dt",
-            children=[
-                table.DataTable(
-                    id="dt-data",
-                    columns=[
-                        {"name": i, "id": i, "deletable": True} for i in df.columns
-                    ],
-                    data=df.to_dict("records"),
-                    sort_action="native",
-                    filter_action="native",
-                    page_action="native",
-                    page_current=0,
-                    page_size=25,
-                ),
-            ],
-            style={"width": "50%", "display": "inline-block"},
         ),
         "explorer": html.Div(
             id="exp",
@@ -63,6 +45,24 @@ def init_layouts(dash_app, df):
                 ),
             ],
             style={"width": "90%", "display": "inline-block"},
+        ),
+        "data-table": html.Div(
+            id="dt",
+            children=[
+                table.DataTable(
+                    id="dt-data",
+                    columns=[
+                        {"name": i, "id": i, "deletable": True} for i in df.columns
+                    ],
+                    data=df.to_dict("records"),
+                    sort_action="native",
+                    filter_action="native",
+                    page_action="native",
+                    page_current=0,
+                    page_size=25,
+                ),
+            ],
+            style={"width": "50%", "display": "inline-block"},
         ),
     }
 
