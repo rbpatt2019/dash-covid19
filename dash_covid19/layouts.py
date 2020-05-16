@@ -37,7 +37,7 @@ def init_layouts(dash_app, df):
                         locations="iso_code",
                         hover_name="location",
                         size="total_cases",
-                        animation_frame=df.date.astype(str),
+                        animation_frame=df[["date"]].astype(str),
                         projection="eckert4",
                         height=750,
                         title="Total Cases of Covid-19 over Time",
