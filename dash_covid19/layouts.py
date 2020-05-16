@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-import plotly.express as px
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table as table
+import plotly.express as px
 
 
 def init_layouts(dash_app, df):
