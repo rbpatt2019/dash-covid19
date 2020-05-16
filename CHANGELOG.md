@@ -1,8 +1,14 @@
 Changelog
 =========
 
+v0.5.0
+------
+
+- Implement earth map of cases
+
 v0.4.1
 ------
+
 - Switch to factory layout. No impact on user.
 
 v0.4.0
