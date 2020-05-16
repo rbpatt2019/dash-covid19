@@ -15,4 +15,4 @@ def test_dcly001_init_layout(dash_duo):
     assert app.layout == layouts["app"]
     assert type(app) == dash.dash.Dash
 
-    assert list(layouts.keys()) == ["app", "data-table", "explorer"]
+    assert list(layouts.keys()) == ["app", "explorer", "data-table"]
