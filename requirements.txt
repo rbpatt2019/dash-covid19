@@ -54,7 +54,7 @@ pyparsing==2.4.7
 pytest==5.4.2
 pytest-cov==2.8.1
 pytest-instafail==0.4.1.post0
-pytest-mock==2.0.0
+pytest-mock==3.1.0
 pytest-mypy==0.6.2
 pytest-runner==5.2
 pytest-sugar==0.9.2
