@@ -11,6 +11,9 @@ before_install:
 - pip install --upgrade pip
 - pip install poetry
 - npm install npm@latest -g
+- npm cache clean -f
+- npm install -g n
+- n stable
 install:
 - poetry install
 before_script:
