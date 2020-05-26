@@ -5,7 +5,7 @@ import dash_table as table
 import plotly.express as px
 
 
-def init_layouts(dash_app, df):
+def init_layouts(dash_app, df, cols):
     """Initialise layouts and return default"""
 
     layouts = {
@@ -30,18 +30,15 @@ def init_layouts(dash_app, df):
         "explorer": html.Div(
             id="exp",
             children=[
-                dcc.Graph(
-                    id="exp-world-map",
-                    figure=px.scatter_geo(
-                        df,
-                        locations="iso_code",
-                        hover_name="location",
-                        size="total_cases",
-                        animation_frame=df[["date"]].astype(str),
-                        projection="eckert4",
-                        height=750,
-                        title="Total Cases of Covid-19 over Time",
-                    ),
+                dcc.Graph(id="exp-world-map", style={"float": "left"}),
+                dcc.Dropdown(
+                    id="exp-dd-column",
+                    placeholder="Select a variable...",
+                    persistence=True,
+                    persistence_type="session",
+                    style={},
+                    options=[{"label": i, "value": i} for i in cols],
+                    value=cols[0],
                 ),
             ],
             style={"width": "90%", "display": "inline-block"},
