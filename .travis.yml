@@ -19,7 +19,7 @@ before_script:
 - curl "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
   -O
 - unzip chromedriver_linux64.zip -d ~/bin
-- npm install --save-dev @percy/agent
+- npm install -D @percy/script
 script: make test
 deploy:
   provider: heroku
