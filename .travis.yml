@@ -10,6 +10,7 @@ python:
 before_install:
 - pip install --upgrade pip
 - pip install poetry
+- npm install npm@latest -g
 install:
 - poetry install
 before_script:
