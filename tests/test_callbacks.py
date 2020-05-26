@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-from selenium.webdriver.common.keys import Keys
 from time import sleep
+
 import dash
 from dash.testing.application_runners import import_app
+from selenium.webdriver.common.keys import Keys
+
 from dash_covid19 import columns
+
 
 """
 dash_duo.driver.maximize_window() is necessary for accessing the dropdown
