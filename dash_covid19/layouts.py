@@ -36,7 +36,7 @@ def init_layouts(dash_app, df, cols):
                     placeholder="Select a variable...",
                     persistence=True,
                     persistence_type="session",
-                    style={},
+                    clearable=False,
                     options=[{"label": i, "value": i} for i in cols],
                     value=cols[0],
                 ),
