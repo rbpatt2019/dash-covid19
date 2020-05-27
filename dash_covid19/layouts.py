@@ -30,7 +30,6 @@ def init_layouts(dash_app, df, cols):
         "explorer": html.Div(
             id="exp",
             children=[
-                dcc.Graph(id="exp-world-map", style={"float": "left"}),
                 dcc.Dropdown(
                     id="exp-dd-column",
                     placeholder="Select a variable...",
@@ -40,6 +39,7 @@ def init_layouts(dash_app, df, cols):
                     options=[{"label": i, "value": i} for i in cols],
                     value=cols[0],
                 ),
+                dcc.Graph(id="exp-world-map", style={"float": "left"}),
             ],
             style={"width": "90%", "display": "inline-block"},
         ),

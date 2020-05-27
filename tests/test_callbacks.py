@@ -35,5 +35,8 @@ def test_dccb002_dropdown(dash_duo):
     dash_duo.start_server(app)
 
     dash_duo.wait_for_text_to_equal("#exp-dd-column", f"{columns[0]}")
+
+    # Wait for graph to prevent image "jumping"
+    sleep(5)
     dash_duo.select_dcc_dropdown("#exp-dd-column", index=5)
     dash_duo.percy_snapshot("dccb002-graph")
