@@ -12,6 +12,8 @@ data = pd.read_csv(
 data["date"] = pd.to_datetime(data["date"])
 data = data.fillna(0).sort_values(by="date")
 
+columns = data.columns[3:]
+
 
 def create_app():
     """Initialise the dash app"""
@@ -24,8 +26,8 @@ def create_app():
     )
 
     # Now that app is created, import callbacks and layouts
-    app, layouts = init_layouts(app, data)
-    init_callbacks(app, layouts)
+    app, layouts = init_layouts(app, data, columns)
+    init_callbacks(app, layouts, data)
 
     # Create server instance
     server = app.server
