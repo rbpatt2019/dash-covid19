@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v0.6.0
+------
+- Add reactive column selection to world map
+
 v0.5.0
 ------
 
