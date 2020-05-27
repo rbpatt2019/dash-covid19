@@ -18,7 +18,6 @@ def test_dccb001_tab_navigation(dash_duo):
     app = import_app("wsgi")
 
     dash_duo.start_server(app)
-    dash_duo.driver.maximize_window()
 
     # Check defaults to explorer
     dash_duo.wait_for_element_by_id("exp-world-map")
@@ -34,7 +33,6 @@ def test_dccb002_dropdown(dash_duo):
     app = import_app("wsgi")
 
     dash_duo.start_server(app)
-    dash_duo.driver.maximize_window()
 
     dash_duo.wait_for_text_to_equal("#exp-dd-column", f"{columns[0]}")
     dash_duo.select_dcc_dropdown("#exp-dd-column", index=5)
