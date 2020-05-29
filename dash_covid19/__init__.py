@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import pandas as pd
+import dash_bootstrap_components as dbc
 from dash import Dash
 
 from dash_covid19.callbacks import init_callbacks
@@ -21,7 +22,7 @@ def create_app():
     # Create app
     app = Dash(
         __name__,
-        external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"],
+        external_stylesheets=[dbc.themes.FLATLY],
         suppress_callback_exceptions=True,
     )
 
