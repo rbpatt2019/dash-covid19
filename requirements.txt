@@ -43,7 +43,7 @@ packaging==20.4
 pandas==1.0.4
 pathspec==0.8.0
 percy==2.0.2
-plotly==4.8.0
+plotly==4.8.1
 pluggy==0.13.1
 pre-commit==2.4.0
 py==1.8.1
