@@ -6,11 +6,9 @@ from dash.dependencies import Input, Output
 def init_callbacks(dash_app, layouts, data):
     """Initialise dash callbacks"""
 
-    @dash_app.callback(
-        Output("page-content", "children"), [Input("navigation", "value")]
-    )
-    def display_page(value):
-        return layouts[value]
+    @dash_app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+    def display_page(path):
+        return layouts.get(path, "/exp")
 
     @dash_app.callback(
         Output("exp-world-map", "figure"), [Input("exp-dd-column", "value")]

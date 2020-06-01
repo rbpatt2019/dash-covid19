@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
+import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table as table
 import plotly.express as px
+from dash_covid19.helper_components.navbar import navbar
 
 
 def init_layouts(dash_app, df, cols):
@@ -10,25 +12,15 @@ def init_layouts(dash_app, df, cols):
 
     layouts = {
         "app": html.Div(
-            [
-                dcc.Tabs(
-                    id="navigation",
-                    value="explorer",
-                    vertical=True,
-                    children=[
-                        dcc.Tab(id="nav-tab-1", label="Explorer", value="explorer"),
-                        dcc.Tab(
-                            id="nav-tab-2", label="Data Table", value="data-table",
-                        ),
-                    ],
-                    parent_style={"float": "left"},
-                    style={"width": "90%"},
-                ),
-                html.Div(id="page-content"),
-            ]
+            children=[
+                dcc.Location(id="url", refresh=False),
+                dbc.Row(dbc.Col(navbar)),
+                dbc.Row(dbc.Col(html.Div(id="page-content"))),
+            ],
         ),
-        "explorer": html.Div(
+        "/exp": dbc.Container(
             id="exp",
+            fluid=True,
             children=[
                 dcc.Dropdown(
                     id="exp-dd-column",
@@ -39,12 +31,12 @@ def init_layouts(dash_app, df, cols):
                     options=[{"label": i, "value": i} for i in cols],
                     value=cols[0],
                 ),
-                dcc.Graph(id="exp-world-map", style={"float": "left"}),
+                dcc.Graph(id="exp-world-map"),
             ],
-            style={"width": "90%", "display": "inline-block"},
         ),
-        "data-table": html.Div(
+        "/dt": dbc.Container(
             id="dt",
+            fluid=True,
             children=[
                 table.DataTable(
                     id="dt-data",
@@ -59,7 +51,6 @@ def init_layouts(dash_app, df, cols):
                     page_size=25,
                 ),
             ],
-            style={"width": "50%", "display": "inline-block"},
         ),
     }
 
