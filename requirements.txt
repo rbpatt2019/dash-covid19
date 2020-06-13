@@ -1,5 +1,5 @@
 appdirs==1.4.4
-astroid==2.4.1
+astroid==2.4.2
 atomicwrites==1.4.0; python_version >= "3.0" and sys_platform == "win32" or sys_platform == "win32" or python_version >= "3.5" and sys_platform == "win32"
 attrs==19.3.0
 beautifulsoup4==4.8.2
