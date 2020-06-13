@@ -74,6 +74,6 @@ typing-extensions==3.7.4.2
 urllib3==1.25.9
 virtualenv==20.0.23
 waitress==1.4.4
-wcwidth==0.1.9
+wcwidth==0.2.4
 werkzeug==1.0.1
 wrapt==1.12.1
