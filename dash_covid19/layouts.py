@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
+import dash_daq as daq
 import dash_html_components as html
 import dash_table as table
 import plotly.express as px
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.dropdown import make_dd
-from dash_covid19.helper_components.button_groups import log_axis_btn_grp
 
 
 def init_layouts(dash_app, df, cols, date_idx):
@@ -95,7 +95,7 @@ def init_layouts(dash_app, df, cols, date_idx):
                         ),
                         dbc.Col(
                             html.H5(
-                                "X-axis Scale",
+                                "X-axis: Log Scale?",
                                 id="exp-scale-x-head",
                                 style={
                                     "textDecoration": "underline",
@@ -105,8 +105,8 @@ def init_layouts(dash_app, df, cols, date_idx):
                             width=2,
                         ),
                         dbc.Tooltip(
-                            "Choose whether to use a log or linear scale"
-                            " for the X-axis",
+                            "Click to enable a log scale for the X-axis"
+                            ". Click again to return to linear.",
                             id="exp-scale-x-help",
                             target="exp-scale-x-head",
                         ),
@@ -129,7 +129,7 @@ def init_layouts(dash_app, df, cols, date_idx):
                         ),
                         dbc.Col(
                             html.H5(
-                                "Y-axis Scale",
+                                "Y-axis: Log Scale?",
                                 id="exp-scale-y-head",
                                 style={
                                     "textDecoration": "underline",
@@ -139,8 +139,8 @@ def init_layouts(dash_app, df, cols, date_idx):
                             width=2,
                         ),
                         dbc.Tooltip(
-                            "Choose whether to use a log or linear scale"
-                            " for the Y-axis",
+                            "Click to enable a log scale for the Y-axis"
+                            ". Click again to return to linear.",
                             id="exp-scale-y-help",
                             target="exp-scale-y-head",
                         ),
@@ -150,12 +150,12 @@ def init_layouts(dash_app, df, cols, date_idx):
                     justify="around",
                     children=[
                         dbc.Col(make_dd(id="exp-dd-x", options=cols), width=2),
-                        dbc.Col(log_axis_btn_grp(id="exp-scale-x"), width=2),
+                        dbc.Col(daq.BooleanSwitch(id="exp-scale-x", on=False), width=2),
                         dbc.Col(
                             make_dd(id="exp-dd-y", options=cols, default_index=1),
                             width=2,
                         ),
-                        dbc.Col(log_axis_btn_grp(id="exp-scale-y"), width=2),
+                        dbc.Col(daq.BooleanSwitch(id="exp-scale-y", on=False), width=2),
                     ],
                 ),
             ],

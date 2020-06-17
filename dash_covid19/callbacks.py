@@ -19,10 +19,12 @@ def init_callbacks(dash_app, layouts, data):
         [
             Input("exp-dd-x", "value"),
             Input("exp-dd-y", "value"),
+            Input("exp-scale-x", "on"),
+            Input("exp-scale-y", "on"),
             Input("exp-main-slider", "value"),
         ],
     )
-    def update_world_map(x_axis, y_axis, date_val):
+    def update_world_map(x_axis, y_axis, x_log, y_log, date_val):
         date = data.date.unique()[date_val]
         data_sub = data[data["date"] == date]
         return {
@@ -40,11 +42,17 @@ def init_callbacks(dash_app, layouts, data):
                     },
                     name=continent,
                 )
-                for continent in data_sub["continent"].unique()
+                for continent in sorted(data_sub["continent"].unique())
             ],
             "layout": dict(
-                xaxis={"title": x_axis.capitalize()},
-                yaxis={"title": y_axis.capitalize()},
+                xaxis={
+                    "title": x_axis.capitalize(),
+                    "type": "log" if x_log else "linear",
+                },
+                yaxis={
+                    "title": y_axis.capitalize(),
+                    "type": "log" if y_log else "linear",
+                },
                 hovermode="closest",
             ),
         }
