@@ -12,8 +12,9 @@ data = pd.read_csv(
 )
 data["date"] = pd.to_datetime(data["date"])
 data = data.fillna(0).sort_values(by="date")
+data = data[data.continent != 0]
 
-columns = data.columns[3:]
+columns = data.columns[4:]
 
 
 def create_app():
