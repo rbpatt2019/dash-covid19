@@ -1,50 +1,168 @@
 # -*- coding: utf-8 -*-
+import dash_bootstrap_components as dbc
 import dash_core_components as dcc
+import dash_daq as daq
 import dash_html_components as html
 import dash_table as table
 import plotly.express as px
+from dash_covid19.helper_components.navbar import navbar
+from dash_covid19.helper_components.dropdown import make_dd
 
 
-def init_layouts(dash_app, df, cols):
+def init_layouts(dash_app, df, cols, date_idx):
     """Initialise layouts and return default"""
 
     layouts = {
-        "app": html.Div(
-            [
-                dcc.Tabs(
-                    id="navigation",
-                    value="explorer",
-                    vertical=True,
+        "app": dbc.Container(
+            fluid=True,
+            children=[
+                dcc.Location(id="url", refresh=False),
+                dbc.Row(dbc.Col(navbar)),
+                dbc.Row(dbc.Col(id="page-content")),
+            ],
+        ),
+        "/exp": dbc.Container(
+            id="exp",
+            fluid=True,
+            children=[
+                dbc.Row(
+                    dbc.Col(
+                        dcc.Graph(
+                            id="exp-main-scatter",
+                            hoverData={"points": [{"customdata": "China"}]},
+                        )
+                    )
+                ),
+                html.Hr(),
+                dbc.Row(
+                    justify="around",
                     children=[
-                        dcc.Tab(id="nav-tab-1", label="Explorer", value="explorer"),
-                        dcc.Tab(
-                            id="nav-tab-2", label="Data Table", value="data-table",
+                        dbc.Col(
+                            html.H5(
+                                "Date Slider.",
+                                id="exp-main-slider-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width="auto",
+                        ),
+                        dbc.Tooltip(
+                            "Slide through the dates to see how patterns"
+                            " evolve over time.",
+                            id="exp-main-slider-help",
+                            target="exp-main-slider-head",
                         ),
                     ],
-                    parent_style={"float": "left"},
-                    style={"width": "90%"},
                 ),
-                html.Div(id="page-content"),
-            ]
-        ),
-        "explorer": html.Div(
-            id="exp",
-            children=[
-                dcc.Dropdown(
-                    id="exp-dd-column",
-                    placeholder="Select a variable...",
-                    persistence=True,
-                    persistence_type="session",
-                    clearable=False,
-                    options=[{"label": i, "value": i} for i in cols],
-                    value=cols[0],
+                dbc.Row(
+                    dbc.Col(
+                        dcc.Slider(
+                            id="exp-main-slider",
+                            min=min(date_idx),
+                            max=max(date_idx),
+                            value=max(date_idx),
+                            marks={
+                                val: str(date)
+                                for val, date in zip(
+                                    date_idx[::7], df.date.unique()[::7]
+                                )
+                            },
+                        )
+                    )
                 ),
-                dcc.Graph(id="exp-world-map", style={"float": "left"}),
+                html.Hr(),
+                dbc.Row(
+                    justify="around",
+                    children=[
+                        dbc.Col(
+                            html.H5(
+                                "X-axis Variable",
+                                id="exp-dd-x-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width=2,
+                        ),
+                        dbc.Tooltip(
+                            "Choose from columns in the dataset"
+                            " which is to be plotted on the X-axis",
+                            id="exp-dd-x-help",
+                            target="exp-dd-x-head",
+                        ),
+                        dbc.Col(
+                            html.H5(
+                                "X-axis: Log Scale?",
+                                id="exp-scale-x-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width=2,
+                        ),
+                        dbc.Tooltip(
+                            "Click to enable a log scale for the X-axis"
+                            ". Click again to return to linear.",
+                            id="exp-scale-x-help",
+                            target="exp-scale-x-head",
+                        ),
+                        dbc.Col(
+                            html.H5(
+                                "Y-axis Variable",
+                                id="exp-dd-y-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width=2,
+                        ),
+                        dbc.Tooltip(
+                            "Choose from columns in the dataset"
+                            " which is to be plotted on the Y-axis",
+                            id="exp-dd-y-help",
+                            target="exp-dd-y-head",
+                        ),
+                        dbc.Col(
+                            html.H5(
+                                "Y-axis: Log Scale?",
+                                id="exp-scale-y-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width=2,
+                        ),
+                        dbc.Tooltip(
+                            "Click to enable a log scale for the Y-axis"
+                            ". Click again to return to linear.",
+                            id="exp-scale-y-help",
+                            target="exp-scale-y-head",
+                        ),
+                    ],
+                ),
+                dbc.Row(
+                    justify="around",
+                    children=[
+                        dbc.Col(make_dd(id="exp-dd-x", options=cols), width=2),
+                        dbc.Col(daq.BooleanSwitch(id="exp-scale-x", on=False), width=2),
+                        dbc.Col(
+                            make_dd(id="exp-dd-y", options=cols, default_index=1),
+                            width=2,
+                        ),
+                        dbc.Col(daq.BooleanSwitch(id="exp-scale-y", on=False), width=2),
+                    ],
+                ),
             ],
-            style={"width": "90%", "display": "inline-block"},
         ),
-        "data-table": html.Div(
+        "/dt": dbc.Container(
             id="dt",
+            fluid=True,
             children=[
                 table.DataTable(
                     id="dt-data",
@@ -59,7 +177,6 @@ def init_layouts(dash_app, df, cols):
                     page_size=25,
                 ),
             ],
-            style={"width": "50%", "display": "inline-block"},
         ),
     }
 

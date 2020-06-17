@@ -24,9 +24,20 @@ Docs and Code
 
 This app is hosted by Heroku and lives [here](https://dash-covid19-pro.herokuapp.com/)
 
-The documentation is forthcoming, and will likely live as either it's own app, or a tab within this app.
+The documentation is embedded throughout the app. Any where you see underlined text, you can mouse over to get a pop-up about what each component does.
 
 The code lives in [the repo](https://github.com/rbpatt2019/dash-covid19/).
+
+Usage
+-----
+
+At the moment, this app contains 2 pages, though a landing page is in the works...
+
+The "Explorer" page provides an interactive graph to help the user, well, explore the most up-to-date Covid-19 data.
+This page is constantly changing, so check back to see how the graphs evolve!
+
+The "Data Table" pages displays the data in an interactive table that allows the user to sort columns and delete those they aren't interested in.
+Don't worry! You can always get the columns back by refreshing the page.
 
 About the Data
 --------------
@@ -58,13 +69,6 @@ and the reasoning behind any decisions they make relating to data management.
 Please, visit their [repo](https://github.com/owid/covid-19-data/tree/master/public/data)
 for any questions you may have about the data.
 
-Usage
------
-
-Currently, the app displays the data in an interactive table that allows the user to sort columns and delete those they aren't interested in.
-Don't worry! You can always get the columns back by refreshing the page.
-
-Eventually, it will provde a graphic interface that allows the end-user to visualise and filter Covid-19 data.
 
 Recent Changes
 --------------
@@ -81,12 +85,19 @@ If you would like to contribute to development, please see the [instructions](CO
 Next Steps
 ----------
 
--   Develop a basic app framework.
+- Expand test coverage
+- Continue to expand documentation
+- Caching to improve performance
+- Design a "landing page"
+- Expand crosfiltering on graphs
+- General beautification
 
 Thank Yous
 ----------
 
 -   [Dash](https://dash.plotly.com/) for developing an incredible
     framework and excellent documentation.
+-   [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/)
+    for making it so much easier to layout the app.
 -   [OWID](https://ourworldindata.org/) for providing an incredible
 	 resource amid a rapidly evolving situation.

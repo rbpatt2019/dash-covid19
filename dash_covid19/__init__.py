@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import pandas as pd
+import dash_bootstrap_components as dbc
 from dash import Dash
 
 from dash_covid19.callbacks import init_callbacks
@@ -9,10 +10,10 @@ from dash_covid19.layouts import init_layouts
 data = pd.read_csv(
     "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
 )
-data["date"] = pd.to_datetime(data["date"])
-data = data.fillna(0).sort_values(by="date")
+data = data[~data.location.isin(["International", "World"])].sort_values(by="date")
 
-columns = data.columns[3:]
+columns = data.columns[4:]
+date_idx = range(len(data.date.unique()))
 
 
 def create_app():
@@ -21,12 +22,12 @@ def create_app():
     # Create app
     app = Dash(
         __name__,
-        external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"],
+        external_stylesheets=[dbc.themes.FLATLY],
         suppress_callback_exceptions=True,
     )
 
     # Now that app is created, import callbacks and layouts
-    app, layouts = init_layouts(app, data, columns)
+    app, layouts = init_layouts(app, data, columns, date_idx)
     init_callbacks(app, layouts, data)
 
     # Create server instance
