@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v0.6.0
+------
+
+- Switch to scatter plot
+- Embed ability to select axis variables and scales, as well as date
+- Add tooltip documentation to underlined text
+
 v0.5.0
 ------
 
