@@ -85,6 +85,7 @@ If you would like to contribute to development, please see the [instructions](CO
 Next Steps
 ----------
 
+- Expand test coverage
 - Continue to expand documentation
 - Caching to improve performance
 - Design a "landing page"
