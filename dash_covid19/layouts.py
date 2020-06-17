@@ -5,33 +5,72 @@ import dash_html_components as html
 import dash_table as table
 import plotly.express as px
 from dash_covid19.helper_components.navbar import navbar
+from dash_covid19.helper_components.dropdown import make_dd
+from dash_covid19.helper_components.span_with_tooltip import make_col_span_tt
 
 
 def init_layouts(dash_app, df, cols):
     """Initialise layouts and return default"""
 
     layouts = {
-        "app": html.Div(
+        "app": dbc.Container(
+            fluid=True,
             children=[
                 dcc.Location(id="url", refresh=False),
                 dbc.Row(dbc.Col(navbar)),
-                dbc.Row(dbc.Col(html.Div(id="page-content"))),
+                dbc.Row(dbc.Col(id="page-content")),
             ],
         ),
         "/exp": dbc.Container(
             id="exp",
             fluid=True,
             children=[
-                dcc.Dropdown(
-                    id="exp-dd-column",
-                    placeholder="Select a variable...",
-                    persistence=True,
-                    persistence_type="session",
-                    clearable=False,
-                    options=[{"label": i, "value": i} for i in cols],
-                    value=cols[0],
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.Span(
+                                "X-axis variable...",
+                                id="exp-dd-x-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width=6,
+                        ),
+                        dbc.Tooltip(
+                            "Choose from columns in the dataset"
+                            " which is to be plotted on the X-axis",
+                            id="exp-dd-x-help",
+                            target="exp-dd-x-head",
+                        ),
+                        dbc.Col(
+                            html.Span(
+                                "Y-axis variable...",
+                                id="exp-dd-y-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width=6,
+                        ),
+                        dbc.Tooltip(
+                            "Choose from columns in the dataset"
+                            " which is to be plotted on the Y-axis",
+                            id="exp-dd-y-help",
+                            target="exp-dd-y-head",
+                        ),
+                    ]
                 ),
-                dcc.Graph(id="exp-world-map"),
+                dbc.Row(
+                    [
+                        dbc.Col(make_dd(id="exp-dd-x", options=cols), width=6),
+                        dbc.Col(make_dd(id="exp-dd-y", options=cols), width=6),
+                    ]
+                ),
+                # dbc.Row(dbc.Col(dcc.Graph(id="exp-world-map"))),
+                # dbc.Row(dbc.Col(dcc.RangeSlider))
             ],
         ),
         "/dt": dbc.Container(
