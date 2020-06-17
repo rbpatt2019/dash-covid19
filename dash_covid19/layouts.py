@@ -34,6 +34,28 @@ def init_layouts(dash_app, df, cols, date_idx):
                 ),
                 html.Hr(),
                 dbc.Row(
+                    justify="around",
+                    children=[
+                        dbc.Col(
+                            html.H5(
+                                "Date Slider.",
+                                id="exp-main-slider-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width="auto",
+                        ),
+                        dbc.Tooltip(
+                            "Slide through the dates to see how patterns"
+                            " evolve over time.",
+                            id="exp-main-slider-help",
+                            target="exp-main-slider-head",
+                        ),
+                    ],
+                ),
+                dbc.Row(
                     dbc.Col(
                         dcc.Slider(
                             id="exp-main-slider",
@@ -49,18 +71,20 @@ def init_layouts(dash_app, df, cols, date_idx):
                         )
                     )
                 ),
+                html.Hr(),
                 dbc.Row(
-                    [
+                    justify="around",
+                    children=[
                         dbc.Col(
-                            html.Span(
-                                "X-axis variable...",
+                            html.H5(
+                                "X-axis Variable",
                                 id="exp-dd-x-head",
                                 style={
                                     "textDecoration": "underline",
                                     "cursor": "pointer",
                                 },
                             ),
-                            width=6,
+                            width="auto",
                         ),
                         dbc.Tooltip(
                             "Choose from columns in the dataset"
@@ -69,15 +93,15 @@ def init_layouts(dash_app, df, cols, date_idx):
                             target="exp-dd-x-head",
                         ),
                         dbc.Col(
-                            html.Span(
-                                "Y-axis variable...",
+                            html.H5(
+                                "Y-axis Variable",
                                 id="exp-dd-y-head",
                                 style={
                                     "textDecoration": "underline",
                                     "cursor": "pointer",
                                 },
                             ),
-                            width=6,
+                            width="auto",
                         ),
                         dbc.Tooltip(
                             "Choose from columns in the dataset"
@@ -85,16 +109,17 @@ def init_layouts(dash_app, df, cols, date_idx):
                             id="exp-dd-y-help",
                             target="exp-dd-y-head",
                         ),
-                    ]
+                    ],
                 ),
                 dbc.Row(
-                    [
-                        dbc.Col(make_dd(id="exp-dd-x", options=cols), width=6),
+                    justify="around",
+                    children=[
+                        dbc.Col(make_dd(id="exp-dd-x", options=cols), width=2),
                         dbc.Col(
                             make_dd(id="exp-dd-y", options=cols, default_index=1),
-                            width=6,
+                            width=2,
                         ),
-                    ]
+                    ],
                 ),
             ],
         ),
