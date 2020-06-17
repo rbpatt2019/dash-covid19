@@ -8,7 +8,12 @@ def init_callbacks(dash_app, layouts, data):
 
     @dash_app.callback(Output("page-content", "children"), [Input("url", "pathname")])
     def display_page(path):
-        return layouts.get(path, "/exp")
+        try:
+            fmt = layouts[path]
+        except KeyError:
+            fmt = layouts["/exp"]
+        finally:
+            return fmt
 
     @dash_app.callback(
         Output("exp-world-map", "figure"), [Input("exp-dd-column", "value")]
