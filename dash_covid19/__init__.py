@@ -13,6 +13,7 @@ data = pd.read_csv(
 data = data[~data.location.isin(["International", "World"])].sort_values(by="date")
 
 columns = data.columns[4:]
+date_idx = range(len(data.date.unique()))
 
 
 def create_app():
@@ -26,7 +27,7 @@ def create_app():
     )
 
     # Now that app is created, import callbacks and layouts
-    app, layouts = init_layouts(app, data, columns)
+    app, layouts = init_layouts(app, data, columns, date_idx)
     init_callbacks(app, layouts, data)
 
     # Create server instance

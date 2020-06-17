@@ -2,7 +2,7 @@
 import dash_core_components as dcc
 
 
-def make_dd(id="dd", placeholder="Select a variable", options=[]):
+def make_dd(id="dd", placeholder="Select a variable", options=[], default_index=0):
     """Helper function for creating a dcc.Dropdown menu
     :param id: str, Id of components. Must be unique across the app
     :param placeholder: str, What to show before a selection is made
@@ -17,6 +17,6 @@ def make_dd(id="dd", placeholder="Select a variable", options=[]):
         persistence_type="session",
         clearable=False,
         options=[{"label": i, "value": i} for i in options],
-        value=options[0],
+        value=options[default_index],
     )
     return dd

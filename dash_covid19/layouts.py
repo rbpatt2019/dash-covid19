@@ -8,7 +8,7 @@ from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.dropdown import make_dd
 
 
-def init_layouts(dash_app, df, cols):
+def init_layouts(dash_app, df, cols, date_idx):
     """Initialise layouts and return default"""
 
     layouts = {
@@ -24,6 +24,31 @@ def init_layouts(dash_app, df, cols):
             id="exp",
             fluid=True,
             children=[
+                dbc.Row(
+                    dbc.Col(
+                        dcc.Graph(
+                            id="exp-main-scatter",
+                            hoverData={"points": [{"customdata": "China"}]},
+                        )
+                    )
+                ),
+                html.Hr(),
+                dbc.Row(
+                    dbc.Col(
+                        dcc.Slider(
+                            id="exp-main-slider",
+                            min=min(date_idx),
+                            max=max(date_idx),
+                            value=max(date_idx),
+                            marks={
+                                val: str(date)
+                                for val, date in zip(
+                                    date_idx[::7], df.date.unique()[::7]
+                                )
+                            },
+                        )
+                    )
+                ),
                 dbc.Row(
                     [
                         dbc.Col(
@@ -65,11 +90,12 @@ def init_layouts(dash_app, df, cols):
                 dbc.Row(
                     [
                         dbc.Col(make_dd(id="exp-dd-x", options=cols), width=6),
-                        dbc.Col(make_dd(id="exp-dd-y", options=cols), width=6),
+                        dbc.Col(
+                            make_dd(id="exp-dd-y", options=cols, default_index=1),
+                            width=6,
+                        ),
                     ]
                 ),
-                # dbc.Row(dbc.Col(dcc.Graph(id="exp-world-map"))),
-                # dbc.Row(dbc.Col(dcc.RangeSlider))
             ],
         ),
         "/dt": dbc.Container(
