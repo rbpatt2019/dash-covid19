@@ -11,7 +11,7 @@ def test_dcly001_init_layout(dash_duo):
 
     app, layouts = init_layouts(app, data, columns)
 
-    assert app.layout == layouts["/"]
+    assert app.layout == layouts["app"]
     assert type(app) == dash.dash.Dash
 
-    assert list(layouts.keys()) == ["/", "/exp", "/dt"]
+    assert list(layouts.keys()) == ["app", "/exp", "/dt"]
