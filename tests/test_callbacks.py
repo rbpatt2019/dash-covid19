@@ -20,23 +20,35 @@ def test_dccb001_tab_navigation(dash_duo):
     dash_duo.start_server(app)
 
     # Check defaults to explorer
-    dash_duo.wait_for_element_by_id("exp-world-map")
-    dash_duo.percy_snapshot("dccb001-graph")
+    dash_duo.wait_for_element_by_id("exp-main-scatter")
 
-    # # Check change correctly
-    dash_duo.click_at_coord_fractions("#nav-tab-2", 0.5, 0.5)
+    # Change to date table...
+    dash_duo.click_at_coord_fractions("#nav-bar-dt", 0.5, 0.5)
     dash_duo.wait_for_element_by_id("dt-data")
     dash_duo.percy_snapshot("dccb001-data-table")
+
+    # Check change correctly
+    dash_duo.click_at_coord_fractions("#nav-bar-exp", 0.5, 0.5)
+    dash_duo.wait_for_element_by_id("exp-main-scatter")
+    dash_duo.percy_snapshot("dccb001-graph")
 
 
 def test_dccb002_dropdown(dash_duo):
     app = import_app("wsgi")
 
     dash_duo.start_server(app)
-
-    dash_duo.wait_for_text_to_equal("#exp-dd-column", f"{columns[0]}")
+    dash_duo.driver.maximize_window()
 
     # Wait for graph to prevent image "jumping"
-    sleep(5)
-    dash_duo.select_dcc_dropdown("#exp-dd-column", index=5)
+    sleep(3)
+
+    # Interact with all the things!
+    dash_duo.select_dcc_dropdown("#exp-dd-x", index=3)
+    dash_duo.select_dcc_dropdown("#exp-dd-y", index=9)
+    dash_duo.click_at_coord_fractions("#exp-scale-x", 0.5, 0.5)
+    dash_duo.click_at_coord_fractions("#exp-scale-y", 0.5, 0.5)
+    dash_duo.click_at_coord_fractions("#exp-main-slider", 0.5, 0.1)
+
+    # And confirm
+    dash_duo.wait_for_element_by_id("exp-main-scatter")
     dash_duo.percy_snapshot("dccb002-graph")
