@@ -24,20 +24,19 @@ Docs and Code
 
 This app is hosted by Heroku and lives [here](https://dash-covid19-pro.herokuapp.com/)
 
-The documentation is embedded throughout the app. Any where you see a section header (other than this page), you can click it to find more information about that component!
+The documentation is embedded throughout the app. Any where you see underlined text, you can mouse over to get a pop-up about what each component does.
 
 The code lives in [the repo](https://github.com/rbpatt2019/dash-covid19/).
 
 Usage
 -----
 
-At the moment, this app contains three pages. The landing page (this one!) is essentially a symlink to the project README.
-It provides some useful information about the data, documentation, and code.
+At the moment, this app contains 2 pages, though a landing page is in the works...
 
 The "Explorer" page provides an interactive graph to help the user, well, explore the most up-to-date Covid-19 data.
 This page is constantly changing, so check back to see how the graphs evolve!
 
-Finally, the "Data Table" pages displays the data in an interactive table that allows the user to sort columns and delete those they aren't interested in.
+The "Data Table" pages displays the data in an interactive table that allows the user to sort columns and delete those they aren't interested in.
 Don't worry! You can always get the columns back by refreshing the page.
 
 About the Data
@@ -86,9 +85,11 @@ If you would like to contribute to development, please see the [instructions](CO
 Next Steps
 ----------
 
--   Continue to expand documentation
--   Caching to improve performance
--   Re-layout graph pages
+- Continue to expand documentation
+- Caching to improve performance
+- Design a "landing page"
+- Expand crosfiltering on graphs
+- General beautification
 
 Thank Yous
 ----------
