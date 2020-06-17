@@ -13,8 +13,10 @@ def log_axis_btn_grp(id="log-axis-btn-grp"):
     grp = dbc.ButtonGroup(
         id=id,
         children=[
-            dbc.Button("Linear", id=id + "-linear"),
-            dbc.Button("Log", id=id + "-log"),
+            dbc.Button(
+                "Linear", id=id + "-linear", n_clicks=1, active=True, outline=True
+            ),
+            dbc.Button("Log", id=id + "-log", outline=True),
         ],
     )
     return grp

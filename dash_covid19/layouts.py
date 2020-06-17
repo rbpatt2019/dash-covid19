@@ -6,6 +6,7 @@ import dash_table as table
 import plotly.express as px
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.dropdown import make_dd
+from dash_covid19.helper_components.button_groups import log_axis_btn_grp
 
 
 def init_layouts(dash_app, df, cols, date_idx):
@@ -84,13 +85,30 @@ def init_layouts(dash_app, df, cols, date_idx):
                                     "cursor": "pointer",
                                 },
                             ),
-                            width="auto",
+                            width=2,
                         ),
                         dbc.Tooltip(
                             "Choose from columns in the dataset"
                             " which is to be plotted on the X-axis",
                             id="exp-dd-x-help",
                             target="exp-dd-x-head",
+                        ),
+                        dbc.Col(
+                            html.H5(
+                                "X-axis Scale",
+                                id="exp-scale-x-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width=2,
+                        ),
+                        dbc.Tooltip(
+                            "Choose whether to use a log or linear scale"
+                            " for the X-axis",
+                            id="exp-scale-x-help",
+                            target="exp-scale-x-head",
                         ),
                         dbc.Col(
                             html.H5(
@@ -101,7 +119,7 @@ def init_layouts(dash_app, df, cols, date_idx):
                                     "cursor": "pointer",
                                 },
                             ),
-                            width="auto",
+                            width=2,
                         ),
                         dbc.Tooltip(
                             "Choose from columns in the dataset"
@@ -109,16 +127,35 @@ def init_layouts(dash_app, df, cols, date_idx):
                             id="exp-dd-y-help",
                             target="exp-dd-y-head",
                         ),
+                        dbc.Col(
+                            html.H5(
+                                "Y-axis Scale",
+                                id="exp-scale-y-head",
+                                style={
+                                    "textDecoration": "underline",
+                                    "cursor": "pointer",
+                                },
+                            ),
+                            width=2,
+                        ),
+                        dbc.Tooltip(
+                            "Choose whether to use a log or linear scale"
+                            " for the Y-axis",
+                            id="exp-scale-y-help",
+                            target="exp-scale-y-head",
+                        ),
                     ],
                 ),
                 dbc.Row(
                     justify="around",
                     children=[
                         dbc.Col(make_dd(id="exp-dd-x", options=cols), width=2),
+                        dbc.Col(log_axis_btn_grp(id="exp-scale-x"), width=2),
                         dbc.Col(
                             make_dd(id="exp-dd-y", options=cols, default_index=1),
                             width=2,
                         ),
+                        dbc.Col(log_axis_btn_grp(id="exp-scale-y"), width=2),
                     ],
                 ),
             ],
