@@ -4,9 +4,9 @@ import dash_core_components as dcc
 import dash_daq as daq
 import dash_html_components as html
 import dash_table as table
-import plotly.express as px
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.dropdown import make_dd
+from dash_covid19.helper_components.cards import exp_card
 
 
 def init_layouts(dash_app, df, cols, date_idx):
@@ -21,6 +21,7 @@ def init_layouts(dash_app, df, cols, date_idx):
                 dbc.Row(dbc.Col(id="page-content")),
             ],
         ),
+        "/": dbc.Container(dbc.Row(dbc.Col(exp_card))),
         "/exp": dbc.Container(
             id="exp",
             fluid=True,

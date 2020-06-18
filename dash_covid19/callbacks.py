@@ -10,7 +10,7 @@ def init_callbacks(dash_app, layouts, data):
         try:
             fmt = layouts[path]
         except KeyError:
-            fmt = layouts["/exp"]
+            fmt = layouts["/"]
         finally:
             return fmt
 
