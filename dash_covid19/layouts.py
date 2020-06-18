@@ -62,12 +62,22 @@ def init_layouts(dash_app, df, cols, date_idx):
             fluid=True,
             children=[
                 dbc.Row(
-                    dbc.Col(
-                        dcc.Graph(
-                            id="exp-main-scatter",
-                            hoverData={"points": [{"customdata": "China"}]},
-                        )
-                    )
+                    children=[
+                        dbc.Col(
+                            dcc.Graph(
+                                id="exp-main-scatter",
+                                hoverData={"points": [{"customdata": "China"}]},
+                                className="h-100",
+                            ),
+                        ),
+                        dbc.Col(
+                            [
+                                dcc.Graph(id="exp-x-scatter"),
+                                dcc.Graph(id="exp-y-scatter"),
+                            ],
+                            width=4,
+                        ),
+                    ],
                 ),
                 html.Hr(),
                 dbc.Row(
