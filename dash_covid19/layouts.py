@@ -64,12 +64,21 @@ def init_layouts(dash_app, df, cols, date_idx):
                             max=max(date_idx),
                             value=max(date_idx),
                             marks={
-                                val: str(date)
+                                val: {
+                                    "label": str(date),
+                                    "style": {
+                                        "writing-mode": "vertical-lr",
+                                        "transform": "rotate(-45deg)",
+                                        "transform-origin": "40% 30%",
+                                        "white-space": "nowrap",
+                                    },
+                                }
                                 for val, date in zip(
                                     date_idx[::7], df.date.unique()[::7]
                                 )
                             },
-                        )
+                        ),
+                        style={"margin-bottom": "35px"},
                     )
                 ),
                 html.Hr(),
