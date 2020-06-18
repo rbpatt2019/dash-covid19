@@ -30,7 +30,7 @@ def link_card(
 
 exp_card = link_card(
     id="exp-card",
-    title="Explore",
+    title="Explorer",
     text="Explore correlations within the data and how they evolve over time using "
     "interactive scatter plots",
     href="/exp",
@@ -38,7 +38,7 @@ exp_card = link_card(
 
 dt_card = link_card(
     id="dt-card",
-    title="View",
+    title="Data",
     text="View the raw data to develop a deeper undestanding of the numberrs in "
     "the graphs",
     href="/dt",
