@@ -13,8 +13,6 @@ dash-covid19: A Dash App for Covid-19 Data
 Introduction
 ------------
 
-> **NOTE**: This project is still in early planning phases
-
 [dash-covid19](https://github.com/rbpatt2019/dash-covid19/) is a
 [Dash](https://dash.plotly.com/) app for viewing up-to-date information related
 to the spread of Covid-19 using the data provided by a variety of sources collated by [Our World in Data](https://ourworldindata.org/).
@@ -31,7 +29,7 @@ The code lives in [the repo](https://github.com/rbpatt2019/dash-covid19/).
 Usage
 -----
 
-At the moment, this app contains 2 pages, though a landing page is in the works...
+The app contains three pages. The home page provides a brief summary of all the assorted links within the app, as well as an explanation of why I built the app.
 
 The "Explorer" page provides an interactive graph to help the user, well, explore the most up-to-date Covid-19 data.
 This page is constantly changing, so check back to see how the graphs evolve!
