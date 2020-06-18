@@ -11,5 +11,19 @@ navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("Explorer", id="nav-bar-exp", href="/exp")),
         dbc.NavItem(dbc.NavLink("Data", id="nav-bar-dt", href="/dt")),
+        dbc.NavItem(
+            dbc.NavLink(
+                "Code",
+                id="nav-bar-code",
+                href="https://github.com/rbpatt2019/dash-covid19",
+            )
+        ),
+        dbc.NavItem(
+            dbc.NavLink(
+                "Info",
+                id="nav-bar-info",
+                href="https://github.com/owid/covid-19-data/tree/master/public/data",
+            )
+        ),
     ],
 )
