@@ -35,3 +35,11 @@ exp_card = link_card(
     "interactive scatter plots",
     href="/exp",
 )
+
+dt_card = link_card(
+    id="dt-card",
+    title="View",
+    text="View the raw data to develop a deeper undestanding of the numberrs in "
+    "the graphs",
+    href="/dt",
+)
