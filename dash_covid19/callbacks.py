@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from dash.dependencies import Input, Output
+from dash_covid19.helper_components.graphs import line_plot
 
 
 def init_callbacks(dash_app, layouts, data):
@@ -56,3 +57,35 @@ def init_callbacks(dash_app, layouts, data):
                 hovermode="closest",
             ),
         }
+
+    @dash_app.callback(
+        Output("exp-x-scatter", "figure"),
+        [
+            Input("exp-dd-x", "value"),
+            Input("exp-main-scatter", "hoverData"),
+            Input("exp-scale-x", "on"),
+        ],
+    )
+    def update_x_scatter(variable, hoverData, scale):
+        country = hoverData["points"][0]["customdata"]
+        data_sub = data[data["location"] == country]
+        title = f"<b>{country}</b>"
+        return line_plot(
+            data_sub, variable=variable, title=f"<b>{country}</b>", scale=scale
+        )
+
+    @dash_app.callback(
+        Output("exp-y-scatter", "figure"),
+        [
+            Input("exp-dd-y", "value"),
+            Input("exp-main-scatter", "hoverData"),
+            Input("exp-scale-y", "on"),
+        ],
+    )
+    def update_y_scatter(variable, hoverData, scale):
+        country = hoverData["points"][0]["customdata"]
+        data_sub = data[data["location"] == country]
+        title = f"<b>{country}</b>"
+        return line_plot(
+            data_sub, variable=variable, title=f"<b>{country}</b>", scale=scale
+        )
