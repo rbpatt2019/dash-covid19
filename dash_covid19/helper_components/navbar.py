@@ -4,13 +4,26 @@ import dash_bootstrap_components as dbc
 navbar = dbc.NavbarSimple(
     id="navbar",
     brand="dash-covid19",
-    brand_href="https://github.com/rbpatt2019/dash-covid19",
-    brand_external_link=True,
+    brand_href="/",
     fluid=True,
     color="primary",
     dark=True,
     children=[
         dbc.NavItem(dbc.NavLink("Explorer", id="nav-bar-exp", href="/exp")),
-        dbc.NavItem(dbc.NavLink("Data Table", id="nav-bar-dt", href="/dt")),
+        dbc.NavItem(dbc.NavLink("Data", id="nav-bar-dt", href="/dt")),
+        dbc.NavItem(
+            dbc.NavLink(
+                "Code",
+                id="nav-bar-code",
+                href="https://github.com/rbpatt2019/dash-covid19",
+            )
+        ),
+        dbc.NavItem(
+            dbc.NavLink(
+                "Info",
+                id="nav-bar-info",
+                href="https://github.com/owid/covid-19-data/tree/master/public/data",
+            )
+        ),
     ],
 )

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.8.0
+------
+
+- Add landing/home page to app
+
 v0.7.1
 ------
 
