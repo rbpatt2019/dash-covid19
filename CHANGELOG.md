@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.7.1
+------
+
+- Rotate and align labels for slider
+
 v0.7.0
 ------
 
