@@ -18,6 +18,7 @@ def test_dccb001_tab_navigation(dash_duo):
     app = import_app("wsgi")
 
     dash_duo.start_server(app)
+    dash_duo.driver.maximize_window()
 
     # Check defaults to explorer
     dash_duo.wait_for_element_by_id("exp-main-scatter")
@@ -40,7 +41,7 @@ def test_dccb002_dropdown(dash_duo):
     dash_duo.driver.maximize_window()
 
     # Wait for graph to prevent image "jumping"
-    sleep(3)
+    dash_duo.wait_for_element_by_id("exp-main-scatter")
 
     # Interact with all the things!
     dash_duo.select_dcc_dropdown("#exp-dd-x", index=3)
@@ -50,5 +51,6 @@ def test_dccb002_dropdown(dash_duo):
     dash_duo.click_at_coord_fractions("#exp-main-slider", 0.5, 0.1)
 
     # And confirm
-    dash_duo.wait_for_element_by_id("exp-main-scatter")
+    # Using wait_for here doesn't seem to catch data loading, so add short sleep instead
+    sleep(2)
     dash_duo.percy_snapshot("dccb002-graph")
