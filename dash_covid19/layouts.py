@@ -6,7 +6,7 @@ import dash_html_components as html
 import dash_table as table
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.dropdown import make_dd
-from dash_covid19.helper_components.cards import exp_card, dt_card
+from dash_covid19.helper_components.cards import exp_card, dt_card, code_card, info_card
 
 
 def init_layouts(dash_app, df, cols, date_idx):
@@ -27,8 +27,14 @@ def init_layouts(dash_app, df, cols, date_idx):
             children=[
                 dbc.Row(
                     justify="around",
-                    children=[dbc.Col(exp_card, width=4), dbc.Col(dt_card, width=4)],
-                )
+                    style={"margin-top": "20px"},
+                    children=[dbc.Col(exp_card, width=5), dbc.Col(dt_card, width=5)],
+                ),
+                dbc.Row(
+                    justify="around",
+                    style={"margin-top": "20px"},
+                    children=[dbc.Col(code_card, width=5), dbc.Col(info_card, width=5)],
+                ),
             ],
         ),
         "/exp": dbc.Container(

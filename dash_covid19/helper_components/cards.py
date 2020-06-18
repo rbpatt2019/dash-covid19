@@ -43,3 +43,19 @@ dt_card = link_card(
     "the graphs",
     href="/dt",
 )
+
+code_card = link_card(
+    id="code-card",
+    title="Code",
+    text="This project is proudly open source, so you can view the code yourself. "
+    "Feel free to report any bugs or improvements!",
+    href="https://github.com/rbpatt2019/dash-covid19",
+)
+
+info_card = link_card(
+    id="info-card",
+    title="Info",
+    text="Learn more about the data, including its source, units, and how it was "
+    "collated by the wonderful people of OWID",
+    href="https://github.com/owid/covid-19-data/tree/master/public/data",
+)
