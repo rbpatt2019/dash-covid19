@@ -42,12 +42,14 @@ def mock_app():
     var_2 = sample(var, len(var))
     var_3 = sample(var, len(var))
 
-    data = pd.DataFrame(
+    m_data = pd.DataFrame(
         zip(dates, locations, continents, var, var_2, var_3),
         columns=["date", "location", "continent", "var_1", "var_2", "var_3"],
     )
 
     app, _ = create_app(
-        data=data, columns=data.columns[3:], date_idx=range(len(data["date"].unique()))
+        data=m_data,
+        columns=m_data.columns[3:],
+        date_idx=range(len(m_data["date"].unique())),
     )
     return app
