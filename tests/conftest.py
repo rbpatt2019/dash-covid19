@@ -6,11 +6,12 @@ import mimesis
 import pandas as pd
 import pytest
 from selenium.webdriver.chrome.options import Options
+from dash_covid19 import create_app
 
 
 def pytest_setup_options():
     options = Options()
-    options.add_argument("--headless")
+    # options.add_argument("--headless")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
@@ -18,8 +19,12 @@ def pytest_setup_options():
 
 
 @pytest.fixture(scope="session")
-def mimesis_data():
+def mock_app():
     """Use mimesis to create a fake dataset
+    Then use that data to create a fake app
+
+    This way, it doesn't call the real data (huge timesaver)
+    And only creates the app once per test session
 
     It is hard coded to match the necessary columns for the app
     It will smaple form the first date in the dataset (2019-12-31) to today
@@ -41,4 +46,8 @@ def mimesis_data():
         zip(dates, locations, continents, var, var_2, var_3),
         columns=["date", "location", "continent", "var_1", "var_2", "var_3"],
     )
-    return data
+
+    app, _ = create_app(
+        data=data, columns=data.columns[3:], date_idx=range(len(data["date"].unique()))
+    )
+    return app
