@@ -49,8 +49,8 @@ def test_dccb002_interactive_graph(dash_duo):
     dash_duo.click_at_coord_fractions("#exp-scale-x", 0.5, 0.5)
     dash_duo.click_at_coord_fractions("#exp-scale-y", 0.5, 0.5)
     dash_duo.click_at_coord_fractions("#exp-main-slider", 0.5, 0.1)
-    dash_duo.select_dcc_dropdown("#exp-dd-x", index=3)
-    dash_duo.select_dcc_dropdown("#exp-dd-y", index=9)
+    dash_duo.select_dcc_dropdown("#exp-dd-x", index=2)
+    dash_duo.select_dcc_dropdown("#exp-dd-y", index=3)
 
     # And confirm
     dash_duo.percy_snapshot("dccb002-graph", wait_for_callbacks=True)
