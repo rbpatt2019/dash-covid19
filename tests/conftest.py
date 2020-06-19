@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import date as date
-from random import shuffle
+from random import sample
 
 import mimesis
 import pandas as pd
@@ -34,9 +34,11 @@ def mimesis_data():
     continents = [g.address.continent() for _ in range(len(dates))]
 
     var = [g.random.uniform(0, 100000) for _ in range(len(dates))]
+    var_2 = sample(var, len(var))
+    var_3 = sample(var, len(var))
 
     data = pd.DataFrame(
-        zip(dates, locations, continents, var, shuffle(var), shuffle(var)),
+        zip(dates, locations, continents, var, var_2, var_3),
         columns=["date", "location", "continent", "var_1", "var_2", "var_3"],
     )
     return data
