@@ -10,9 +10,7 @@ from dash_covid19.layouts import init_layouts
 data = pd.read_csv(
     "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
 )
-data = data[~data.location.isin(["International", "World"])].sort_values(
-    by="date", ascending=False
-)
+data = data[~data.location.isin(["International", "World"])].sort_values(by="date")
 
 columns = data.columns[4:]
 date_idx = range(len(data.date.unique()))
