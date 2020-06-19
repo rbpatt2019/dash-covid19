@@ -231,17 +231,17 @@ def init_layouts(dash_app, df, cols, date_idx):
             ],
         ),
         "/dt": dbc.Col(
-            id="dt",
             style={"height": "100%"},
+            # className='d-flex justify-content-center',
             children=[
                 table.DataTable(
                     id="dt-data",
-                    columns=[
-                        {"name": i, "id": i, "deletable": True} for i in df.columns
-                    ],
+                    columns=[{"name": i, "id": i} for i in df.columns],
                     data=df.to_dict("records"),
-                    sort_action="native",
-                    filter_action="native",
+                    # sort_action="native",
+                    # filter_action="native",
+                    fixed_columns={"headers": True, "data": 4},
+                    style_table={"minWidth": "100%"},
                     page_action="native",
                     page_current=0,
                     page_size=25,
