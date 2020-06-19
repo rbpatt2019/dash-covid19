@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v0.9.2
+------
+
+- Tests no longer call raw data
+- No impact to user
+
 v0.9.1
 ------
 
