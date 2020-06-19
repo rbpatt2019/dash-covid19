@@ -22,7 +22,7 @@ def create_app(data=data, columns=columns, date_idx=date_idx):
     # Create app
     app = Dash(
         __name__,
-        external_stylesheets=[dbc.themes.FLATLY],
+        external_stylesheets=[dbc.themes.FLATLY, "./assets/stylesheet.css"],
         suppress_callback_exceptions=True,
     )
 
