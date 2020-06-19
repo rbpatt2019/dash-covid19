@@ -86,8 +86,6 @@ Next Steps
 - Expand test coverage
 - Continue to expand documentation
 - Caching to improve performance
-- Design a "landing page"
-- Expand crosfiltering on graphs
 - General beautification
 
 Thank Yous

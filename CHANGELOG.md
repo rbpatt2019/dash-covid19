@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.9.0
+------
+
+- Add cross filtered graphs
+
 v0.8.0
 ------
 
