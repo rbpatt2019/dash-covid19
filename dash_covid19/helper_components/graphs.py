@@ -21,7 +21,7 @@ def line_plot(df, variable="total_cases", title=f"<b>China</b>", scale=False):
                     "text": title,
                 }
             ],
-            margin=dict(r=0, l=0, t=0, b=0, pad=0, autoexpand=False),
+            margin=dict(r=0, l=50, t=20, b=40, pad=0, autoexpand=False),
             xaxis={"title": "Date"},
             yaxis={
                 "title": variable.capitalize(),

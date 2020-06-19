@@ -30,7 +30,7 @@ def init_layouts(dash_app, df, cols, date_idx):
             children=[
                 dbc.Row(dbc.Col(dcc.Location(id="url", refresh=False))),
                 dbc.Row(dbc.Col(navbar), style={"height": "8%"}),
-                dbc.Row(id="page-content", style={"height": "92%"}),
+                dbc.Row(id="page-content", style={"height": "92%"}, className="mt-0"),
             ],
         ),
         "/": dbc.Col(
@@ -119,10 +119,10 @@ def init_layouts(dash_app, df, cols, date_idx):
                             style={"height": "100%"},
                             width=4,
                             children=[
-                                dcc.Graph(id="exp-x-scatter", style={"height": "45%"}),
+                                dcc.Graph(id="exp-x-scatter", style={"height": "40%"}),
                                 dbc.Row(
                                     justify="around",
-                                    style={"height": "5%"},
+                                    style={"height": "10%"},
                                     children=[
                                         dbc.Col(
                                             children=[
@@ -168,10 +168,13 @@ def init_layouts(dash_app, df, cols, date_idx):
                                         ),
                                     ],
                                 ),
-                                dcc.Graph(id="exp-y-scatter", style={"height": "45%"}),
+                                dcc.Graph(
+                                    id="exp-y-scatter",
+                                    style={"margin-top": "20px", "height": "40%"},
+                                ),
                                 dbc.Row(
                                     justify="around",
-                                    style={"height": "5%"},
+                                    style={"height": "10%"},
                                     children=[
                                         dbc.Col(
                                             children=[
