@@ -1,0 +1,7 @@
+.dash-table-container .row {
+  margin: 0;
+}
+
+.dash-spreadsheet .row {
+  flex-wrap: nowrap;
+}
