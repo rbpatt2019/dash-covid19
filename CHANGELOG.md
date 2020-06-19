@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.9.1
+------
+
+ - Merging staging into master...
+
 v0.9.0
 ------
 
