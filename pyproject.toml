@@ -38,6 +38,7 @@ pytest-mypy = "^0.6.2"
 pytest-runner = "^5.2"
 pre-commit = "^2.3.0"
 gunicorn = "^20.0.4"
+mimesis = "^4.0.0"
 
 [tool.isort]
 multi_line_output = 3
