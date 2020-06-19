@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from dash.dependencies import Input, Output
 from dash_covid19.helper_components.graphs import line_plot
+import plotly.graph_objects as go
 
 
 def init_callbacks(dash_app, layouts, data):
@@ -45,7 +46,7 @@ def init_callbacks(dash_app, layouts, data):
                 )
                 for continent in sorted(data_sub["continent"].unique())
             ],
-            "layout": dict(
+            "layout": go.Layout(
                 xaxis={
                     "title": x_axis.capitalize(),
                     "type": "log" if x_log else "linear",
