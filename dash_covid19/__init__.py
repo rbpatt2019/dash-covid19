@@ -16,7 +16,7 @@ columns = data.columns[4:]
 date_idx = range(len(data.date.unique()))
 
 
-def create_app():
+def create_app(data=data, columns=columns, date_idx=date_idx):
     """Initialise the dash app"""
 
     # Create app
