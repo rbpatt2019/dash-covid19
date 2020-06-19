@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+from datetime import date as date
+from random import shuffle
+
+import mimesis
+import pandas as pd
+import pytest
 from selenium.webdriver.chrome.options import Options
 
 
@@ -9,3 +15,28 @@ def pytest_setup_options():
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     return options
+
+
+@pytest.fixture(scope="session")
+def mimesis_data():
+    """Use mimesis to create a fake dataset
+
+    It is hard coded to match the necessary columns for the app
+    It will smaple form the first date in the dataset (2019-12-31) to today
+    """
+
+    g = mimesis.Generic("en", seed=0)
+
+    dates = g.datetime.bulk_create_datetimes(date(2019, 12, 30), date.today(), days=1)
+    dates.extend(dates)
+
+    locations = [g.address.country(allow_random=True) for _ in range(len(dates))]
+    continents = [g.address.continent() for _ in range(len(dates))]
+
+    var = [g.random.uniform(0, 100000) for _ in range(len(dates))]
+
+    data = pd.DataFrame(
+        zip(dates, locations, continents, var, shuffle(var), shuffle(var)),
+        columns=["date", "location", "continent", "var_1", "var_2", "var_3"],
+    )
+    return data
