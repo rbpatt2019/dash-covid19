@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.10.0
+-------
+
+- Fixed scrolling introduced to data table
+
 v0.9.2
 ------
 
