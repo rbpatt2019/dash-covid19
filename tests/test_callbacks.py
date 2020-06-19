@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 from time import sleep
-
 import dash
-from dash.testing.application_runners import import_app
-from selenium.webdriver.common.keys import Keys
-
-from dash_covid19 import columns
 
 
 """
@@ -14,10 +9,8 @@ Otherwise, selenium cannot click on it.
 """
 
 
-def test_dccb001_tab_navigation(dash_duo):
-    app = import_app("wsgi")
-
-    dash_duo.start_server(app)
+def test_dccb001_tab_navigation(dash_duo, mock_app):
+    dash_duo.start_server(mock_app)
     dash_duo.driver.maximize_window()
 
     # Check defaults to home
@@ -34,23 +27,20 @@ def test_dccb001_tab_navigation(dash_duo):
     dash_duo.percy_snapshot("dccb001-data-table")
 
 
-def test_dccb002_interactive_graph(dash_duo):
-    app = import_app("wsgi")
-
-    dash_duo.start_server(app)
+def test_dccb002_interactive_graph(dash_duo, mock_app):
+    dash_duo.start_server(mock_app)
     dash_duo.driver.maximize_window()
 
     # Wait for graph to prevent image "jumping"
     dash_duo.wait_for_element_by_id("nav-bar-exp")
     dash_duo.click_at_coord_fractions("#nav-bar-exp", 0.5, 0.5)
-    sleep(3)
 
     # Interact with all the things!
     dash_duo.click_at_coord_fractions("#exp-scale-x", 0.5, 0.5)
     dash_duo.click_at_coord_fractions("#exp-scale-y", 0.5, 0.5)
     dash_duo.click_at_coord_fractions("#exp-main-slider", 0.5, 0.1)
-    dash_duo.select_dcc_dropdown("#exp-dd-x", index=2)
-    dash_duo.select_dcc_dropdown("#exp-dd-y", index=3)
+    dash_duo.select_dcc_dropdown("#exp-dd-x", index=1)
+    dash_duo.select_dcc_dropdown("#exp-dd-y", index=2)
 
     # And confirm
-    dash_duo.percy_snapshot("dccb002-graph", wait_for_callbacks=True)
+    dash_duo.percy_snapshot("dccb002-graph")
