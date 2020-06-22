@@ -20,12 +20,12 @@ def link_card(
         dbc.Card(
             id=id,
             body=True,
-            outline=True,
-            color="dark",
-            inverse=False,
+            outline=False,
+            color="secondary",
+            inverse=True,
             children=[
                 html.H4(title, className="card-title", style={"text-align": "center"}),
-                html.P(text, className="card-text",),
+                html.P(text, className="card-text", style={"text-align": "center"}),
                 dbc.Button(
                     "Let's go!",
                     id=id + "-button",

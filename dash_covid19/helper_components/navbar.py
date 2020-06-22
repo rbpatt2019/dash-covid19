@@ -6,7 +6,7 @@ navbar = dbc.NavbarSimple(
     brand="dash-covid19",
     brand_href="/",
     fluid=True,
-    color="primary",
+    color="secondary",
     dark=True,
     children=[
         dbc.NavItem(dbc.NavLink("Explorer", id="nav-bar-exp", href="/exp")),
