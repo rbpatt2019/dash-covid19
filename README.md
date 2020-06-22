@@ -34,8 +34,8 @@ The app contains three pages. The home page provides a brief summary of all the 
 The "Explorer" page provides an interactive graph to help the user, well, explore the most up-to-date Covid-19 data.
 This page is constantly changing, so check back to see how the graphs evolve!
 
-The "Data Table" pages displays the data in an interactive table that allows the user to sort columns and delete those they aren't interested in.
-Don't worry! You can always get the columns back by refreshing the page.
+The "Data Table" pages displays the data in an interactive table that allows the user to sort and filter columns of interest.
+The four left-most columns (iso_code, continent, location, and date) remain fixed as you scroll.
 
 About the Data
 --------------
