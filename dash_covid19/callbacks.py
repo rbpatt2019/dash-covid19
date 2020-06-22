@@ -6,14 +6,36 @@ from dash_covid19.helper_components.graphs import line_plot
 def init_callbacks(dash_app, layouts, data):
     """Initialise dash callbacks"""
 
-    @dash_app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+    @dash_app.callback(
+        [
+            Output("page-content", "children"),
+            Output("nav-bar-exp", "active"),
+            Output("nav-bar-dt", "active"),
+        ],
+        [Input("url", "pathname")],
+    )
     def display_page(path):
+        """Callback for update app page layout
+
+        The try/else/finally block ensures that a 404 error is never thrown.
+        When in doubt, redirect to the home page.
+
+        The outputs to nav-bar-xxx 'active' are necessary as clicking on the cards
+        on the hme page does not trigger the links to show active. These outputs
+        guarantee that they will show 'active' no matter how they are triggered.
+
+        active_lut contains the necessary booleean encodings for active links.
+        active_lut['/'][0] is the exp link, while active_lut['/'][1] is dt
+        """
+        active_lut = {"/": (False, False), "/exp": (True, False), "/dt": (False, True)}
         try:
             fmt = layouts[path]
+            exp, dt = active_lut[path]
         except KeyError:
             fmt = layouts["/"]
+            exp, dt = active_lut["/"]
         finally:
-            return fmt
+            return fmt, exp, dt
 
     @dash_app.callback(
         Output("exp-main-scatter", "figure"),
