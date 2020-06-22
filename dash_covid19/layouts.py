@@ -248,6 +248,12 @@ def init_layouts(dash_app, df, cols, date_idx):
                     style_cell_conditional=[
                         {"if": {"column_id": "iso_code"}, "width": "1.75%"},
                     ],
+                    style_data_conditional=[
+                        {
+                            "if": {"row_index": "odd"},
+                            "backgroundColor": "rgb(223,223,221)",
+                        }
+                    ],
                     page_action="native",
                     page_current=0,
                     page_size=25,
