@@ -16,13 +16,23 @@ def link_card(
     :returns: dbc.Card
     """
 
-    return dbc.Card(
-        id=id,
-        children=dbc.CardBody(
-            [
+    return (
+        dbc.Card(
+            id=id,
+            body=True,
+            outline=True,
+            color="dark",
+            inverse=False,
+            children=[
                 html.H4(title, className="card-title", style={"text-align": "center"}),
                 html.P(text, className="card-text",),
-                dbc.Button("Let's go!", id=id + "-button", href=href, block=True),
+                dbc.Button(
+                    "Let's go!",
+                    id=id + "-button",
+                    href=href,
+                    block=True,
+                    color="primary",
+                ),
             ],
         ),
     )
