@@ -27,6 +27,7 @@ def init_layouts(dash_app, df, cols, date_idx):
         "app": dbc.Container(
             fluid=True,
             style={"height": "100vh"},
+            className="bg-light",
             children=[
                 dbc.Row(dbc.Col(dcc.Location(id="url", refresh=False))),
                 dbc.Row(dbc.Col(navbar), style={"height": "8%"}),
@@ -75,15 +76,15 @@ def init_layouts(dash_app, df, cols, date_idx):
                                 dcc.Graph(
                                     id="exp-main-scatter",
                                     hoverData={"points": [{"customdata": "China"}]},
-                                    style={"height": "85%"},
+                                    style={"height": "90%"},
                                 ),
                                 html.H5(
                                     "Date Slider.",
                                     id="exp-main-slider-head",
+                                    className="mt-3",
                                     style={
                                         "textDecoration": "underline",
                                         "cursor": "pointer",
-                                        "height": "5%",
                                     },
                                 ),
                                 dbc.Tooltip(
@@ -123,6 +124,7 @@ def init_layouts(dash_app, df, cols, date_idx):
                                 dbc.Row(
                                     justify="around",
                                     style={"height": "10%"},
+                                    className="mt-3",
                                     children=[
                                         dbc.Col(
                                             children=[
@@ -175,6 +177,7 @@ def init_layouts(dash_app, df, cols, date_idx):
                                 dbc.Row(
                                     justify="around",
                                     style={"height": "10%"},
+                                    className="mt-3",
                                     children=[
                                         dbc.Col(
                                             children=[
