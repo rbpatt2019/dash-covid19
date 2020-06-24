@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
-import os
-
-import dash_bootstrap_components as dbc
 import pandas as pd
+import dash_bootstrap_components as dbc
 from dash import Dash
-from flask_caching import Cache
 
 from dash_covid19.callbacks import init_callbacks
 from dash_covid19.layouts import init_layouts
@@ -29,22 +26,11 @@ def create_app(data=data, columns=columns, date_idx=date_idx):
         suppress_callback_exceptions=True,
     )
 
-    # Initialise layouts
+    # Now that app is created, import callbacks and layouts
     app, layouts = init_layouts(app, data, columns, date_idx)
+    init_callbacks(app, layouts, data)
 
     # Create server instance
     server = app.server
-
-    # And add caching
-    cache = Cache(
-        server,
-        config={
-            "CACHE_TYPE": "redis",
-            "CACHE_REDIS_URL": os.environ.get("REDIS_URL", ""),
-        },
-    )
-
-    # Finally, intialise callbacks
-    init_callbacks(app, cache, layouts, data)
 
     return app, server

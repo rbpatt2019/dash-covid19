@@ -3,7 +3,7 @@ from dash.dependencies import Input, Output
 from dash_covid19.helper_components.graphs import line_plot
 
 
-def init_callbacks(dash_app, cache, layouts, data):
+def init_callbacks(dash_app, layouts, data):
     """Initialise dash callbacks"""
 
     @dash_app.callback(
@@ -47,7 +47,6 @@ def init_callbacks(dash_app, cache, layouts, data):
             Input("exp-main-slider", "value"),
         ],
     )
-    @cache.memoize(timeout=3000)
     def update_world_map(x_axis, y_axis, x_log, y_log, date_val):
         date = data.date.unique()[date_val]
         data_sub = data[data["date"] == date]
@@ -90,7 +89,6 @@ def init_callbacks(dash_app, cache, layouts, data):
             Input("exp-scale-x", "on"),
         ],
     )
-    @cache.memoize(timeout=3000)
     def update_x_scatter(variable, hoverData, scale):
         country = hoverData["points"][0]["customdata"]
         data_sub = data[data["location"] == country]
@@ -107,7 +105,6 @@ def init_callbacks(dash_app, cache, layouts, data):
             Input("exp-scale-y", "on"),
         ],
     )
-    @cache.memoize(timeout=3000)
     def update_y_scatter(variable, hoverData, scale):
         country = hoverData["points"][0]["customdata"]
         data_sub = data[data["location"] == country]
