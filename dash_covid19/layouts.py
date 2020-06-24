@@ -5,7 +5,13 @@ import dash_daq as daq
 import dash_html_components as html
 import dash_table as table
 
-from dash_covid19.helper_components.cards import code_card, dt_card, exp_card, info_card
+from dash_covid19.helper_components.cards import (
+    code_card,
+    dt_card,
+    exp_card,
+    info_card,
+    map_card,
+)
 from dash_covid19.helper_components.dropdown import make_dd
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.slider import make_slider
@@ -42,7 +48,7 @@ def init_layouts(dash_app, df, cols):
             children=[
                 dbc.Row(
                     justify="around",
-                    style={"margin-top": "20px"},
+                    style={"margin-top": "20px", "height": "15%"},
                     children=dbc.Col(
                         [
                             html.H3(
@@ -56,12 +62,16 @@ def init_layouts(dash_app, df, cols):
                 ),
                 dbc.Row(
                     justify="around",
-                    style={"margin-top": "20px"},
-                    children=[dbc.Col(exp_card, width=4), dbc.Col(dt_card, width=4)],
+                    style={"margin-top": "20px", "height": "20%"},
+                    children=[
+                        dbc.Col(exp_card, width=4),
+                        dbc.Col(map_card, width=4),
+                        dbc.Col(dt_card, width=4),
+                    ],
                 ),
                 dbc.Row(
                     justify="around",
-                    style={"margin-top": "20px"},
+                    style={"margin-top": "20px", "height": "20%"},
                     children=[dbc.Col(code_card, width=4), dbc.Col(info_card, width=4)],
                 ),
             ],
@@ -216,10 +226,34 @@ def init_layouts(dash_app, df, cols):
                 ),
             ],
         ),
-        # "/map": dbc.Col(
-        #     style={"height": '100%'},
-        #     children=[],
-        # ),
+        "/map": dbc.Col(
+            style={"height": "100%"},
+            children=[
+                dbc.Col(
+                    style={"height": "100%"},
+                    children=[
+                        dcc.Graph(
+                            id="map-scatter",
+                            hoverData={"points": [{"customdata": "China"}]},
+                            style={"height": "90%"},
+                        ),
+                        html.H5(
+                            "Date Slider.",
+                            id="map-slider-head",
+                            className="mt-3",
+                            style={"textDecoration": "underline", "cursor": "pointer",},
+                        ),
+                        dbc.Tooltip(
+                            "Slide through the dates to see how patterns"
+                            " evolve over time.",
+                            id="map-slider-help",
+                            target="map-slider-head",
+                        ),
+                        make_slider(df, "map-slider"),
+                    ],
+                ),
+            ],
+        ),
         "/dt": dbc.Col(
             style={"height": "100%"},
             # className='d-flex justify-content-center',

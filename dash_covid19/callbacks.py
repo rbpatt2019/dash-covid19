@@ -10,6 +10,7 @@ def init_callbacks(dash_app, layouts, data):
         [
             Output("page-content", "children"),
             Output("nav-bar-exp", "active"),
+            Output("nav-bar-map", "active"),
             Output("nav-bar-dt", "active"),
         ],
         [Input("url", "pathname")],
@@ -27,15 +28,20 @@ def init_callbacks(dash_app, layouts, data):
         active_lut contains the necessary booleean encodings for active links.
         active_lut['/'][0] is the exp link, while active_lut['/'][1] is dt
         """
-        active_lut = {"/": (False, False), "/exp": (True, False), "/dt": (False, True)}
+        active_lut = {
+            "/": (False, False, False),
+            "/exp": (True, False, False),
+            "/map": (False, True, False),
+            "/dt": (False, False, True),
+        }
         try:
             fmt = layouts[path]
-            exp, dt = active_lut[path]
+            exp, map, dt = active_lut[path]
         except KeyError:
             fmt = layouts["/"]
-            exp, dt = active_lut["/"]
+            exp, map, dt = active_lut["/"]
         finally:
-            return fmt, exp, dt
+            return fmt, exp, map, dt
 
     @dash_app.callback(
         Output("exp-main-scatter", "figure"),
