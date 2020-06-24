@@ -29,9 +29,8 @@ def create_app(data=data, columns=columns, date_idx=date_idx):
         suppress_callback_exceptions=True,
     )
 
-    # Now that app is created, import callbacks and layouts
+    # Initialise layouts
     app, layouts = init_layouts(app, data, columns, date_idx)
-    init_callbacks(app, layouts, data)
 
     # Create server instance
     server = app.server
@@ -45,4 +44,7 @@ def create_app(data=data, columns=columns, date_idx=date_idx):
         },
     )
 
-    return app, server, cache
+    # Finally, intialise callbacks
+    init_callbacks(app, cache, layouts, data)
+
+    return app, server
