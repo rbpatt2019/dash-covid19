@@ -13,10 +13,9 @@ data = pd.read_csv(
 data = data[~data.location.isin(["International", "World"])].sort_values(by="date")
 
 columns = data.columns[4:]
-date_idx = range(len(data.date.unique()))
 
 
-def create_app(data=data, columns=columns, date_idx=date_idx):
+def create_app(data=data, columns=columns):
     """Initialise the dash app"""
 
     # Create app
@@ -27,7 +26,7 @@ def create_app(data=data, columns=columns, date_idx=date_idx):
     )
 
     # Now that app is created, import callbacks and layouts
-    app, layouts = init_layouts(app, data, columns, date_idx)
+    app, layouts = init_layouts(app, data, columns)
     init_callbacks(app, layouts, data)
 
     # Create server instance

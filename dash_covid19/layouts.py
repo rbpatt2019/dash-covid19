@@ -4,12 +4,14 @@ import dash_core_components as dcc
 import dash_daq as daq
 import dash_html_components as html
 import dash_table as table
-from dash_covid19.helper_components.navbar import navbar
+
+from dash_covid19.helper_components.cards import code_card, dt_card, exp_card, info_card
 from dash_covid19.helper_components.dropdown import make_dd
-from dash_covid19.helper_components.cards import exp_card, dt_card, code_card, info_card
+from dash_covid19.helper_components.navbar import navbar
+from dash_covid19.helper_components.slider import make_slider
 
 
-def init_layouts(dash_app, df, cols, date_idx):
+def init_layouts(dash_app, df, cols):
     """Initialise layouts and return default"""
 
     header = """
@@ -93,26 +95,7 @@ def init_layouts(dash_app, df, cols, date_idx):
                                     id="exp-main-slider-help",
                                     target="exp-main-slider-head",
                                 ),
-                                dcc.Slider(
-                                    id="exp-main-slider",
-                                    min=min(date_idx),
-                                    max=max(date_idx),
-                                    value=max(date_idx),
-                                    marks={
-                                        val: {
-                                            "label": str(date),
-                                            "style": {
-                                                "writing-mode": "vertical-lr",
-                                                "transform": "rotate(-45deg)",
-                                                "transform-origin": "40% 30%",
-                                                "white-space": "nowrap",
-                                            },
-                                        }
-                                        for val, date in zip(
-                                            date_idx[::7], df.date.unique()[::7]
-                                        )
-                                    },
-                                ),
+                                make_slider(df, "exp-main-slider"),
                             ],
                             style={"height": "100%"},
                         ),
@@ -233,6 +216,10 @@ def init_layouts(dash_app, df, cols, date_idx):
                 ),
             ],
         ),
+        # "/map": dbc.Col(
+        #     style={"height": '100%'},
+        #     children=[],
+        # ),
         "/dt": dbc.Col(
             style={"height": "100%"},
             # className='d-flex justify-content-center',
