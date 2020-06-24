@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.0.1
+------
+
+- Dependency upate. No impact to user
+
 v1.0.0
 ------
 
