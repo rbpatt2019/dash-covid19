@@ -1,6 +1,19 @@
 Changelog
 =========
 
+v1.0.1
+------
+
+- Dependency upate. No impact to user
+
+v1.0.0
+------
+
+- First stable release. All initial aims met.
+- General beautification
+- Row highlighting to tables
+- Links in navbar now show active, no matter how they were triggered.
+
 v0.10.0
 -------
 
