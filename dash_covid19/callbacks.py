@@ -126,7 +126,7 @@ def init_callbacks(dash_app, layouts, data):
             Input("map-slider", "value"),
         ],
     )
-    def update_map_scatter(size, color, date_val):
+    def update_map_scatter(color, size, date_val):
         date = data.date.unique()[date_val]
         data_sub = data[data["date"] == date].fillna(0)
         return px.scatter_mapbox(
