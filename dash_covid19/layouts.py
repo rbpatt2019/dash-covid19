@@ -31,6 +31,9 @@ def init_layouts(dash_app, df, cols):
         always return to this page by clicking on dash-covid19 in the top left.
         """
 
+    map_slider_head, map_slider_help, map_slider = make_slider(df, "map-slider")
+    exp_slider_head, exp_slider_help, exp_slider = make_slider(df, "exp-slider")
+
     layouts = {
         "app": dbc.Container(
             fluid=True,
@@ -90,22 +93,9 @@ def init_layouts(dash_app, df, cols):
                                     hoverData={"points": [{"customdata": "China"}]},
                                     style={"height": "90%"},
                                 ),
-                                html.H5(
-                                    "Date Slider.",
-                                    id="exp-main-slider-head",
-                                    className="mt-3",
-                                    style={
-                                        "textDecoration": "underline",
-                                        "cursor": "pointer",
-                                    },
-                                ),
-                                dbc.Tooltip(
-                                    "Slide through the dates to see how patterns"
-                                    " evolve over time.",
-                                    id="exp-main-slider-help",
-                                    target="exp-main-slider-head",
-                                ),
-                                make_slider(df, "exp-main-slider"),
+                                exp_slider_head,
+                                exp_slider_help,
+                                exp_slider,
                             ],
                             style={"height": "100%"},
                         ),
@@ -233,26 +223,9 @@ def init_layouts(dash_app, df, cols):
                     style={"height": "100%"},
                     children=[
                         dcc.Graph(id="map-scatter", style={"height": "70%"},),
-                        html.H5(
-                            "Date Slider.",
-                            id="map-slider-head",
-                            className="mt-3",
-                            style={
-                                "textDecoration": "underline",
-                                "cursor": "pointer",
-                                "height": "3%",
-                            },
-                        ),
-                        dbc.Tooltip(
-                            "Slide through the dates to see how patterns"
-                            " evolve over time.",
-                            id="map-slider-help",
-                            target="map-slider-head",
-                        ),
-                        dbc.Row(
-                            dbc.Col(make_slider(df, "map-slider")),
-                            style={"height": "12%"},
-                        ),
+                        map_slider_head,
+                        map_slider_help,
+                        dbc.Row(dbc.Col(map_slider), style={"height": "12%"}),
                         dbc.Row(
                             style={"height": "15%"},
                             justify="around",
