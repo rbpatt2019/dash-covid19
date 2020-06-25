@@ -36,4 +36,4 @@ def make_slider(
             for val, date in zip(date_idx[::7], df.date.unique()[::7])
         },
     )
-    return header, tooltip, slider
+    return [header, tooltip, slider]
