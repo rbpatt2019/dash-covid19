@@ -175,12 +175,6 @@ def init_layouts(dash_app, df, cols):
                                             ),
                                             width=4,
                                         ),
-                                        dbc.Tooltip(
-                                            "Choose from columns in the dataset"
-                                            " which is to be plotted on the Y-axis",
-                                            id="exp-dd-y-help",
-                                            target="exp-dd-y-head",
-                                        ),
                                         dbc.Col(
                                             children=make_log_switch(
                                                 "exp-scale-y", "Y-axis"
@@ -226,18 +220,6 @@ def init_layouts(dash_app, df, cols):
                                     width=4,
                                 ),
                             ],
-                        ),
-                        dbc.Tooltip(
-                            "Choose from columns in the dataset"
-                            " which represents point size",
-                            id="map-size-dd-help",
-                            target="map-size-dd-head",
-                        ),
-                        dbc.Tooltip(
-                            "Choose from columns in the dataset"
-                            " which represents point colour",
-                            id="map-color-dd-help",
-                            target="map-color-dd-head",
                         ),
                     ],
                 ),
