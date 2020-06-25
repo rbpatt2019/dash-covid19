@@ -135,6 +135,7 @@ def init_callbacks(dash_app, layouts, data):
             lon="lon",
             color=color,
             size=size,
+            hover_name="location",
             zoom=1,
             color_continuous_scale=px.colors.sequential.Plasma,
             mapbox_style="carto-positron",
