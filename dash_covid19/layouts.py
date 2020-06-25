@@ -232,11 +232,7 @@ def init_layouts(dash_app, df, cols):
                 dbc.Col(
                     style={"height": "100%"},
                     children=[
-                        dcc.Graph(
-                            id="map-scatter",
-                            hoverData={"points": [{"customdata": "China"}]},
-                            style={"height": "70%"},
-                        ),
+                        dcc.Graph(id="map-scatter", style={"height": "70%"},),
                         html.H5(
                             "Date Slider.",
                             id="map-slider-head",
