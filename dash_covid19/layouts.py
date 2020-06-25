@@ -235,13 +235,17 @@ def init_layouts(dash_app, df, cols):
                         dcc.Graph(
                             id="map-scatter",
                             hoverData={"points": [{"customdata": "China"}]},
-                            style={"height": "90%"},
+                            style={"height": "70%"},
                         ),
                         html.H5(
                             "Date Slider.",
                             id="map-slider-head",
                             className="mt-3",
-                            style={"textDecoration": "underline", "cursor": "pointer",},
+                            style={
+                                "textDecoration": "underline",
+                                "cursor": "pointer",
+                                "height": "3%",
+                            },
                         ),
                         dbc.Tooltip(
                             "Slide through the dates to see how patterns"
@@ -249,7 +253,56 @@ def init_layouts(dash_app, df, cols):
                             id="map-slider-help",
                             target="map-slider-head",
                         ),
-                        make_slider(df, "map-slider"),
+                        dbc.Row(
+                            dbc.Col(make_slider(df, "map-slider")),
+                            style={"height": "12%"},
+                        ),
+                        dbc.Row(
+                            style={"height": "15%"},
+                            justify="around",
+                            children=[
+                                dbc.Col(
+                                    children=[
+                                        html.H5(
+                                            "Point Color",
+                                            id="map-color-dd-head",
+                                            style={
+                                                "textDecoration": "underline",
+                                                "cursor": "pointer",
+                                            },
+                                        ),
+                                        make_dd(id="map-color-dd", options=cols),
+                                    ],
+                                    width=4,
+                                ),
+                                dbc.Col(
+                                    children=[
+                                        html.H5(
+                                            "Point Size",
+                                            id="map-size-dd-head",
+                                            style={
+                                                "textDecoration": "underline",
+                                                "cursor": "pointer",
+                                            },
+                                        ),
+                                        make_dd(id="map-size-dd", options=cols),
+                                    ],
+                                    width=4,
+                                ),
+                            ],
+                        ),
+                        dbc.Tooltip(
+                            "Choose from columns in the dataset"
+                            " which represents point size",
+                            id="map-size-dd-help",
+                            target="map-size-dd-head",
+                        ),
+                        dbc.Tooltip(
+                            "Choose from columns in the dataset"
+                            " which represents point colour",
+                            id="map-color-dd-help",
+                            target="map-color-dd-head",
+                        ),
                     ],
                 ),
             ],
