@@ -128,7 +128,7 @@ def init_callbacks(dash_app, layouts, data):
     )
     def update_map_scatter(size, color, date_val):
         date = data.date.unique()[date_val]
-        data_sub = data[data["date"] == date]
+        data_sub = data[data["date"] == date].fillna(0)
         return px.scatter_mapbox(
             data_frame=data_sub,
             lat="lat",
@@ -137,5 +137,5 @@ def init_callbacks(dash_app, layouts, data):
             size=size,
             zoom=1,
             color_continuous_scale=px.colors.sequential.Plasma,
-            mapbox_style="open-street-map",
+            mapbox_style="carto-positron",
         )
