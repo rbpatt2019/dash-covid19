@@ -18,7 +18,7 @@ def pytest_setup_options():
     return options
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def mock_app():
     """Use mimesis to create a fake dataset
     Then use that data to create a fake app
@@ -42,14 +42,22 @@ def mock_app():
     var_2 = sample(var, len(var))
     var_3 = sample(var, len(var))
 
+    lat = [g.addres.latitude() for _ in range(len(dates))]
+    lon = [g.addres.longitude() for _ in range(len(dates))]
+
     m_data = pd.DataFrame(
-        zip(dates, locations, continents, var, var_2, var_3),
-        columns=["date", "location", "continent", "var_1", "var_2", "var_3"],
+        zip(dates, locations, continents, var, var_2, var_3, lat, lon),
+        columns=[
+            "date",
+            "location",
+            "continent",
+            "var_1",
+            "var_2",
+            "var_3",
+            "lat",
+            "lon",
+        ],
     )
 
-    app, _ = create_app(
-        data=m_data,
-        columns=m_data.columns[3:],
-        date_idx=range(len(m_data["date"].unique())),
-    )
+    app, _ = create_app(data=m_data, columns=m_data.columns[3:-2],)
     return app
