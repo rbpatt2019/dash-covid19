@@ -5,13 +5,7 @@ import dash_daq as daq
 import dash_html_components as html
 import dash_table as table
 
-from dash_covid19.helper_components.cards import (
-    code_card,
-    dt_card,
-    exp_card,
-    info_card,
-    map_card,
-)
+from dash_covid19.helper_components.cards import link_card
 from dash_covid19.helper_components.dropdown import make_dd
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.slider import make_slider
@@ -30,9 +24,6 @@ def init_layouts(dash_app, df, cols):
         one to get started! You can also navigate with the links at the top and can
         always return to this page by clicking on dash-covid19 in the top left.
         """
-
-    map_slider_head, map_slider_help, map_slider = make_slider(df, "map-slider")
-    exp_slider_head, exp_slider_help, exp_slider = make_slider(df, "exp-slider")
 
     layouts = {
         "app": dbc.Container(
@@ -67,15 +58,58 @@ def init_layouts(dash_app, df, cols):
                     justify="around",
                     style={"margin-top": "20px", "height": "20%"},
                     children=[
-                        dbc.Col(exp_card, width=4),
-                        dbc.Col(map_card, width=4),
-                        dbc.Col(dt_card, width=4),
+                        dbc.Col(
+                            link_card(
+                                id="exp-card",
+                                title="Explore",
+                                text="Explore correlations within the data across time, using cross-filtered scatter plots.",
+                                href="/exp",
+                            ),
+                            width=4,
+                        ),
+                        dbc.Col(
+                            link_card(
+                                id="map-card",
+                                title="World Map",
+                                text="Observe regional and global trends across time, using an interactive Mapbox plot.",
+                                href="/map",
+                            ),
+                            width=4,
+                        ),
+                        dbc.Col(
+                            link_card(
+                                id="dt-card",
+                                title="Data Table",
+                                text="Examine the raw data to develop a better understanding of its structure and distribution",
+                                href="/dt",
+                            ),
+                            width=4,
+                        ),
                     ],
                 ),
                 dbc.Row(
                     justify="around",
                     style={"margin-top": "20px", "height": "20%"},
-                    children=[dbc.Col(code_card, width=4), dbc.Col(info_card, width=4)],
+                    children=[
+                        dbc.Col(
+                            link_card(
+                                id="code-card",
+                                title="Code",
+                                text="This project is proudly open source. Feel free to report bugs and make contriubtions.",
+                                href="https://github.com/rbpatt2019/dash-covid19",
+                            ),
+                            width=4,
+                        ),
+                        dbc.Col(
+                            link_card(
+                                id="info-card",
+                                title="Info",
+                                text="Learn more about the data and how it was collated by the wonderful team at OWID.",
+                                href="https://github.com/owid/covid-19-data/tree/master/public/data",
+                            ),
+                            width=4,
+                        ),
+                    ],
                 ),
             ],
         ),
@@ -92,11 +126,9 @@ def init_layouts(dash_app, df, cols):
                                     id="exp-main-scatter",
                                     hoverData={"points": [{"customdata": "China"}]},
                                     style={"height": "90%"},
-                                ),
-                                exp_slider_head,
-                                exp_slider_help,
-                                exp_slider,
-                            ],
+                                )
+                            ]
+                            + make_slider(df, "exp-main-slider"),
                             style={"height": "100%"},
                         ),
                         dbc.Col(
@@ -223,9 +255,10 @@ def init_layouts(dash_app, df, cols):
                     style={"height": "100%"},
                     children=[
                         dcc.Graph(id="map-scatter", style={"height": "70%"},),
-                        map_slider_head,
-                        map_slider_help,
-                        dbc.Row(dbc.Col(map_slider), style={"height": "12%"}),
+                        dbc.Row(
+                            style={"height": "15%"},
+                            children=dbc.Col(make_slider(df, "map-slider")),
+                        ),
                         dbc.Row(
                             style={"height": "15%"},
                             justify="around",
