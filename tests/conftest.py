@@ -42,8 +42,8 @@ def mock_app():
     var_2 = sample(var, len(var))
     var_3 = sample(var, len(var))
 
-    lat = [g.addres.latitude() for _ in range(len(dates))]
-    lon = [g.addres.longitude() for _ in range(len(dates))]
+    lat = [g.address.latitude() for _ in range(len(dates))]
+    lon = [g.address.longitude() for _ in range(len(dates))]
 
     m_data = pd.DataFrame(
         zip(dates, locations, continents, var, var_2, var_3, lat, lon),
