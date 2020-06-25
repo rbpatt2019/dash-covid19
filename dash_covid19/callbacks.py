@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import plotly.express as px
 from dash.dependencies import Input, Output
 from dash_covid19.helper_components.graphs import line_plot
 
@@ -10,6 +11,7 @@ def init_callbacks(dash_app, layouts, data):
         [
             Output("page-content", "children"),
             Output("nav-bar-exp", "active"),
+            Output("nav-bar-map", "active"),
             Output("nav-bar-dt", "active"),
         ],
         [Input("url", "pathname")],
@@ -27,15 +29,20 @@ def init_callbacks(dash_app, layouts, data):
         active_lut contains the necessary booleean encodings for active links.
         active_lut['/'][0] is the exp link, while active_lut['/'][1] is dt
         """
-        active_lut = {"/": (False, False), "/exp": (True, False), "/dt": (False, True)}
+        active_lut = {
+            "/": (False, False, False),
+            "/exp": (True, False, False),
+            "/map": (False, True, False),
+            "/dt": (False, False, True),
+        }
         try:
             fmt = layouts[path]
-            exp, dt = active_lut[path]
+            exp, map, dt = active_lut[path]
         except KeyError:
             fmt = layouts["/"]
-            exp, dt = active_lut["/"]
+            exp, map, dt = active_lut["/"]
         finally:
-            return fmt, exp, dt
+            return fmt, exp, map, dt
 
     @dash_app.callback(
         Output("exp-main-scatter", "figure"),
@@ -47,7 +54,7 @@ def init_callbacks(dash_app, layouts, data):
             Input("exp-main-slider", "value"),
         ],
     )
-    def update_world_map(x_axis, y_axis, x_log, y_log, date_val):
+    def update_exp_main_scatter(x_axis, y_axis, x_log, y_log, date_val):
         date = data.date.unique()[date_val]
         data_sub = data[data["date"] == date]
         return {
@@ -89,10 +96,9 @@ def init_callbacks(dash_app, layouts, data):
             Input("exp-scale-x", "on"),
         ],
     )
-    def update_x_scatter(variable, hoverData, scale):
+    def update_exp_x_scatter(variable, hoverData, scale):
         country = hoverData["points"][0]["customdata"]
         data_sub = data[data["location"] == country]
-        title = f"<b>{country}</b>"
         return line_plot(
             data_sub, variable=variable, title=f"<b>{country}</b>", scale=scale
         )
@@ -105,10 +111,32 @@ def init_callbacks(dash_app, layouts, data):
             Input("exp-scale-y", "on"),
         ],
     )
-    def update_y_scatter(variable, hoverData, scale):
+    def update_exp_y_scatter(variable, hoverData, scale):
         country = hoverData["points"][0]["customdata"]
         data_sub = data[data["location"] == country]
-        title = f"<b>{country}</b>"
         return line_plot(
             data_sub, variable=variable, title=f"<b>{country}</b>", scale=scale
+        )
+
+    @dash_app.callback(
+        Output("map-scatter", "figure"),
+        [
+            Input("map-color-dd", "value"),
+            Input("map-size-dd", "value"),
+            Input("map-slider", "value"),
+        ],
+    )
+    def update_map_scatter(color, size, date_val):
+        date = data.date.unique()[date_val]
+        data_sub = data[data["date"] == date].fillna(0)
+        return px.scatter_mapbox(
+            data_frame=data_sub,
+            lat="lat",
+            lon="lon",
+            color=color,
+            size=size,
+            hover_name="location",
+            zoom=1,
+            color_continuous_scale=px.colors.sequential.Plasma,
+            mapbox_style="carto-positron",
         )

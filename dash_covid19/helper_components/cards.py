@@ -23,6 +23,7 @@ def link_card(
             outline=False,
             color="secondary",
             inverse=True,
+            style={"height": "100%"},
             children=[
                 html.H4(title, className="card-title", style={"text-align": "center"}),
                 html.P(text, className="card-text", style={"text-align": "center"}),
@@ -44,6 +45,13 @@ exp_card = link_card(
     text="Explore correlations within the data and how they evolve over time using "
     "interactive scatter plots",
     href="/exp",
+)
+
+map_card = link_card(
+    id="map-card",
+    title="World Map",
+    text="Visualise the data across the globe to better understand regional impacts.",
+    href="/map",
 )
 
 dt_card = link_card(

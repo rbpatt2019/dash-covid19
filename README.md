@@ -30,13 +30,21 @@ The code lives in [the repo](https://github.com/rbpatt2019/dash-covid19/).
 Usage
 -----
 
-The app contains three pages. The home page provides a brief summary of all the assorted links within the app, as well as an explanation of why I built the app.
+The app contains six pages. The home page provides a brief summary of all the assorted links within the app, as well as an explanation of why I built the app.
 
 The "Explorer" page provides an interactive graph to help the user, well, explore the most up-to-date Covid-19 data.
 This page is constantly changing, so check back to see how the graphs evolve!
 
+The "World Map" pages provides an interactive, global map that plots information on top of, well, a map! Here you can see not only interactions,
+but regional impacts as well. You can change the data represented by the size and colour of the dots.
+
 The "Data Table" pages displays the data in an interactive table that allows the user to sort and filter columns of interest.
 The four left-most columns (iso_code, continent, location, and date) remain fixed as you scroll.
+
+As a proudly open-source project, the "Code" page takes you to the Github repo where the code lives. It's all open, so feel free to explore,
+contribute, or report bugs!
+
+Finally, the "Data" page takes you to the repo where OWID hosts their data. More on that below...
 
 About the Data
 --------------
@@ -84,7 +92,8 @@ If you would like to contribute to development, please see the [instructions](CO
 Next Steps
 ----------
 
-- Expand test coverage
+- Add data summary page
+- Refactor layout to move repetitive structures to helpers
 - Continue to expand documentation
 - Caching to improve performance
 
