@@ -260,20 +260,6 @@ def init_layouts(dash_app, df, cols):
                                 dbc.Col(
                                     children=[
                                         html.H5(
-                                            "Point Color",
-                                            id="map-color-dd-head",
-                                            style={
-                                                "textDecoration": "underline",
-                                                "cursor": "pointer",
-                                            },
-                                        ),
-                                        make_dd(id="map-color-dd", options=cols),
-                                    ],
-                                    width=4,
-                                ),
-                                dbc.Col(
-                                    children=[
-                                        html.H5(
                                             "Point Size",
                                             id="map-size-dd-head",
                                             style={
@@ -282,6 +268,20 @@ def init_layouts(dash_app, df, cols):
                                             },
                                         ),
                                         make_dd(id="map-size-dd", options=cols),
+                                    ],
+                                    width=4,
+                                ),
+                                dbc.Col(
+                                    children=[
+                                        html.H5(
+                                            "Point Color",
+                                            id="map-color-dd-head",
+                                            style={
+                                                "textDecoration": "underline",
+                                                "cursor": "pointer",
+                                            },
+                                        ),
+                                        make_dd(id="map-color-dd", options=cols),
                                     ],
                                     width=4,
                                 ),
