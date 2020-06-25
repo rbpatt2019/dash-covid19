@@ -16,7 +16,7 @@ def init_layouts(dash_app, df, cols):
 
     header = """
         In these rapidly changing times, a good visualisation goes a long way towards
-        understanding the complex situation. That's all this app attempts to: provide
+        understanding the complex situation. That's all this app attempts to provide:
         good visualisations, so you can review the facts for yourself. No conclusions,
         no opinions, just good data.
 
@@ -142,24 +142,12 @@ def init_layouts(dash_app, df, cols):
                                     className="mt-3",
                                     children=[
                                         dbc.Col(
-                                            children=[
-                                                html.H5(
-                                                    "X-axis Variable",
-                                                    id="exp-dd-x-head",
-                                                    style={
-                                                        "textDecoration": "underline",
-                                                        "cursor": "pointer",
-                                                    },
-                                                ),
-                                                make_dd(id="exp-dd-x", options=cols),
-                                            ],
+                                            children=make_dd(
+                                                "exp-dd-x",
+                                                "X-axis Variable",
+                                                options=cols,
+                                            ),
                                             width=4,
-                                        ),
-                                        dbc.Tooltip(
-                                            "Choose from columns in the dataset"
-                                            " which is to be plotted on the X-axis",
-                                            id="exp-dd-x-help",
-                                            target="exp-dd-x-head",
                                         ),
                                         dbc.Col(
                                             children=[
@@ -195,21 +183,12 @@ def init_layouts(dash_app, df, cols):
                                     className="mt-3",
                                     children=[
                                         dbc.Col(
-                                            children=[
-                                                html.H5(
-                                                    "Y-axis Variable",
-                                                    id="exp-dd-y-head",
-                                                    style={
-                                                        "textDecoration": "underline",
-                                                        "cursor": "pointer",
-                                                    },
-                                                ),
-                                                make_dd(
-                                                    id="exp-dd-y",
-                                                    options=cols,
-                                                    default_index=1,
-                                                ),
-                                            ],
+                                            children=make_dd(
+                                                "exp-dd-y",
+                                                "Y-axis Variable",
+                                                options=cols,
+                                                default_index=1,
+                                            ),
                                             width=4,
                                         ),
                                         dbc.Tooltip(
@@ -264,31 +243,18 @@ def init_layouts(dash_app, df, cols):
                             justify="around",
                             children=[
                                 dbc.Col(
-                                    children=[
-                                        html.H5(
-                                            "Point Size",
-                                            id="map-size-dd-head",
-                                            style={
-                                                "textDecoration": "underline",
-                                                "cursor": "pointer",
-                                            },
-                                        ),
-                                        make_dd(id="map-size-dd", options=cols),
-                                    ],
+                                    children=make_dd(
+                                        "map-size-dd", "Marker Size", options=cols
+                                    ),
                                     width=4,
                                 ),
                                 dbc.Col(
-                                    children=[
-                                        html.H5(
-                                            "Point Color",
-                                            id="map-color-dd-head",
-                                            style={
-                                                "textDecoration": "underline",
-                                                "cursor": "pointer",
-                                            },
-                                        ),
-                                        make_dd(id="map-color-dd", options=cols),
-                                    ],
+                                    children=make_dd(
+                                        "map-color-dd",
+                                        "Marker Colour",
+                                        options=cols,
+                                        default_index=1,
+                                    ),
                                     width=4,
                                 ),
                             ],
