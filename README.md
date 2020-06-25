@@ -84,7 +84,8 @@ If you would like to contribute to development, please see the [instructions](CO
 Next Steps
 ----------
 
-- Expand test coverage
+- Add data summary page
+- Refactor layout to move repetitive structures to helpers
 - Continue to expand documentation
 - Caching to improve performance
 
