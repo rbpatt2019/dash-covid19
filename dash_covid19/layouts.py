@@ -48,7 +48,7 @@ def init_layouts(dash_app, df, cols):
             children=[
                 dbc.Row(
                     justify="around",
-                    style={"margin-top": "20px", "height": "15%"},
+                    style={"height": "15%"},
                     children=dbc.Col(
                         [
                             html.H3(
@@ -57,7 +57,7 @@ def init_layouts(dash_app, df, cols):
                             ),
                             html.P(header, style={"text-align": "center"}),
                         ],
-                        width=8,
+                        width=10,
                     ),
                 ),
                 dbc.Row(
