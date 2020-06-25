@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.1.0
+------
+
+- Add world map page.O
+
 v1.0.1
 ------
 
