@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import plotly.express as px
 from dash.dependencies import Input, Output
 from dash_covid19.helper_components.graphs import line_plot
 
@@ -53,7 +54,7 @@ def init_callbacks(dash_app, layouts, data):
             Input("exp-main-slider", "value"),
         ],
     )
-    def update_world_map(x_axis, y_axis, x_log, y_log, date_val):
+    def update_exp_main_scatter(x_axis, y_axis, x_log, y_log, date_val):
         date = data.date.unique()[date_val]
         data_sub = data[data["date"] == date]
         return {
@@ -95,7 +96,7 @@ def init_callbacks(dash_app, layouts, data):
             Input("exp-scale-x", "on"),
         ],
     )
-    def update_x_scatter(variable, hoverData, scale):
+    def update_exp_x_scatter(variable, hoverData, scale):
         country = hoverData["points"][0]["customdata"]
         data_sub = data[data["location"] == country]
         title = f"<b>{country}</b>"
@@ -111,7 +112,7 @@ def init_callbacks(dash_app, layouts, data):
             Input("exp-scale-y", "on"),
         ],
     )
-    def update_y_scatter(variable, hoverData, scale):
+    def update_exp_y_scatter(variable, hoverData, scale):
         country = hoverData["points"][0]["customdata"]
         data_sub = data[data["location"] == country]
         title = f"<b>{country}</b>"
