@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
-import dash_daq as daq
 import dash_html_components as html
 import dash_table as table
 
@@ -9,6 +8,7 @@ from dash_covid19.helper_components.cards import link_card
 from dash_covid19.helper_components.dropdown import make_dd
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.slider import make_slider
+from dash_covid19.helper_components.switch import make_log_switch
 
 
 def init_layouts(dash_app, df, cols):
@@ -150,26 +150,10 @@ def init_layouts(dash_app, df, cols):
                                             width=4,
                                         ),
                                         dbc.Col(
-                                            children=[
-                                                html.H5(
-                                                    "X-axis: Log Scale?",
-                                                    id="exp-scale-x-head",
-                                                    style={
-                                                        "textDecoration": "underline",
-                                                        "cursor": "pointer",
-                                                    },
-                                                ),
-                                                daq.BooleanSwitch(
-                                                    id="exp-scale-x", on=False
-                                                ),
-                                            ],
+                                            children=make_log_switch(
+                                                "exp-scale-x", "X-axis"
+                                            ),
                                             width=4,
-                                        ),
-                                        dbc.Tooltip(
-                                            "Click to enable a log scale for the X-axis"
-                                            ". Click again to return to linear.",
-                                            id="exp-scale-x-help",
-                                            target="exp-scale-x-head",
                                         ),
                                     ],
                                 ),
@@ -198,26 +182,10 @@ def init_layouts(dash_app, df, cols):
                                             target="exp-dd-y-head",
                                         ),
                                         dbc.Col(
-                                            children=[
-                                                html.H5(
-                                                    "Y-axis: Log Scale?",
-                                                    id="exp-scale-y-head",
-                                                    style={
-                                                        "textDecoration": "underline",
-                                                        "cursor": "pointer",
-                                                    },
-                                                ),
-                                                daq.BooleanSwitch(
-                                                    id="exp-scale-y", on=False
-                                                ),
-                                            ],
+                                            children=make_log_switch(
+                                                "exp-scale-y", "Y-axis"
+                                            ),
                                             width=4,
-                                        ),
-                                        dbc.Tooltip(
-                                            "Click to enable a log scale for the Y-axis"
-                                            ". Click again to return to linear.",
-                                            id="exp-scale-y-help",
-                                            target="exp-scale-y-head",
                                         ),
                                     ],
                                 ),
