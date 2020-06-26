@@ -155,14 +155,14 @@ description = "A Python framework for building reactive web-apps. Developed by P
 name = "dash"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
-version = "1.13.3"
+version = "1.13.4"
 
 [package.dependencies]
 Flask = ">=1.0.2"
 dash-core-components = "1.10.1"
 dash-html-components = "1.0.3"
 dash-table = "4.8.1"
-dash_renderer = "1.5.0"
+dash_renderer = "1.5.1"
 flask-compress = "*"
 future = "*"
 plotly = "*"
@@ -215,7 +215,7 @@ description = "Bootstrap themed components for use in Plotly Dash"
 name = "dash-bootstrap-components"
 optional = false
 python-versions = "*"
-version = "0.10.2"
+version = "0.10.3"
 
 [package.dependencies]
 dash = ">=1.9.0"
@@ -256,7 +256,7 @@ description = "Front-end component renderer for Dash"
 name = "dash-renderer"
 optional = false
 python-versions = "*"
-version = "1.5.0"
+version = "1.5.1"
 
 [[package]]
 category = "main"
@@ -1027,10 +1027,10 @@ coverage = [
     {file = "coverage-5.1.tar.gz", hash = "sha256:f90bfc4ad18450c80b024036eaf91e4a246ae287701aaa88eaebebf150868052"},
 ]
 dash = [
-    {file = "dash-1.13.3.tar.gz", hash = "sha256:6449cfdd67b9ec03ffed566b38ee510fae2d8540e69b7424879c63f711b201cd"},
+    {file = "dash-1.13.4.tar.gz", hash = "sha256:70943518849167177e0532faf36f04ad2a57573eef9ef30428db5fc195fb6e8a"},
 ]
 dash-bootstrap-components = [
-    {file = "dash-bootstrap-components-0.10.2.tar.gz", hash = "sha256:ba52f55487b26ca8cbf589b5558f8087e9bbb4847d44d4feb229250558a7fcc8"},
+    {file = "dash-bootstrap-components-0.10.3.tar.gz", hash = "sha256:acb46541590c3d378aea804bc1f43d582821dc8294b89bc186fc535b657655c0"},
 ]
 dash-core-components = [
     {file = "dash_core_components-1.10.1.tar.gz", hash = "sha256:c8509454abf3fc042b9a36123745d65e5fc48949e2f600a8aad96fc8e92d2108"},
@@ -1042,7 +1042,7 @@ dash-html-components = [
     {file = "dash_html_components-1.0.3.tar.gz", hash = "sha256:dafb54ae8ab601fffe50c74d72b32783dec2beea65fd1c7e7dd6a66e20e545ba"},
 ]
 dash-renderer = [
-    {file = "dash_renderer-1.5.0.tar.gz", hash = "sha256:7e30a22775ccf7535e1c57b17db0290f00a0b0951e27a0f50a4f39adb631d791"},
+    {file = "dash_renderer-1.5.1.tar.gz", hash = "sha256:097195ebe69267732d2fba30825f72c2b6ec3e127f60648c64e8d248d275a89b"},
 ]
 dash-table = [
     {file = "dash_table-4.8.1.tar.gz", hash = "sha256:b21ff5283df96aa1881b1c7f12424b80593bff26b7c450eea99dd2165d6a009b"},

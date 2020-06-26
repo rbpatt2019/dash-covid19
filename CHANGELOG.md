@@ -1,10 +1,16 @@
 Changelog
 =========
 
+v1.1.1
+------
+
+- Refactor layot, reducing lines of code by 25%
+- No impact to user.
+
 v1.1.0
 ------
 
-- Add world map page.O
+- Add world map page.
 
 v1.0.1
 ------
