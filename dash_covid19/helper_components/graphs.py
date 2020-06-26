@@ -1,12 +1,59 @@
 # -*- coding: utf-8 -*-
-def line_plot(df, variable="total_cases", title=f"<b>China</b>", scale=False):
-    """Helper function for creating line plots
+"""Helper Components: Make a plotly line graph
 
-    :param df: pd.DataFrame containing data to be plotted
-    :param variable: str, variable to be plotted on y-axis
-    :param title: str, text to be used for plot title
+This module contains a helper function for outputting a plotly line graph for use in
+a Dash interactive call back
 
-    :returns: dict, formatted for plotting with plotly"""
+.. _Plotly Graphs
+    https://plotly.com/python/line-charts/
+
+.. _Dash Callbacks
+    https://dash.plotly.com/basic-callbacks
+
+"""
+from typing import Any, Dict
+
+import pandas as pd
+
+
+def line_plot(
+    df: pd.DataFrame,
+    variable: str = "total_cases",
+    title: str = f"<b>China</b>",
+    scale: bool = False,
+) -> Dict[str, Any]:
+    """Helper function for creating line plots in a Dash Callback
+
+    Notes
+    -----
+        This function returns a dictionary of Plotly settings, and is designed to
+        be returned from a Dash Callback that outputs to a dcc.Graph figure
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Containing the data to be plotted. As the x-axis is time,
+        there must be a 'date' column
+    variable : str
+        Variable to be plotted on y-axis. Must be in df.columns
+    title : str
+        Text to be used for plot title
+
+    Returns
+    -------
+    Dict[str, Any]
+        A dictionary containing Plotly settings
+
+    Raises
+    ------
+    AttributeError
+        If 'data' or variable not in df.columns
+
+    Examples
+    --------
+    >>> settings = line_plot(pd.DataFrame([['2020-06-26', 1], ['2020-06-25', 10]]))
+
+    """
     return {
         "data": [dict(x=df["date"], y=df[variable], mode="lines",)],
         "layout": dict(
