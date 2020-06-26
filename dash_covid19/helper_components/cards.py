@@ -9,6 +9,7 @@ case.
     https://dash-bootstrap-components.opensource.faculty.ai/docs/components/card/
 
 """
+import dash
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
@@ -18,7 +19,7 @@ def link_card(
     title: str = "A Card!",
     text: str = "This is interesting!",
     href: str = "/somewhere",
-) -> dbc._components.Card.Card:
+) -> dash.development.base_component.ComponentMeta:
     """Helper function for making a dbc card with a link button
 
     Parameters
@@ -34,7 +35,7 @@ def link_card(
 
     Returns
     -------
-    dbc._components.Card.Card
+    dash.development.base_component.ComponentMeta
         Contains a title, body text, and a button serving as a hyperlink
 
     Examples
