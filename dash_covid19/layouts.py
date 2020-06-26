@@ -1,20 +1,14 @@
 # -*- coding: utf-8 -*-
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
-import dash_daq as daq
 import dash_html_components as html
 import dash_table as table
 
-from dash_covid19.helper_components.cards import (
-    code_card,
-    dt_card,
-    exp_card,
-    info_card,
-    map_card,
-)
+from dash_covid19.helper_components.cards import link_card
 from dash_covid19.helper_components.dropdown import make_dd
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.slider import make_slider
+from dash_covid19.helper_components.switch import make_log_switch
 
 
 def init_layouts(dash_app, df, cols):
@@ -22,7 +16,7 @@ def init_layouts(dash_app, df, cols):
 
     header = """
         In these rapidly changing times, a good visualisation goes a long way towards
-        understanding the complex situation. That's all this app attempts to: provide
+        understanding the complex situation. That's all this app attempts to provide:
         good visualisations, so you can review the facts for yourself. No conclusions,
         no opinions, just good data.
 
@@ -64,15 +58,58 @@ def init_layouts(dash_app, df, cols):
                     justify="around",
                     style={"margin-top": "20px", "height": "20%"},
                     children=[
-                        dbc.Col(exp_card, width=4),
-                        dbc.Col(map_card, width=4),
-                        dbc.Col(dt_card, width=4),
+                        dbc.Col(
+                            link_card(
+                                id="exp-card",
+                                title="Explore",
+                                text="Explore correlations within the data across time, using cross-filtered scatter plots.",
+                                href="/exp",
+                            ),
+                            width=4,
+                        ),
+                        dbc.Col(
+                            link_card(
+                                id="map-card",
+                                title="World Map",
+                                text="Observe regional and global trends across time, using an interactive Mapbox plot.",
+                                href="/map",
+                            ),
+                            width=4,
+                        ),
+                        dbc.Col(
+                            link_card(
+                                id="dt-card",
+                                title="Data Table",
+                                text="Examine the raw data to develop a better understanding of its structure and distribution",
+                                href="/dt",
+                            ),
+                            width=4,
+                        ),
                     ],
                 ),
                 dbc.Row(
                     justify="around",
                     style={"margin-top": "20px", "height": "20%"},
-                    children=[dbc.Col(code_card, width=4), dbc.Col(info_card, width=4)],
+                    children=[
+                        dbc.Col(
+                            link_card(
+                                id="code-card",
+                                title="Code",
+                                text="This project is proudly open source. Feel free to report bugs and make contriubtions.",
+                                href="https://github.com/rbpatt2019/dash-covid19",
+                            ),
+                            width=4,
+                        ),
+                        dbc.Col(
+                            link_card(
+                                id="info-card",
+                                title="Info",
+                                text="Learn more about the data and how it was collated by the wonderful team at OWID.",
+                                href="https://github.com/owid/covid-19-data/tree/master/public/data",
+                            ),
+                            width=4,
+                        ),
+                    ],
                 ),
             ],
         ),
@@ -89,24 +126,9 @@ def init_layouts(dash_app, df, cols):
                                     id="exp-main-scatter",
                                     hoverData={"points": [{"customdata": "China"}]},
                                     style={"height": "90%"},
-                                ),
-                                html.H5(
-                                    "Date Slider.",
-                                    id="exp-main-slider-head",
-                                    className="mt-3",
-                                    style={
-                                        "textDecoration": "underline",
-                                        "cursor": "pointer",
-                                    },
-                                ),
-                                dbc.Tooltip(
-                                    "Slide through the dates to see how patterns"
-                                    " evolve over time.",
-                                    id="exp-main-slider-help",
-                                    target="exp-main-slider-head",
-                                ),
-                                make_slider(df, "exp-main-slider"),
-                            ],
+                                )
+                            ]
+                            + make_slider(df, "exp-main-slider"),
                             style={"height": "100%"},
                         ),
                         dbc.Col(
@@ -120,46 +142,18 @@ def init_layouts(dash_app, df, cols):
                                     className="mt-3",
                                     children=[
                                         dbc.Col(
-                                            children=[
-                                                html.H5(
-                                                    "X-axis Variable",
-                                                    id="exp-dd-x-head",
-                                                    style={
-                                                        "textDecoration": "underline",
-                                                        "cursor": "pointer",
-                                                    },
-                                                ),
-                                                make_dd(id="exp-dd-x", options=cols),
-                                            ],
+                                            children=make_dd(
+                                                "exp-dd-x",
+                                                "X-axis Variable",
+                                                options=cols,
+                                            ),
                                             width=4,
-                                        ),
-                                        dbc.Tooltip(
-                                            "Choose from columns in the dataset"
-                                            " which is to be plotted on the X-axis",
-                                            id="exp-dd-x-help",
-                                            target="exp-dd-x-head",
                                         ),
                                         dbc.Col(
-                                            children=[
-                                                html.H5(
-                                                    "X-axis: Log Scale?",
-                                                    id="exp-scale-x-head",
-                                                    style={
-                                                        "textDecoration": "underline",
-                                                        "cursor": "pointer",
-                                                    },
-                                                ),
-                                                daq.BooleanSwitch(
-                                                    id="exp-scale-x", on=False
-                                                ),
-                                            ],
+                                            children=make_log_switch(
+                                                "exp-scale-x", "X-axis"
+                                            ),
                                             width=4,
-                                        ),
-                                        dbc.Tooltip(
-                                            "Click to enable a log scale for the X-axis"
-                                            ". Click again to return to linear.",
-                                            id="exp-scale-x-help",
-                                            target="exp-scale-x-head",
                                         ),
                                     ],
                                 ),
@@ -173,50 +167,19 @@ def init_layouts(dash_app, df, cols):
                                     className="mt-3",
                                     children=[
                                         dbc.Col(
-                                            children=[
-                                                html.H5(
-                                                    "Y-axis Variable",
-                                                    id="exp-dd-y-head",
-                                                    style={
-                                                        "textDecoration": "underline",
-                                                        "cursor": "pointer",
-                                                    },
-                                                ),
-                                                make_dd(
-                                                    id="exp-dd-y",
-                                                    options=cols,
-                                                    default_index=1,
-                                                ),
-                                            ],
+                                            children=make_dd(
+                                                "exp-dd-y",
+                                                "Y-axis Variable",
+                                                options=cols,
+                                                default_index=1,
+                                            ),
                                             width=4,
-                                        ),
-                                        dbc.Tooltip(
-                                            "Choose from columns in the dataset"
-                                            " which is to be plotted on the Y-axis",
-                                            id="exp-dd-y-help",
-                                            target="exp-dd-y-head",
                                         ),
                                         dbc.Col(
-                                            children=[
-                                                html.H5(
-                                                    "Y-axis: Log Scale?",
-                                                    id="exp-scale-y-head",
-                                                    style={
-                                                        "textDecoration": "underline",
-                                                        "cursor": "pointer",
-                                                    },
-                                                ),
-                                                daq.BooleanSwitch(
-                                                    id="exp-scale-y", on=False
-                                                ),
-                                            ],
+                                            children=make_log_switch(
+                                                "exp-scale-y", "Y-axis"
+                                            ),
                                             width=4,
-                                        ),
-                                        dbc.Tooltip(
-                                            "Click to enable a log scale for the Y-axis"
-                                            ". Click again to return to linear.",
-                                            id="exp-scale-y-help",
-                                            target="exp-scale-y-head",
                                         ),
                                     ],
                                 ),
@@ -233,71 +196,30 @@ def init_layouts(dash_app, df, cols):
                     style={"height": "100%"},
                     children=[
                         dcc.Graph(id="map-scatter", style={"height": "70%"},),
-                        html.H5(
-                            "Date Slider.",
-                            id="map-slider-head",
-                            className="mt-3",
-                            style={
-                                "textDecoration": "underline",
-                                "cursor": "pointer",
-                                "height": "3%",
-                            },
-                        ),
-                        dbc.Tooltip(
-                            "Slide through the dates to see how patterns"
-                            " evolve over time.",
-                            id="map-slider-help",
-                            target="map-slider-head",
-                        ),
                         dbc.Row(
-                            dbc.Col(make_slider(df, "map-slider")),
-                            style={"height": "12%"},
+                            style={"height": "15%"},
+                            children=dbc.Col(make_slider(df, "map-slider")),
                         ),
                         dbc.Row(
                             style={"height": "15%"},
                             justify="around",
                             children=[
                                 dbc.Col(
-                                    children=[
-                                        html.H5(
-                                            "Point Size",
-                                            id="map-size-dd-head",
-                                            style={
-                                                "textDecoration": "underline",
-                                                "cursor": "pointer",
-                                            },
-                                        ),
-                                        make_dd(id="map-size-dd", options=cols),
-                                    ],
+                                    children=make_dd(
+                                        "map-size-dd", "Marker Size", options=cols
+                                    ),
                                     width=4,
                                 ),
                                 dbc.Col(
-                                    children=[
-                                        html.H5(
-                                            "Point Color",
-                                            id="map-color-dd-head",
-                                            style={
-                                                "textDecoration": "underline",
-                                                "cursor": "pointer",
-                                            },
-                                        ),
-                                        make_dd(id="map-color-dd", options=cols),
-                                    ],
+                                    children=make_dd(
+                                        "map-color-dd",
+                                        "Marker Colour",
+                                        options=cols,
+                                        default_index=1,
+                                    ),
                                     width=4,
                                 ),
                             ],
-                        ),
-                        dbc.Tooltip(
-                            "Choose from columns in the dataset"
-                            " which represents point size",
-                            id="map-size-dd-help",
-                            target="map-size-dd-head",
-                        ),
-                        dbc.Tooltip(
-                            "Choose from columns in the dataset"
-                            " which represents point colour",
-                            id="map-color-dd-help",
-                            target="map-color-dd-head",
                         ),
                     ],
                 ),
