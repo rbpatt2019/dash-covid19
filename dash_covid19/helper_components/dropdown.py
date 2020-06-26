@@ -5,13 +5,13 @@ This function automates the process of creating dcc.Dropdown with an
 html.H5 header and a dbc.Tooltip tied to the header.
 
 .. _dcc.Dropdown
-    link
+    https://dash.plotly.com/dash-core-components/dropdown
 
 .. _html.H5
-    link
+    https://dash.plotly.com/dash-html-components/h5
 
 .. _dbc.Tooltip
-    link
+    https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tooltip/
 
 """
 from typing import List
