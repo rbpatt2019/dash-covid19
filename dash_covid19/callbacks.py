@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import plotly.express as px
 from dash.dependencies import Input, Output
+
 from dash_covid19.helper_components.graphs import line_plot
 
 
