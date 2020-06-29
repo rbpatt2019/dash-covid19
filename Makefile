@@ -13,6 +13,9 @@ git tag $(VERSION)
 git push origin master --tags
 endef
 
+app:
+	poetry run python wsgi.py
+
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
@@ -61,4 +64,4 @@ major: test
 	poetry version major
 	$(tags)
 
-.PHONY: clean reqs update develop install format lint test patch minor major
+.PHONY: app clean reqs update develop install format lint test patch minor major
