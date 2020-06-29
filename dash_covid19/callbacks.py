@@ -38,12 +38,12 @@ def init_callbacks(dash_app, layouts, data):
         }
         try:
             fmt = layouts[path]
-            exp, map, dt = active_lut[path]
+            exp, mp, dt = active_lut[path]
         except KeyError:
             fmt = layouts["/"]
-            exp, map, dt = active_lut["/"]
+            exp, mp, dt = active_lut["/"]
         finally:
-            return fmt, exp, map, dt
+            return fmt, exp, mp, dt
 
     @dash_app.callback(
         Output("exp-main-scatter", "figure"),
