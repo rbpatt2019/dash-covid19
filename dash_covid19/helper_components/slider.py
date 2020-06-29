@@ -60,11 +60,7 @@ def make_slider(
 
     Example
     -------
-    >>> dbc.Col(
-            children=make_slider(
-                pd.DataFrame([['2020-06-26', 1], ['2020-06-25', 10]], columns=['date', 'var'])
-            )
-        )
+    >>> layout = dbc.Col(children=make_slider(pd.DataFrame([['2020-06-26', 1], ['2020-06-25', 10]], columns=['date', 'var'])))
 
     """
     date_idx = range(len(df.date.unique()))

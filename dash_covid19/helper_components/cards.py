@@ -40,12 +40,7 @@ def link_card(
 
     Examples
     --------
-    >>> example_card = link_card(
-            id='exp-card',
-            title='Example Card',
-            text='Have you been to my github?',
-            href='https://github.com/rbpatt2019',
-        )
+    >>> example_card = link_card(id='exp-card', title='Example Card', text='Have you been to my github?', href='https://github.com/rbpatt2019')
 
     """
 

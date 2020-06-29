@@ -47,7 +47,7 @@ def make_log_switch(
 
     Example
     -------
-    >>> dbc.Col(children=make_log_switch())
+    >>> layout = dbc.Col(children=make_log_switch())
 
     """
     header = html.H5(

@@ -51,7 +51,7 @@ def line_plot(
 
     Examples
     --------
-    >>> settings = line_plot(pd.DataFrame([['2020-06-26', 1], ['2020-06-25', 10]]))
+    >>> settings = line_plot(pd.DataFrame([['2020-06-26', 1], ['2020-06-25', 10]], columns=['date', 'total_cases']))
 
     """
     return {

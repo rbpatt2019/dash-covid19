@@ -56,7 +56,7 @@ def make_dd(
 
     Example
     -------
-    >>> dbc.Col(children=make_dd())
+    >>> layout = dbc.Col(children=make_dd())
 
     """
     header = html.H5(
