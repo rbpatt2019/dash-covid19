@@ -1,8 +1,25 @@
 # -*- coding: utf-8 -*-
+"""Module: Layouts
+
+To comply with the Flask Application factory layout - as Dash apps are really just
+Flask apps under the hood - this function initialises the layouts for the app.
+
+As the app is multipage, each page layout is currently stored as a key: value pair
+in a dictionary, facilitating easy page changing by using a callback that matches
+the href to a key.
+
+One could also write this as multiple, small dash apps, each registered to a route,
+to take advantage of more standard Flask structure; however, since the app currently
+implements no additional Flask features, there is not currently any plans to do so.
+"""
+from typing import Dict, List, Tuple, Any
+
+import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table as table
+import pandas as pd
 
 from dash_covid19.helper_components.cards import link_card
 from dash_covid19.helper_components.dropdown import make_dd
@@ -11,8 +28,33 @@ from dash_covid19.helper_components.slider import make_slider
 from dash_covid19.helper_components.switch import make_log_switch
 
 
-def init_layouts(dash_app, df, cols):
-    """Initialise layouts and return default"""
+def init_layouts(
+    dash_app: dash.dash.Dash, df: pd.DataFrame, cols: List[str]
+) -> Tuple[dash.dash.Dash, Dict[str, Any]]:
+    """Initialise layouts and return default
+
+    This function is called with create_app() to initialise the app layout in
+    accordance with Flask Application Factory principles.
+
+    Parameters
+    ----------
+    dash_app : dash.dash.Dash
+        A dash app instantiated with dash.Dash()
+    df : pd.DataFrame
+        The data to be used with the app
+    cols : List[str]
+        The columns from df that can be selected for plottint throught the app
+
+    Returns
+    -------
+    Tuple
+        Containing two objects:
+
+        dash_app : dash.dash.Dash
+            The passed in Dash app with the layouts initiated
+        layouts : Dict[str, Any]
+            The dictionary containing the various href: layout key pairs
+    """
 
     header = """
         In these rapidly changing times, a good visualisation goes a long way towards
@@ -227,7 +269,6 @@ def init_layouts(dash_app, df, cols):
         ),
         "/dt": dbc.Col(
             style={"height": "100%"},
-            # className='d-flex justify-content-center',
             children=[
                 table.DataTable(
                     id="dt-data",
