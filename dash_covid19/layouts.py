@@ -12,7 +12,7 @@ One could also write this as multiple, small dash apps, each registered to a rou
 to take advantage of more standard Flask structure; however, since the app currently
 implements no additional Flask features, there is not currently any plans to do so.
 """
-from typing import Dict, List, Tuple, Any
+from typing import Any, Dict, List, Tuple
 
 import dash
 import dash_bootstrap_components as dbc
