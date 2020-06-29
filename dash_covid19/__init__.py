@@ -27,7 +27,7 @@ columns : List[str]
     and longitude are excluded as it does not make sense to visualise these on
     the included plots (scatter and world map)
 """
-from typing import Tuple
+from typing import List, Tuple
 
 import dash
 import dash_bootstrap_components as dbc
@@ -53,15 +53,25 @@ data = data.sort_values(by="date")
 columns = data.columns[4:-2]
 
 
-def create_app() -> Tuple[dash.dash.Dash, flask.app.Flask]:
+def create_app(
+    df: pd.DataFrame = data, cols: List[str] = columns
+) -> Tuple[dash.dash.Dash, flask.app.Flask]:
     """Initialise the dash app
 
     This function is designed to be called in the wsgi entry point script to create
     the Dash app.
 
+    Note
+    ----
+    The option to specify parameters exists solely for testing.
+    When called in the entry point, defaults should be used
+
     Parameters
     ----------
-    None
+    df : pd.DataFrame
+        The data to be used in the app
+    cols : List[str]
+        The columns that will be selectable
 
     Returns
     -------
@@ -81,8 +91,8 @@ def create_app() -> Tuple[dash.dash.Dash, flask.app.Flask]:
     )
 
     # Now that app is created, import callbacks and layouts
-    app, layouts = init_layouts(app, data, columns)
-    init_callbacks(app, layouts, data)
+    app, layouts = init_layouts(app, df, cols)
+    init_callbacks(app, layouts, df)
 
     # Create server instance
     server = app.server

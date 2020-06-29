@@ -59,5 +59,5 @@ def mock_app():
         ],
     )
 
-    app, _ = create_app(data=m_data, columns=m_data.columns[3:-2],)
+    app, _ = create_app(df=m_data, cols=m_data.columns[3:-2],)
     return app
