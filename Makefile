@@ -52,15 +52,15 @@ lint: format
 test: clean
 	pytest --webdriver Chrome --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=dash_covid19/ --cov-report term
 
-patch: test
+patch: update, test
 	poetry version patch
 	$(tags)
 
-minor: test
+minor: update, test
 	poetry version minor
 	$(tags)
 
-major: test
+major: update, test
 	poetry version major
 	$(tags)
 
