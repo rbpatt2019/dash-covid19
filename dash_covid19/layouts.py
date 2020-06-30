@@ -88,7 +88,7 @@ def init_layouts(
             children=[
                 dbc.Row(
                     justify="around",
-                    style={"height": "15%"},
+                    style={"height": "17%"},
                     children=dbc.Col(
                         [
                             html.H3(
@@ -106,6 +106,15 @@ def init_layouts(
                     children=[
                         dbc.Col(
                             link_card(
+                                id="ovw-card",
+                                title="Overview",
+                                text="Look at summary statistics for a selected country and examine their short-term trends.",
+                                href="/ovw",
+                            ),
+                            width=4,
+                        ),
+                        dbc.Col(
+                            link_card(
                                 id="exp-card",
                                 title="Explore",
                                 text="Explore correlations within the data across time, using cross-filtered scatter plots.",
@@ -113,6 +122,12 @@ def init_layouts(
                             ),
                             width=4,
                         ),
+                    ],
+                ),
+                dbc.Row(
+                    justify="around",
+                    style={"margin-top": "20px", "height": "20%"},
+                    children=[
                         dbc.Col(
                             link_card(
                                 id="map-card",
