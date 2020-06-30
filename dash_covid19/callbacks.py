@@ -48,7 +48,7 @@ def init_callbacks(
         ],
         [Input("url", "pathname")],
     )
-    def display_page(path: str) -> Tuple[Any, bool, bool, bool]:
+    def display_page(path: str) -> Tuple[Any, bool, bool, bool, bool]:
         """Callback for update app page layout
 
         The try/else block ensures that a 404 error is never thrown.
@@ -90,6 +90,44 @@ def init_callbacks(
             fmt = layouts["/"]
             ovw, exp, mp, dt = active_lut["/"]
         return fmt, ovw, exp, mp, dt
+
+    @dash_app.callback(
+        [
+            Output("ovw-ncpm", "value"),
+            Output("ovw-tcpm", "value"),
+            Output("ovw-ndpm", "value"),
+            Output("ovw-tdpm", "value"),
+        ],
+        [Input("ovw-dd", "value")],
+    )
+    def update_summary_LEDs(country: str) -> Tuple[float, ...]:
+        """Callback for updating summary displays
+
+        Parameters
+        ----------
+        country : str
+            Country whose data will be displayed
+
+        Returns
+        -------
+        Tuple[float, ...]
+            Containing 4 values:
+                ovw-ncpm
+                ovw-tcpm
+                ovw-ndpm
+                ovw-tdpm
+        """
+        df_sub = df[df["location"] == country].sort_values("date", ascending=False)
+        df_sub = df_sub.loc[
+            df_sub.index[[0]],
+            [
+                "new_cases_per_million",
+                "total_cases_per_million",
+                "new_deaths_per_million",
+                "total_deaths_per_million",
+            ],
+        ].round(3)
+        return tuple(df_sub.to_numpy()[0])
 
     @dash_app.callback(
         Output("exp-main-scatter", "figure"),
@@ -141,7 +179,7 @@ def init_callbacks(
                     x=df_sub[df_sub["continent"] == continent][x_axis],
                     y=df_sub[df_sub["continent"] == continent][y_axis],
                     text=df_sub[df_sub["continent"] == continent]["location"],
-                    customdf=df_sub[df_sub["continent"] == continent]["location"],
+                    customdata=df_sub[df_sub["continent"] == continent]["location"],
                     mode="markers",
                     marker={
                         "size": 10,
