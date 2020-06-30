@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-"""Helper Function: Make Log Switch
+"""Module: Switch
 
-This module contains a helper function for automating the process of creating a switch
-to convert an axis scale between linear and log with an html.H5 header tied to a
-dbc.Tooltip helper
+This module contains a helper function for automating the process of creating a switch_
+to convert an axis scale between linear and log with an html.H5_ header tied to a
+dbc.Tooltip_ helper
 
-.. _daq.BooleanSwitch
+.. _switch:
     https://dash.plotly.com/dash-daq/booleanswitch
 
-.. _html.H5
+.. _html.H5:
     https://dash.plotly.com/dash-html-components/h5
 
-.. _dbc.Tooltip
+.. _dbc.Tooltip:
     https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tooltip/
 
 """

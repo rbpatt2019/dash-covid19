@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Helper Component: Simple Navbar
 
-This module contains a predefined Navbar to be used for navigating the Dash App
+This module contains a predefined Navbar_ to be used for navigating the Dash App
 
-.. _dbc.NavbarSimple
+.. _Navbar:
     https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/
 
 Attributes

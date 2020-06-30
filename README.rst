@@ -1,31 +1,43 @@
 dash-covid19: A Dash App for Covid-19 Data
 ==========================================
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-
-[![GPLv3 License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Heroku Deploy Status](https://heroku-badge.herokuapp.com/?app=dash-covid19-pro)](https://dash-covid19-pro.herokuapp.com/)
-[![Travis Build Status](https://travis-ci.org/rbpatt2019/dash-covid19.svg?branch=master)](https://travis-ci.org/rbpatt2019/dash-covid19)
-[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/rbpatt2019/dash-covid19)
-[![Test Coverage](https://codecov.io/gh/rbpatt2019/dash-covid19/branch/master/graph/badge.svg)](https://codecov.io/gh/rbpatt2019/dash-covid19)
-[![Updates](https://pyup.io/repos/github/rbpatt2019/dash-covid19/shield.svg)](https://pyup.io/repos/github/rbpatt2019/dash-covid19/)
-[![Codestyle: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+.. image:: https://www.repostatus.org/badges/latest/active.svg
+   :alt: Project Status: Active – The project has reached a stable, usable state and is being actively developed.
+   :target: https://www.repostatus.org/#active
+.. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
+   :alt: GPLv3 License
+   :target: https://www.gnu.org/licenses/gpl-3.0
+.. image:: https://travis-ci.org/rbpatt2019/dash-covid19.svg?branch=master
+   :alt: Travis Build Status
+   :target: https://travis-ci.org/rbpatt2019/dash-covid19
+.. image:: https://percy.io/static/images/percy-badge.svg
+   :alt: This project is using Percy.io for visual regression testing.
+   :target: https://percy.io/rbpatt2019/dash-covid19)
+.. image:: https://codecov.io/gh/rbpatt2019/dash-covid19/branch/master/graph/badge.svg
+   :alt: Code Coverage
+   :target: https://codecov.io/gh/rbpatt2019/dash-covid19
+.. image:: https://pyup.io/repos/github/rbpatt2019/dash-covid19/shield.svg
+   :alt: Updates
+   :target: https://pyup.io/repos/github/rbpatt2019/dash-covid19/
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :alt: Codestyle - Blacks
+   :target: https://github.com/ambv/black
 
 Introduction
 ------------
 
-[dash-covid19](https://github.com/rbpatt2019/dash-covid19/) is a
-[Dash](https://dash.plotly.com/) app for viewing up-to-date information related
-to the spread of Covid-19 using the data provided by a variety of sources collated by [Our World in Data](https://ourworldindata.org/).
+`dash-covid19 <https://github.com/rbpatt2019/dash-covid19/>`_ is a
+`Dash <https://dash.plotly.com/>`_ app for viewing up-to-date information related
+to the spread of Covid-19 using the data provided by a variety of sources collated by `Our World in Data <https://ourworldindata.org/>`_.
 
 Docs and Code
 -------------
 
-This app is hosted by Heroku and lives [here](https://dash-covid19-pro.herokuapp.com/)
+This app is hosted by Heroku and lives `here <https://dash-covid19-pro.herokuapp.com/>`_.
 
 The documentation is embedded throughout the app. Any where you see underlined text, you can mouse over to get a pop-up about what each component does.
 
-The code lives in [the repo](https://github.com/rbpatt2019/dash-covid19/).
+The code lives in `the repo <https://github.com/rbpatt2019/dash-covid19/>`_.
 
 Usage
 -----
@@ -65,15 +77,15 @@ recognise the limitations in the data,
 and be open about any limitations when discussing interpretations of the data.
 
 To that end, I have elected to use data collated by the team at
-[Our World in Data](https://ourworldindata.org/) (OWID)
+`Our World in Data <https://ourworldindata.org/>`_ (OWID)
 when constructing my app. The data are freely avaialble, and can be found in their
-[repo](https://github.com/owid/covid-19-data/tree/master/public/data).
+`repo <https://github.com/owid/covid-19-data/tree/master/public/data>`_.
 Their principle source of data is the
-[European Center for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide)
+`European Center for Disease Prevention and Control <https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide>`_
 (ECDC), who provide daily updates of worldwide statistics.
 OWID thoroughly discusses all their sources, methods for data handling,
 and the reasoning behind any decisions they make relating to data management.
-Please, visit their [repo](https://github.com/owid/covid-19-data/tree/master/public/data)
+Please, visit their `repo <https://github.com/owid/covid-19-data/tree/master/public/data>`_
 for any questions you may have about the data.
 
 
@@ -81,12 +93,12 @@ Recent Changes
 --------------
 
 Please see the
-[CHANGELOG](https://github.com/rbpatt2019/dash-covid19/blob/master/CHANGELOG.md)
+`CHANGELOG <https://github.com/rbpatt2019/dash-covid19/blob/master/CHANGELOG.md>`_
 
 Contributing
 ------------
 
-If you would like to contribute to development, please see the [instructions](CONTRIBUTING.md)
+If you would like to contribute to development, please see the `instructions <CONTRIBUTING.md>`
 
 
 Next Steps
@@ -100,9 +112,6 @@ Next Steps
 Thank Yous
 ----------
 
--   [Dash](https://dash.plotly.com/) for developing an incredible
-    framework and excellent documentation.
--   [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/)
-    for making it so much easier to layout the app.
--   [OWID](https://ourworldindata.org/) for providing an incredible
-	 resource amid a rapidly evolving situation.
+- `Dash <https://dash.plotly.com/>`_ for developing an incredible framework and excellent documentation.
+- `Dash Bootstrap Components <https://dash-bootstrap-components.opensource.faculty.ai/>`_ for making it so much easier to layout the app.
+- `OWID <https://ourworldindata.org/>`_ for providing an incredible resource amid a rapidly evolving situation.

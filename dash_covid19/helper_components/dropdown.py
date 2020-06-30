@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Helper Function: Make Dropdown Menu
+"""Module: Dropdown
 
-This function automates the process of creating dcc.Dropdown with an
-html.H5 header and a dbc.Tooltip tied to the header.
+This function automates the process of creating dcc.Dropdown_ with an
+html.H5_ header and a dbc.Tooltip_ tied to the header.
 
-.. _dcc.Dropdown
+.. _dcc.Dropdown:
     https://dash.plotly.com/dash-core-components/dropdown
 
-.. _html.H5
+.. _html.H5:
     https://dash.plotly.com/dash-html-components/h5
 
-.. _dbc.Tooltip
+.. _dbc.Tooltip:
     https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tooltip/
 
 """

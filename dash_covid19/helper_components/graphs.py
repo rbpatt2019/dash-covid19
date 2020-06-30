@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Helper Components: Make a plotly line graph
+"""Module: Graphs
 
-This module contains a helper function for outputting a plotly line graph for use in
-a Dash interactive call back
+This module contains a helper function for outputting a plotly line graph_ for use in
+a Dash interactive callback_
 
-.. _Plotly Graphs
+.. _graph:
     https://plotly.com/python/line-charts/
 
-.. _Dash Callbacks
+.. _callback:
     https://dash.plotly.com/basic-callbacks
 
 """

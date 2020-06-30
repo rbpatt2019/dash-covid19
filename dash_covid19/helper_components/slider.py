@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Helper Function: Make Date Slider
+"""Module: Slider
 
-This module contains a helper function automate the process of creating a dcc.Slider
-with an html.H5 header tied to a dbc.Tooltip helper
+This module contains a helper function automate the process of creating a dcc.Slider_
+with an html.H5_ header tied to a dbc.Tooltip_ helper
 
-.. _dcc.Slider
+.. _dcc.Slider:
     https://dash.plotly.com/dash-core-components/slider
 
-.. _html.H5
+.. _html.H5:
     https://dash.plotly.com/dash-html-components/h5
 
-.. _dbc.Tooltip
+.. _dbc.Tooltip:
     https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tooltip/
 
 """

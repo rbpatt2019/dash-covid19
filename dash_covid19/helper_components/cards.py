@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Helper Componet: Link Card
+"""Module: Cards
 
-A frequently occuring use of the dash_bootstrap_components card is to provide a
+A frequently occuring use of the dash_bootstrap_components card_ is to provide a
 description and a link. This module provides a helper function to automate this
 case.
 
-.. _dbc.Card:
-    https://dash-bootstrap-components.opensource.faculty.ai/docs/components/card/
+.. _card: https://dash-bootstrap-components.opensource.faculty.ai/docs/components/card/
 
 """
 import dash
@@ -44,24 +43,18 @@ def link_card(
 
     """
 
-    return (
-        dbc.Card(
-            id=id,
-            body=True,
-            outline=False,
-            color="secondary",
-            inverse=True,
-            style={"height": "100%"},
-            children=[
-                html.H4(title, className="card-title", style={"text-align": "center"}),
-                html.P(text, className="card-text", style={"text-align": "center"}),
-                dbc.Button(
-                    "Let's go!",
-                    id=id + "-button",
-                    href=href,
-                    block=True,
-                    color="primary",
-                ),
-            ],
-        ),
+    return dbc.Card(
+        id=id,
+        body=True,
+        outline=False,
+        color="secondary",
+        inverse=True,
+        style={"height": "100%"},
+        children=[
+            html.H4(title, className="card-title", style={"text-align": "center"}),
+            html.P(text, className="card-text", style={"text-align": "center"}),
+            dbc.Button(
+                "Let's go!", id=id + "-button", href=href, block=True, color="primary",
+            ),
+        ],
     )
