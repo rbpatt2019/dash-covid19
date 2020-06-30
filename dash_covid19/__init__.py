@@ -6,26 +6,6 @@ established Flask recommendations, where possible. One of these is the factory m
 where necessary components are defined in submodule and linked to the app in a
 create_app function. This has several advantages, including modular structure and
 making the entry point script very clean.
-
-Attributes
-----------
-data : pd.DataFrame
-    The data to be plotted and displayed throughout the app. Collated by
-    Our World in Data
-
-    .. _
-
-location : pd.DataFrame
-    A data frame containing the latitude and longitude of the included countries.
-
-    This is necessary for scatter_mapbox.
-
-columns : List[str]
-    Those columns taht are to be available for selection in the app.
-
-    Here, the columns encoding date, iso code, country, continent, latitude,
-    and longitude are excluded as it does not make sense to visualise these on
-    the included plots (scatter and world map)
 """
 from typing import List, Tuple
 
@@ -36,26 +16,10 @@ import pandas as pd
 
 from dash_covid19.callbacks import init_callbacks
 from dash_covid19.layouts import init_layouts
-
-# Make sure data is global, as is needed by layouts
-data = pd.read_csv(
-    "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv"
-)
-data = data[~data.location.isin(["International", "World"])]
-
-# Add lat/lon data
-location = pd.read_csv("data/iso_lat_lon.csv")
-data = pd.merge(data, location, how="left", on="iso_code", sort=False, validate="m:1")
-
-# And sort by date
-data = data.sort_values(by="date")
-
-columns = data.columns[4:-2]
+from dash_covid19.data import init_data
 
 
-def create_app(
-    df: pd.DataFrame = data, cols: List[str] = columns
-) -> Tuple[dash.dash.Dash, flask.app.Flask]:
+def create_app(testing: bool = False) -> Tuple[dash.dash.Dash, flask.app.Flask]:
     """Initialise the dash app
 
     This function is designed to be called in the wsgi entry point script to create
@@ -89,6 +53,9 @@ def create_app(
         external_stylesheets=[dbc.themes.SANDSTONE, "./assets/stylesheet.css"],
         suppress_callback_exceptions=True,
     )
+
+    # Get data
+    df, cols = init_data(testing=testing)
 
     # Now that app is created, import callbacks and layouts
     app, layouts = init_layouts(app, df, cols)

@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
-import dash
-
-
 """
+Functions for testing the callbacks in the app
+
+A mock app is used to prevent repeatedly downloading the data from OWID
+as well as to speed up tests
+
 dash_duo.driver.maximize_window() is necessary for accessing the dropdown
 Otherwise, selenium cannot click on it.
 """
+from time import sleep
+
+import dash
 
 
 def test_dccb001_data_table(dash_duo, mock_app):
+    """Test that navigating to data table opens expected page"""
     dash_duo.start_server(mock_app)
     dash_duo.driver.maximize_window()
 
@@ -22,6 +28,8 @@ def test_dccb001_data_table(dash_duo, mock_app):
 
 
 def test_dccb002_interactive_scatter(dash_duo, mock_app):
+    """Test that navigating to scatter plot opens expected page
+    and that the callbacks are triggered appropriately"""
     dash_duo.start_server(mock_app)
     dash_duo.driver.maximize_window()
 
@@ -42,6 +50,8 @@ def test_dccb002_interactive_scatter(dash_duo, mock_app):
 
 
 def test_dccb003_interactive_map(dash_duo, mock_app):
+    """Test that navigating to map opens expected page
+    and that the callbacks are triggered appropriately"""
     dash_duo.start_server(mock_app)
     dash_duo.driver.maximize_window()
 
@@ -56,4 +66,6 @@ def test_dccb003_interactive_map(dash_duo, mock_app):
     dash_duo.select_dcc_dropdown("#map-color-dd", index=2)
 
     # And confirm
+    # This never seems to load in time, so adding explicit wait
+    sleep(1)
     dash_duo.percy_snapshot("dccb002-graph")
