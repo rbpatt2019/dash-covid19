@@ -38,16 +38,16 @@ Docs and Code
 
 This app is hosted by Heroku and lives `here <https://dash-covid19-pro.herokuapp.com/>`_.
 
-The helpfully hints are embedded throughout the app. Any where you see underlined text, you can mouse over to get a pop-up about what each component does.
+The helpful hints are embedded throughout the app. Any where you see underlined text, you can mouse over to get a pop-up about what each component does.
 
-The documentation lines `here <https://readthedocs.org/projects/dash-covid19/>`_.
+The documentation lines `here <https://dash-covid19.readthedocs.io/en/latest/>`_.
 
-The code lives in `the repo <https://github.com/rbpatt2019/dash-covid19/>`_.
+The code lives in `here <https://github.com/rbpatt2019/dash-covid19/>`_.
 
 Usage
 -----
 
-The app contains six pages. The home page provides a brief summary of all the assorted links within the app, as well as an explanation of why I built the app.
+The app contains 4 pages and 3 external links. The home page provides a brief summary of all the assorted links within the app, as well as an explanation of why I built the app.
 
 The "Explorer" page provides an interactive graph to help the user, well, explore the most up-to-date Covid-19 data.
 This page is constantly changing, so check back to see how the graphs evolve!
@@ -58,10 +58,7 @@ but regional impacts as well. You can change the data represented by the size an
 The "Data Table" pages displays the data in an interactive table that allows the user to sort and filter columns of interest.
 The four left-most columns (iso_code, continent, location, and date) remain fixed as you scroll.
 
-As a proudly open-source project, the "Code" page takes you to the Github repo where the code lives. It's all open, so feel free to explore,
-contribute, or report bugs!
-
-Finally, the "Data" page takes you to the repo where OWID hosts their data. More on that below...
+As this project is proudly open source, the Navbar also includes three external links. These will take you back to this repo to view the code, to OWID's repo to view the data, or to ReadTheDocs to view the source code documentation. This way, you can see exactly where the data comes from, and how it is being handled.
 
 About the Data
 --------------
