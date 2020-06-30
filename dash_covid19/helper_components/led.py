@@ -64,5 +64,5 @@ def make_led(
         id=id + "-help",
         target=id + "-head",
     )
-    led = daq.LEDDisplay(id=id, className="d-flex justify-content-center")
+    led = daq.LEDDisplay(id=id, className="d-flex justify-content-center", color="#000")
     return [header, help, led]
