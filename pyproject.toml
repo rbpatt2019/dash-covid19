@@ -2,9 +2,9 @@
 name = "dash-covid19"
 version = "1.1.1"
 description = "An interactive Dash app for viewing Covid-19 data"
-authors = ["rbpatt2019 <ryan.patterson.2015@gmail.com>"]
+authors = ["rbpatt2019 <rb.patterson.cross@gmail.com>"]
 license = "GPL-3.0+"
-readme = "README.md"
+readme = "README.rst"
 repository = "https://github.com/rbpatt2019/dash-covid19"
 classifiers=[
         "Development Status :: 4 - Beta",
