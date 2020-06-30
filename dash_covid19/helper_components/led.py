@@ -23,7 +23,7 @@ import dash_html_components as html
 
 
 def make_led(
-    id: str = "display", variable: str = "X-axis"
+    id: str = "display", variable: str = "New Cases per Million"
 ) -> List[dash.development.base_component.ComponentMeta]:
     """Generate an LED display for numeric data tied to a header with a helper
 
@@ -55,7 +55,7 @@ def make_led(
         style={"textDecoration": "underline", "cursor": "pointer",},
     )
     help = dbc.Tooltip(
-        f"Click to enable a log scale for the {axis}. Click again to return to linear.",
+        f"Current {variable} for selected country",
         id=id + "-help",
         target=id + "-head",
     )
