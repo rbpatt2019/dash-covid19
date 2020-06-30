@@ -53,7 +53,7 @@ def make_led(
         f"{variable}",
         id=id + "-head",
         style={
-            "margin-top": "20px",
+            "margin-top": "40px",
             "textAlign": "center",
             "textDecoration": "underline",
             "cursor": "pointer",

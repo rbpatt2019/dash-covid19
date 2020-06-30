@@ -157,7 +157,7 @@ def init_layouts(
             children=[
                 dbc.Row(
                     justify="around",
-                    style={"height": "30%"},
+                    style={"height": "40%"},
                     children=[
                         dbc.Col(
                             children=make_led(
