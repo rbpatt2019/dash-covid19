@@ -23,6 +23,7 @@ import pandas as pd
 
 from dash_covid19.helper_components.cards import link_card
 from dash_covid19.helper_components.dropdown import make_dd
+from dash_covid19.helper_components.led import make_led
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.slider import make_slider
 from dash_covid19.helper_components.switch import make_log_switch
@@ -149,6 +150,11 @@ def init_layouts(
                     ],
                 ),
             ],
+        ),
+        "/ovw": dbc.Col(
+            id="ovw",
+            style={"height": "100%"},
+            children=make_led(id="ovw-ncpm", variable="New Case Per Million"),
         ),
         "/exp": dbc.Col(
             id="exp",

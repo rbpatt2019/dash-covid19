@@ -52,7 +52,11 @@ def make_led(
     header = html.H5(
         f"{variable}",
         id=id + "-head",
-        style={"textDecoration": "underline", "cursor": "pointer",},
+        style={
+            "textAlign": "center",
+            "textDecoration": "underline",
+            "cursor": "pointer",
+        },
     )
     help = dbc.Tooltip(
         f"Current {variable} for selected country",
