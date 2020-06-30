@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.2.0
+------
+
+- Typing and docstrings now included on all functions
+- Documentation integrated onto ReadTheDocs
+
 v1.1.1
 ------
 
