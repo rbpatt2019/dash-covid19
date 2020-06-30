@@ -100,7 +100,7 @@ def init_callbacks(
         ],
         [Input("ovw-dd", "value")],
     )
-    def update_summary_LEDs(country: str) -> Tuple[float, ...]:
+    def update_summary_LEDs(country: str) -> Tuple[str, ...]:
         """Callback for updating summary displays
 
         Parameters
@@ -110,7 +110,7 @@ def init_callbacks(
 
         Returns
         -------
-        Tuple[float, ...]
+        Tuple[str, ...]
             Containing 4 values:
                 ovw-ncpm
                 ovw-tcpm
@@ -118,16 +118,20 @@ def init_callbacks(
                 ovw-tdpm
         """
         df_sub = df[df["location"] == country].sort_values("date", ascending=False)
-        df_sub = df_sub.loc[
-            df_sub.index[[0]],
-            [
-                "new_cases_per_million",
-                "total_cases_per_million",
-                "new_deaths_per_million",
-                "total_deaths_per_million",
-            ],
-        ].round(3)
-        return tuple(df_sub.to_numpy()[0])
+        df_sub = (
+            df_sub.loc[
+                df_sub.index[[0]],
+                [
+                    "new_cases_per_million",
+                    "total_cases_per_million",
+                    "new_deaths_per_million",
+                    "total_deaths_per_million",
+                ],
+            ]
+            .round(3)
+            .to_numpy()[0]
+        )
+        return tuple(str(x).rjust(9, "0") for x in df_sub)
 
     @dash_app.callback(
         Output("exp-main-scatter", "figure"),
