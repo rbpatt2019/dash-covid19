@@ -23,6 +23,7 @@ import pandas as pd
 
 from dash_covid19.helper_components.cards import link_card
 from dash_covid19.helper_components.dropdown import make_dd
+from dash_covid19.helper_components.led import make_led
 from dash_covid19.helper_components.navbar import navbar
 from dash_covid19.helper_components.slider import make_slider
 from dash_covid19.helper_components.switch import make_log_switch
@@ -88,7 +89,7 @@ def init_layouts(
             children=[
                 dbc.Row(
                     justify="around",
-                    style={"height": "15%"},
+                    style={"height": "17%"},
                     children=dbc.Col(
                         [
                             html.H3(
@@ -106,6 +107,15 @@ def init_layouts(
                     children=[
                         dbc.Col(
                             link_card(
+                                id="ovw-card",
+                                title="Overview",
+                                text="Look at summary statistics for a selected country and examine their short-term trends.",
+                                href="/ovw",
+                            ),
+                            width=4,
+                        ),
+                        dbc.Col(
+                            link_card(
                                 id="exp-card",
                                 title="Explore",
                                 text="Explore correlations within the data across time, using cross-filtered scatter plots.",
@@ -113,6 +123,12 @@ def init_layouts(
                             ),
                             width=4,
                         ),
+                    ],
+                ),
+                dbc.Row(
+                    justify="around",
+                    style={"margin-top": "20px", "height": "20%"},
+                    children=[
                         dbc.Col(
                             link_card(
                                 id="map-card",
@@ -132,6 +148,47 @@ def init_layouts(
                             width=4,
                         ),
                     ],
+                ),
+            ],
+        ),
+        "/ovw": dbc.Col(
+            id="ovw",
+            style={"height": "100%"},
+            children=[
+                dbc.Row(
+                    justify="around",
+                    style={"height": "40%"},
+                    children=[
+                        dbc.Col(
+                            children=make_led(
+                                id="ovw-ncpm", variable="New Cases Per Million"
+                            )
+                            + make_led(
+                                id="ovw-tcpm", variable="Total Cases per Million"
+                            ),
+                        ),
+                        dbc.Col(
+                            children=make_led(
+                                id="ovw-ndpm", variable="New Deaths per Million"
+                            )
+                            + make_led(
+                                id="ovw-tdpm", variable="Total Deaths per Million"
+                            )
+                        ),
+                    ],
+                ),
+                dbc.Row(
+                    justify="around",
+                    style={"margin-top": "20px", "height": "40%"},
+                    children=dbc.Col(
+                        children=make_dd(
+                            id="ovw-dd",
+                            label="Select a country...",
+                            options=sorted(list(df.location.unique())),
+                            default_index=0,
+                        ),
+                        width=4,
+                    ),
                 ),
             ],
         ),

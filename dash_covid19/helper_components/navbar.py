@@ -20,7 +20,7 @@ navbar = dbc.NavbarSimple(
     brand="dash-covid19",
     brand_href="/",
     fluid=True,
-    color="secondary",
+    color="primary",
     dark=True,
     children=[
         dbc.DropdownMenu(
@@ -41,6 +41,7 @@ navbar = dbc.NavbarSimple(
             in_navbar=True,
             label="External",
         ),
+        dbc.NavItem(dbc.NavLink("Overview", id="nav-bar-ovw", href="/ovw")),
         dbc.NavItem(dbc.NavLink("Explorer", id="nav-bar-exp", href="/exp")),
         dbc.NavItem(dbc.NavLink("World Map", id="nav-bar-map", href="/map")),
         dbc.NavItem(dbc.NavLink("Data", id="nav-bar-dt", href="/dt")),

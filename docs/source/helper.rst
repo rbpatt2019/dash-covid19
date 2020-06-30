@@ -49,3 +49,10 @@ Function: line\_plot
    :members:
    :undoc-members:
    :show-inheritance:
+
+Function: make\_led
+----------------------
+.. automodule:: dash_covid19.helper_components.led
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -62,7 +62,11 @@ def make_dd(
     header = html.H5(
         label,
         id=id + "-head",
-        style={"textDecoration": "underline", "cursor": "pointer",},
+        style={
+            "textAlign": "center",
+            "textDecoration": "underline",
+            "cursor": "pointer",
+        },
     )
     help = dbc.Tooltip(
         f"Choose from columns in the dataset which is to be plotted on {label}",

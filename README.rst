@@ -47,7 +47,9 @@ The code lives in `here <https://github.com/rbpatt2019/dash-covid19/>`_.
 Usage
 -----
 
-The app contains 4 pages and 3 external links. The home page provides a brief summary of all the assorted links within the app, as well as an explanation of why I built the app.
+The app contains 5 pages and 3 external links. The home page provides a brief summary of all the assorted links within the app, as well as an explanation of why I built the app.
+
+The "Overview" page provides a concise display that summarises the impact of Covid-19 in a country using population adjusted statistics.
 
 The "Explorer" page provides an interactive graph to help the user, well, explore the most up-to-date Covid-19 data.
 This page is constantly changing, so check back to see how the graphs evolve!
@@ -106,8 +108,7 @@ If you would like to contribute to development, please see the `instructions <CO
 Next Steps
 ----------
 
-- Add data summary page
-- Refactor layout to move repetitive structures to helpers
+- Update data summary colours based on 7 day averages
 - Continue to expand documentation
 - Caching to improve performance
 

@@ -41,13 +41,14 @@ def init_callbacks(
     @dash_app.callback(
         [
             Output("page-content", "children"),
+            Output("nav-bar-ovw", "active"),
             Output("nav-bar-exp", "active"),
             Output("nav-bar-map", "active"),
             Output("nav-bar-dt", "active"),
         ],
         [Input("url", "pathname")],
     )
-    def display_page(path: str) -> Tuple[Any, bool, bool, bool]:
+    def display_page(path: str) -> Tuple[Any, bool, bool, bool, bool]:
         """Callback for update app page layout
 
         The try/else block ensures that a 404 error is never thrown.
@@ -69,24 +70,68 @@ def init_callbacks(
 
             fmt : Any
                 The page layout
+            ovw : bool
             exp : bool
             mp : bool
             dt : bool
                 The active state of the navigation links
         """
         active_lut = {
-            "/": (False, False, False),
-            "/exp": (True, False, False),
-            "/map": (False, True, False),
-            "/dt": (False, False, True),
+            "/": (False, False, False, False),
+            "/ovw": (True, False, False, False),
+            "/exp": (False, True, False, False),
+            "/map": (False, False, True, False),
+            "/dt": (False, False, False, True),
         }
         try:
             fmt = layouts[path]
-            exp, mp, dt = active_lut[path]
+            ovw, exp, mp, dt = active_lut[path]
         except KeyError:
             fmt = layouts["/"]
-            exp, mp, dt = active_lut["/"]
-        return fmt, exp, mp, dt
+            ovw, exp, mp, dt = active_lut["/"]
+        return fmt, ovw, exp, mp, dt
+
+    @dash_app.callback(
+        [
+            Output("ovw-ncpm", "value"),
+            Output("ovw-tcpm", "value"),
+            Output("ovw-ndpm", "value"),
+            Output("ovw-tdpm", "value"),
+        ],
+        [Input("ovw-dd", "value")],
+    )
+    def update_summary_LEDs(country: str) -> Tuple[str, ...]:
+        """Callback for updating summary displays
+
+        Parameters
+        ----------
+        country : str
+            Country whose data will be displayed
+
+        Returns
+        -------
+        Tuple[str, ...]
+            Containing 4 values:
+                ovw-ncpm
+                ovw-tcpm
+                ovw-ndpm
+                ovw-tdpm
+        """
+        df_sub = df[df["location"] == country].sort_values("date", ascending=False)
+        df_sub = (
+            df_sub.loc[
+                df_sub.index[[0]],
+                [
+                    "new_cases_per_million",
+                    "total_cases_per_million",
+                    "new_deaths_per_million",
+                    "total_deaths_per_million",
+                ],
+            ]
+            .round(3)
+            .to_numpy()[0]
+        )
+        return tuple(str(x).rjust(9, "0") for x in df_sub)
 
     @dash_app.callback(
         Output("exp-main-scatter", "figure"),
@@ -138,7 +183,7 @@ def init_callbacks(
                     x=df_sub[df_sub["continent"] == continent][x_axis],
                     y=df_sub[df_sub["continent"] == continent][y_axis],
                     text=df_sub[df_sub["continent"] == continent]["location"],
-                    customdf=df_sub[df_sub["continent"] == continent]["location"],
+                    customdata=df_sub[df_sub["continent"] == continent]["location"],
                     mode="markers",
                     marker={
                         "size": 10,
