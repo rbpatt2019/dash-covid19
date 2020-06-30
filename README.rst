@@ -19,6 +19,9 @@ dash-covid19: A Dash App for Covid-19 Data
 .. image:: https://pyup.io/repos/github/rbpatt2019/dash-covid19/shield.svg
    :alt: Updates
    :target: https://pyup.io/repos/github/rbpatt2019/dash-covid19/
+.. image:: https://readthedocs.org/projects/dash-covid19/badge/?version=latest
+   :target: https://dash-covid19.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :alt: Codestyle - Blacks
    :target: https://github.com/ambv/black
@@ -35,7 +38,9 @@ Docs and Code
 
 This app is hosted by Heroku and lives `here <https://dash-covid19-pro.herokuapp.com/>`_.
 
-The documentation is embedded throughout the app. Any where you see underlined text, you can mouse over to get a pop-up about what each component does.
+The helpfully hints are embedded throughout the app. Any where you see underlined text, you can mouse over to get a pop-up about what each component does.
+
+The documentation lines `here <https://readthedocs.org/projects/dash-covid19/>`_.
 
 The code lives in `the repo <https://github.com/rbpatt2019/dash-covid19/>`_.
 
