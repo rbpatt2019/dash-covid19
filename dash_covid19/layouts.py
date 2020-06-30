@@ -184,7 +184,7 @@ def init_layouts(
                         children=make_dd(
                             id="ovw-dd",
                             label="Select a country...",
-                            options=list(df.location.unique()),
+                            options=sorted(list(df.location.unique())),
                             default_index=0,
                         ),
                         width=4,
