@@ -65,6 +65,10 @@ def init_layouts(
         The cards below provide brief summaries of the sections in the app. Click on
         one to get started! You can also navigate with the links at the top and can
         always return to this page by clicking on dash-covid19 in the top left.
+
+        A number of external links are provide under the 'External' dropdown in the
+        Navbar. These links will take you to the code, the data at OWID, and the
+        documentation - all proudly open source!
         """
 
     layouts = {
@@ -124,30 +128,6 @@ def init_layouts(
                                 title="Data Table",
                                 text="Examine the raw data to develop a better understanding of its structure and distribution",
                                 href="/dt",
-                            ),
-                            width=4,
-                        ),
-                    ],
-                ),
-                dbc.Row(
-                    justify="around",
-                    style={"margin-top": "20px", "height": "20%"},
-                    children=[
-                        dbc.Col(
-                            link_card(
-                                id="code-card",
-                                title="Code",
-                                text="This project is proudly open source. Feel free to report bugs and make contriubtions.",
-                                href="https://github.com/rbpatt2019/dash-covid19",
-                            ),
-                            width=4,
-                        ),
-                        dbc.Col(
-                            link_card(
-                                id="info-card",
-                                title="Info",
-                                text="Learn more about the data and how it was collated by the wonderful team at OWID.",
-                                href="https://github.com/owid/covid-19-data/tree/master/public/data",
                             ),
                             width=4,
                         ),

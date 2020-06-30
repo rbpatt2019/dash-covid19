@@ -23,22 +23,26 @@ navbar = dbc.NavbarSimple(
     color="secondary",
     dark=True,
     children=[
+        dbc.DropdownMenu(
+            children=[
+                dbc.DropdownMenuItem(
+                    "Code", href="https://github.com/rbpatt2019/dash-covid19"
+                ),
+                dbc.DropdownMenuItem(
+                    "Docs", href="https://dash-covid19.readthedocs.io/en/latest/"
+                ),
+                dbc.DropdownMenuItem(
+                    "OWID",
+                    href="https://github.com/owid/covid-19-data/tree/master/public/data",
+                ),
+            ],
+            id="nab-bar-dd",
+            nav=True,
+            in_navbar=True,
+            label="External",
+        ),
         dbc.NavItem(dbc.NavLink("Explorer", id="nav-bar-exp", href="/exp")),
         dbc.NavItem(dbc.NavLink("World Map", id="nav-bar-map", href="/map")),
         dbc.NavItem(dbc.NavLink("Data", id="nav-bar-dt", href="/dt")),
-        dbc.NavItem(
-            dbc.NavLink(
-                "Code",
-                id="nav-bar-code",
-                href="https://github.com/rbpatt2019/dash-covid19",
-            )
-        ),
-        dbc.NavItem(
-            dbc.NavLink(
-                "Info",
-                id="nav-bar-info",
-                href="https://github.com/owid/covid-19-data/tree/master/public/data",
-            )
-        ),
     ],
 )
