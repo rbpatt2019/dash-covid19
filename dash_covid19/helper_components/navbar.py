@@ -20,7 +20,7 @@ navbar = dbc.NavbarSimple(
     brand="dash-covid19",
     brand_href="/",
     fluid=True,
-    color="secondary",
+    color="primary",
     dark=True,
     children=[
         dbc.DropdownMenu(

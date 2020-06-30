@@ -50,7 +50,7 @@ def create_app(testing: bool = False) -> Tuple[dash.dash.Dash, flask.app.Flask]:
     # Create app
     app = dash.Dash(
         __name__,
-        external_stylesheets=[dbc.themes.SANDSTONE, "./assets/stylesheet.css"],
+        external_stylesheets=[dbc.themes.SPACELAB, "./assets/stylesheet.css"],
         suppress_callback_exceptions=True,
     )
 
