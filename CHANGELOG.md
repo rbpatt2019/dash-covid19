@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.2.1
+------
+
+- Group external links in Navbar
+- Add link to documentation
+
 v1.2.0
 ------
 

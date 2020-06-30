@@ -3,7 +3,7 @@ VERSION=$$(grep version pyproject.toml | sed -n 1p | awk '/version/ {print $$3}'
 define requirements
 poetry export --without-hashes --dev -f requirements.txt -o requirements.txt
 git add requirements.txt
-git commit -m 'Update requirements.txt'
+-git commit -m 'Update requirements.txt'
 endef
 
 define tags
@@ -32,7 +32,7 @@ reqs:
 update:
 	poetry update
 	git add poetry.lock
-	git commit -m 'Update dependencies'
+	-git commit -m 'Update dependencies'
 	$(requirements)
 
 develop:
@@ -52,15 +52,15 @@ lint: format
 test: clean
 	pytest --webdriver Chrome --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=dash_covid19/ --cov-report term
 
-patch: test
+patch: update test
 	poetry version patch
 	$(tags)
 
-minor: test
+minor: update test
 	poetry version minor
 	$(tags)
 
-major: test
+major: update test
 	poetry version major
 	$(tags)
 
