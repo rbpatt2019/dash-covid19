@@ -14,7 +14,7 @@ Clone the repo
 .. code-block:: sh
    :linenos:
 
-   git clone https://github.com/rbpatt2019/ToDonePy.git
+   git clone https://github.com/rbpatt2019/dash-covid19
    cd ToDonePy
 
 Make a new environment
