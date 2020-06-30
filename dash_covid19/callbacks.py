@@ -41,6 +41,7 @@ def init_callbacks(
     @dash_app.callback(
         [
             Output("page-content", "children"),
+            Output("nav-bar-ovw", "active"),
             Output("nav-bar-exp", "active"),
             Output("nav-bar-map", "active"),
             Output("nav-bar-dt", "active"),
@@ -69,24 +70,26 @@ def init_callbacks(
 
             fmt : Any
                 The page layout
+            ovw : bool
             exp : bool
             mp : bool
             dt : bool
                 The active state of the navigation links
         """
         active_lut = {
-            "/": (False, False, False),
-            "/exp": (True, False, False),
-            "/map": (False, True, False),
-            "/dt": (False, False, True),
+            "/": (False, False, False, False),
+            "/ovw": (True, False, False, False),
+            "/exp": (False, True, False, False),
+            "/map": (False, False, True, False),
+            "/dt": (False, False, False, True),
         }
         try:
             fmt = layouts[path]
-            exp, mp, dt = active_lut[path]
+            ovw, exp, mp, dt = active_lut[path]
         except KeyError:
             fmt = layouts["/"]
-            exp, mp, dt = active_lut["/"]
-        return fmt, exp, mp, dt
+            ovw, exp, mp, dt = active_lut["/"]
+        return fmt, ovw, exp, mp, dt
 
     @dash_app.callback(
         Output("exp-main-scatter", "figure"),
