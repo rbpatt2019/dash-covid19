@@ -154,7 +154,43 @@ def init_layouts(
         "/ovw": dbc.Col(
             id="ovw",
             style={"height": "100%"},
-            children=make_led(id="ovw-ncpm", variable="New Case Per Million"),
+            children=[
+                dbc.Row(
+                    justify="around",
+                    style={"margin-top": "20px", "height": "40%"},
+                    children=[
+                        dbc.Col(
+                            children=make_led(
+                                id="ovw-ncpm", variable="New Cases Per Million"
+                            )
+                            + make_led(
+                                id="ovw-tcpm", variable="Total Cases per Million"
+                            ),
+                        ),
+                        dbc.Col(
+                            children=make_led(
+                                id="ovw-ndpm", variable="New Deaths per Million"
+                            )
+                            + make_led(
+                                id="ovw-tdpm", variable="Total Deaths per Million"
+                            )
+                        ),
+                    ],
+                ),
+                dbc.Row(
+                    justify="around",
+                    style={"margin-top": "20px", "height": "40%"},
+                    children=dbc.Col(
+                        children=make_dd(
+                            id="ovw-dd",
+                            label="Select a country...",
+                            options=list(df.location.unique()),
+                            default_index=0,
+                        ),
+                        width=4,
+                    ),
+                ),
+            ],
         ),
         "/exp": dbc.Col(
             id="exp",
