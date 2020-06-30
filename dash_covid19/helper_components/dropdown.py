@@ -1,10 +1,64 @@
 # -*- coding: utf-8 -*-
+"""Module: Dropdown
+
+This function automates the process of creating dcc.Dropdown_ with an
+html.H5_ header and a dbc.Tooltip_ tied to the header.
+
+.. _dcc.Dropdown:
+    https://dash.plotly.com/dash-core-components/dropdown
+
+.. _html.H5:
+    https://dash.plotly.com/dash-html-components/h5
+
+.. _dbc.Tooltip:
+    https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tooltip/
+
+"""
+from typing import List
+
+import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 
 
-def make_dd(id, label, placeholder="Select a variable", options=[], default_index=0):
+def make_dd(
+    id: str = "dd",
+    label: str = "Dropdown Menu",
+    placeholder: str = "Select a variable",
+    options: List[str] = ["default"],
+    default_index: int = 0,
+) -> List[dash.development.base_component.ComponentMeta]:
+    """Generate a Dropdown menu with a header tied to a tooltip
+
+    Notes
+    -----
+        This function returns a list, and is designed to be passed directly to the
+        children argument of a Dash Component
+
+    Parameters
+    ----------
+    id : str
+        Component ID. Must be unique across app.
+    label : str
+        Label for Dropdown menu
+    placeholder : str
+        Default text for Dropdown
+    options : List[str]
+        Possible selections
+    default_index : int
+        Which selection to default to
+
+    Returns
+    -------
+    List[dash.development.base_component.ComponentMeta]
+        List of the header, helper, and dropdown components
+
+    Example
+    -------
+    >>> layout = dbc.Col(children=make_dd())
+
+    """
     header = html.H5(
         label,
         id=id + "-head",

@@ -1,4 +1,18 @@
 # -*- coding: utf-8 -*-
+"""Helper Component: Simple Navbar
+
+This module contains a predefined Navbar_ to be used for navigating the Dash App
+
+.. _Navbar:
+    https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/
+
+Attributes
+----------
+navbar: dash.development.base_component.ComponentMeta
+    A dbc.NavbarSimple. The brand_href returns you to home, while the other NavItems
+    navigate various pages, both internal and external, relevant to the app.
+
+"""
 import dash_bootstrap_components as dbc
 
 navbar = dbc.NavbarSimple(

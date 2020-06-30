@@ -1,11 +1,42 @@
 # -*- coding: utf-8 -*-
+"""Module: Callbacks
+
+To comply with the Flask Application factory layout - as Dash apps are really just
+Flask apps under the hood - this function initialises the callbacks for the app.
+
+"""
+from typing import Any, Dict, List, Tuple, Union
+
+import dash
+import pandas as pd
+import plotly
 import plotly.express as px
 from dash.dependencies import Input, Output
+
 from dash_covid19.helper_components.graphs import line_plot
 
 
-def init_callbacks(dash_app, layouts, data):
-    """Initialise dash callbacks"""
+def init_callbacks(
+    dash_app: dash.dash.Dash, layouts: Dict[str, Any], df: pd.DataFrame
+) -> None:
+    """Initialise callbacks
+
+    This function is called with create_app() to initialise the app callbacks in
+    accordance with Flask Application Factory principles.
+
+    Parameters
+    ----------
+    dash_app : dash.dash.Dash
+        A dash app instantiated with dash.Dash()
+    layouts : Dict[str, Any]
+        Dictionary containung href: layout pairs
+    df : pd.DataFrame
+        The data to be used with the app
+
+    Returns
+    -------
+    None
+    """
 
     @dash_app.callback(
         [
@@ -16,18 +47,32 @@ def init_callbacks(dash_app, layouts, data):
         ],
         [Input("url", "pathname")],
     )
-    def display_page(path):
+    def display_page(path: str) -> Tuple[Any, bool, bool, bool]:
         """Callback for update app page layout
 
-        The try/else/finally block ensures that a 404 error is never thrown.
+        The try/else block ensures that a 404 error is never thrown.
         When in doubt, redirect to the home page.
 
         The outputs to nav-bar-xxx 'active' are necessary as clicking on the cards
         on the hme page does not trigger the links to show active. These outputs
         guarantee that they will show 'active' no matter how they are triggered.
 
-        active_lut contains the necessary booleean encodings for active links.
-        active_lut['/'][0] is the exp link, while active_lut['/'][1] is dt
+        Parameters
+        ----------
+        path : str
+            The href to be checked for page changing
+
+        Returns
+        -------
+        Tuple[Any, bool, bool, bool]
+            Containing 4 objects:
+
+            fmt : Any
+                The page layout
+            exp : bool
+            mp : bool
+            dt : bool
+                The active state of the navigation links
         """
         active_lut = {
             "/": (False, False, False),
@@ -37,12 +82,11 @@ def init_callbacks(dash_app, layouts, data):
         }
         try:
             fmt = layouts[path]
-            exp, map, dt = active_lut[path]
+            exp, mp, dt = active_lut[path]
         except KeyError:
             fmt = layouts["/"]
-            exp, map, dt = active_lut["/"]
-        finally:
-            return fmt, exp, map, dt
+            exp, mp, dt = active_lut["/"]
+        return fmt, exp, mp, dt
 
     @dash_app.callback(
         Output("exp-main-scatter", "figure"),
@@ -54,16 +98,47 @@ def init_callbacks(dash_app, layouts, data):
             Input("exp-main-slider", "value"),
         ],
     )
-    def update_exp_main_scatter(x_axis, y_axis, x_log, y_log, date_val):
-        date = data.date.unique()[date_val]
-        data_sub = data[data["date"] == date]
+    def update_exp_main_scatter(
+        x_axis: str, y_axis: str, x_log: bool, y_log: bool, date_val: int
+    ) -> Dict[str, Any]:
+        """Callback for updating the main scatter plot
+
+        As dcc.Slider still struggles with dates, the call back passes in an int that
+        encodes a unique date. This int is then matched to its date for filtering.
+
+        Parameters
+        ----------
+        x_axis : str
+            Variable for x-axis of scatter plot
+        y_ayis : str
+            Variable for y-axis of scatter plot
+        x_log : bool
+            Whether or not a log scale is to be used for the x-axis
+        y_log : bool
+            Whether or not a log scale is to be used for the y-axis
+        date_val : int
+            A unique integer encoding the actual date
+
+        Returns
+        -------
+        Dict[str, Any]
+            A dictionary containing the plotly settings to be updated
+
+            The first key is 'data', and its value is a list of dictionaries, each
+            representing a different continent, encoded by colour
+
+            The second key is 'laayout', and its value is a dictionary containing
+            settings for the plot
+        """
+        date = df.date.unique()[date_val]
+        df_sub = df[df["date"] == date]
         return {
             "data": [
                 dict(
-                    x=data_sub[data_sub["continent"] == continent][x_axis],
-                    y=data_sub[data_sub["continent"] == continent][y_axis],
-                    text=data_sub[data_sub["continent"] == continent]["location"],
-                    customdata=data_sub[data_sub["continent"] == continent]["location"],
+                    x=df_sub[df_sub["continent"] == continent][x_axis],
+                    y=df_sub[df_sub["continent"] == continent][y_axis],
+                    text=df_sub[df_sub["continent"] == continent]["location"],
+                    customdf=df_sub[df_sub["continent"] == continent]["location"],
                     mode="markers",
                     marker={
                         "size": 10,
@@ -72,7 +147,7 @@ def init_callbacks(dash_app, layouts, data):
                     },
                     name=continent,
                 )
-                for continent in sorted(data_sub["continent"].unique())
+                for continent in sorted(df_sub["continent"].unique())
             ],
             "layout": dict(
                 margin=dict(t=50, b=50, l=50, r=150, pad=0, autoexpand=False),
@@ -96,11 +171,41 @@ def init_callbacks(dash_app, layouts, data):
             Input("exp-scale-x", "on"),
         ],
     )
-    def update_exp_x_scatter(variable, hoverData, scale):
+    def update_exp_x_scatter(
+        variable: str,
+        hoverData: Dict[str, List[Dict[str, Union[float, str]]]],
+        scale: bool,
+    ) -> Dict[str, Any]:
+        """Callback for updating the x-axis scatter plot
+
+        This callback takes the variable from the x-axis of the main scatter plot and
+        plots it against time. The country data displayd is updated by the hoverData
+        trigger from the main plot.
+
+        Parameters
+        ----------
+        Variable : str
+            Variable to be plotted against time
+        hoverData : str
+            Country to be plotted. From main scatter plot.
+        scale : bool
+            Whether or not a log scale is to be used
+
+        Returns
+        -------
+        Dict[str, Any]
+            A dictionary containing the plotly settings to be updated
+
+            The first key is 'data', and its value is a list of dictionaries, each
+            representing a different continent, encoded by colour
+
+            The second key is 'laayout', and its value is a dictionary containing
+            settings for the plot
+        """
         country = hoverData["points"][0]["customdata"]
-        data_sub = data[data["location"] == country]
+        df_sub = df[df["location"] == country]
         return line_plot(
-            data_sub, variable=variable, title=f"<b>{country}</b>", scale=scale
+            df_sub, variable=variable, title=f"<b>{country}</b>", scale=scale
         )
 
     @dash_app.callback(
@@ -111,11 +216,41 @@ def init_callbacks(dash_app, layouts, data):
             Input("exp-scale-y", "on"),
         ],
     )
-    def update_exp_y_scatter(variable, hoverData, scale):
+    def update_exp_y_scatter(
+        variable: str,
+        hoverData: Dict[str, List[Dict[str, Union[float, str]]]],
+        scale: bool,
+    ) -> Dict[str, Any]:
+        """Callback for updating the y-axis scatter plot
+
+        This callback takes the variable from the y-axis of the main scatter plot and
+        plots it against time. The country data displayd is updated by the hoverData
+        trigger from the main plot.
+
+        Parameters
+        ----------
+        Variable : str
+            Variable to be plotted against time
+        hoverData : str
+            Country to be plotted. From main scatter plot.
+        scale : bool
+            Whether or not a log scale is to be used
+
+        Returns
+        -------
+        Dict[str, Any]
+            A dictionary containing the plotly settings to be updated
+
+            The first key is 'data', and its value is a list of dictionaries, each
+            representing a different continent, encoded by colour
+
+            The second key is 'laayout', and its value is a dictionary containing
+            settings for the plot
+        """
         country = hoverData["points"][0]["customdata"]
-        data_sub = data[data["location"] == country]
+        df_sub = df[df["location"] == country]
         return line_plot(
-            data_sub, variable=variable, title=f"<b>{country}</b>", scale=scale
+            df_sub, variable=variable, title=f"<b>{country}</b>", scale=scale
         )
 
     @dash_app.callback(
@@ -126,11 +261,35 @@ def init_callbacks(dash_app, layouts, data):
             Input("map-slider", "value"),
         ],
     )
-    def update_map_scatter(color, size, date_val):
-        date = data.date.unique()[date_val]
-        data_sub = data[data["date"] == date].fillna(0)
+    def update_map_scatter(
+        color: str, size: str, date_val: int
+    ) -> plotly.graph_objects.Figure:
+        """Callback for updating the Mapbox plot
+
+        This callback updates which variables are representing size and colour for the
+        points on the map, as well as updating the point with respect to date.
+
+        As dcc.Slider still struggles with dates, the call back passes in an int that
+        encodes a unique date. This int is then matched to its date for filtering.
+
+        Parameters
+        ----------
+        color : str
+            Which variable is to represent colour
+        size : str
+            Which variable is ro represent size
+        date_val : int
+            Integer encoding a unique date time
+
+        Returns
+        -------
+        plotly.graph_objects.Figure
+            The scatter_mapbox to be rendered
+        """
+        date = df.date.unique()[date_val]
+        df_sub = df[df["date"] == date].fillna(0)
         return px.scatter_mapbox(
-            data_frame=data_sub,
+            data_frame=df_sub,
             lat="lat",
             lon="lon",
             color=color,
