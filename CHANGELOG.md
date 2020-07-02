@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.3.0
+------
+
+- Add data overview page
+
 v1.2.1
 ------
 
