@@ -50,7 +50,7 @@ percy==2.0.2
 plotly==4.8.2
 pluggy==0.13.1
 poetry-version==0.1.5
-pre-commit==2.5.1
+pre-commit==2.6.0
 py==1.9.0
 pygments==2.6.1
 pylint==2.5.3
