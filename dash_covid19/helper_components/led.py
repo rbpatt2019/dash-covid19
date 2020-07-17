@@ -2,13 +2,13 @@
 """Module: LED
 
 This module contains a helper function for automating the process of creating an LED_
-to display numeric data with an html.H5_ header tied to a dbc.Tooltip_ helper
+to display numeric data with an html.H3_ header tied to a dbc.Tooltip_ helper
 
 .. _LED:
     https://dash.plotly.com/dash-daq/leddisplay
 
-.. _html.H5:
-    https://dash.plotly.com/dash-html-components/h5
+.. _html.H3:
+    https://dash.plotly.com/dash-html-components/h3
 
 .. _dbc.Tooltip:
     https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tooltip/
@@ -49,7 +49,7 @@ def make_led(
     >>> layout = dbc.Col(children=make_led())
 
     """
-    header = html.H5(
+    header = html.H3(
         f"{variable}",
         id=id + "-head",
         style={
