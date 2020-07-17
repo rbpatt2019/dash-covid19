@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v1.3.1
+------
+- Requirements update
+
 v1.3.0
 ------
 
