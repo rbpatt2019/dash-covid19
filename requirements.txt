@@ -36,7 +36,7 @@ idna==2.10
 imagesize==1.2.0
 ipython==7.16.1
 ipython-genutils==0.2.0
-isort==4.3.21
+isort==5.1.2
 itsdangerous==1.1.0
 jedi==0.17.1
 jinja2==2.11.2
