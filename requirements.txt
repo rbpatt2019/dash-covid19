@@ -97,7 +97,7 @@ tomlkit==0.7.0
 traitlets==4.3.3
 typed-ast==1.4.1
 typing-extensions==3.7.4.2
-urllib3==1.24.3
+urllib3==1.25.10
 virtualenv==20.0.27
 waitress==1.4.3
 wcwidth==0.2.5
