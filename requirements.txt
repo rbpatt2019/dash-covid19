@@ -51,7 +51,7 @@ nodeenv==1.4.0
 numpy==1.19.1
 packaging==20.4
 pandas==1.1.0
-parso==0.7.0
+parso==0.7.1
 pathspec==0.8.0
 percy==2.0.2
 pexpect==4.8.0; sys_platform != "win32"
