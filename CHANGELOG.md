@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v1.3.2
+------
+- Dependency update. No change to user.
+
+v1.3.1
+------
+- Requirements update
+
 v1.3.0
 ------
 
