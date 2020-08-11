@@ -45,5 +45,6 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("Explorer", id="nav-bar-exp", href="/exp")),
         dbc.NavItem(dbc.NavLink("World Map", id="nav-bar-map", href="/map")),
         dbc.NavItem(dbc.NavLink("Data", id="nav-bar-dt", href="/dt")),
+        dbc.NavItem(dbc.NavLink("Pivot Table", id="nav-bar-pvt", href="/pvt")),
     ],
 )
