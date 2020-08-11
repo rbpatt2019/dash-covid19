@@ -44,7 +44,7 @@ def init_layouts(
     df : pd.DataFrame
         The data to be used with the app
     cols : List[str]
-        The columns from df that can be selected for plottint throught the app
+        The columns from df that can be selected for plotting throught the app
 
     Returns
     -------
