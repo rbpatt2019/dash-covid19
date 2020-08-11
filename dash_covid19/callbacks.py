@@ -45,7 +45,6 @@ def init_callbacks(
             Output("nav-bar-exp", "active"),
             Output("nav-bar-map", "active"),
             Output("nav-bar-dt", "active"),
-            Output("nav-bar-pvt", "active"),
         ],
         [Input("url", "pathname")],
     )
@@ -66,8 +65,8 @@ def init_callbacks(
 
         Returns
         -------
-        Tuple[Any, bool, bool, bool, bool, bool, bool]
-            Containing 6 objects:
+        Tuple[Any, bool, bool, bool]
+            Containing 4 objects:
 
             fmt : Any
                 The page layout
@@ -75,24 +74,22 @@ def init_callbacks(
             exp : bool
             mp : bool
             dt : bool
-            pvt : bool
                 The active state of the navigation links
         """
         active_lut = {
-            "/": (False, False, False, False, False),
-            "/ovw": (True, False, False, False, False),
-            "/exp": (False, True, False, False, False),
-            "/map": (False, False, True, False, False),
-            "/dt": (False, False, False, True, False),
-            "/pvt": (False, False, False, False, True),
+            "/": (False, False, False, False),
+            "/ovw": (True, False, False, False),
+            "/exp": (False, True, False, False),
+            "/map": (False, False, True, False),
+            "/dt": (False, False, False, True),
         }
         try:
             fmt = layouts[path]
-            ovw, exp, mp, dt, pvt = active_lut[path]
+            ovw, exp, mp, dt = active_lut[path]
         except KeyError:
             fmt = layouts["/"]
             ovw, exp, mp, dt = active_lut["/"]
-        return fmt, ovw, exp, mp, dt, pvt
+        return fmt, ovw, exp, mp, dt
 
     @dash_app.callback(
         [

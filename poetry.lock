@@ -288,17 +288,6 @@ version = "1.0.3"
 
 [[package]]
 category = "main"
-description = "Implementation of react-pivottable in Dash (Python)"
-name = "dash-pivottable"
-optional = false
-python-versions = "*"
-version = "0.0.2"
-
-[package.dependencies]
-dash = "*"
-
-[[package]]
-category = "main"
 description = "Front-end component renderer for Dash"
 name = "dash-renderer"
 optional = false
@@ -1241,7 +1230,7 @@ python-versions = "*"
 version = "1.12.1"
 
 [metadata]
-content-hash = "75be124ed1ec26cab919dd5824b842f421a444607e9eb8a10972d9e313f334dc"
+content-hash = "d4bc3bf2094a2ba89cb95081738f6e1d9c85377d156c7d753614c967e20b809e"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1396,10 +1385,6 @@ dash-daq = [
 ]
 dash-html-components = [
     {file = "dash_html_components-1.0.3.tar.gz", hash = "sha256:dafb54ae8ab601fffe50c74d72b32783dec2beea65fd1c7e7dd6a66e20e545ba"},
-]
-dash-pivottable = [
-    {file = "dash_pivottable-0.0.2-py3-none-any.whl", hash = "sha256:d66b5cba6dcca81515bc3fd551a24c7b9da01c535435dfdd9c4cf9c7bac6630c"},
-    {file = "dash_pivottable-0.0.2.tar.gz", hash = "sha256:c9ee7841170bdd03601bb6730750ae024e5d09961fabf6327cb2c9ae2de82b42"},
 ]
 dash-renderer = [
     {file = "dash_renderer-1.6.0.tar.gz", hash = "sha256:8e9c0c0c2efb8ea562489c37665417cd608c30bca20425ac4d847420b5bbc128"},

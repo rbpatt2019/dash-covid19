@@ -18,7 +18,6 @@ import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_pivottable as pivot
 import dash_table as table
 import pandas as pd
 
@@ -45,7 +44,7 @@ def init_layouts(
     df : pd.DataFrame
         The data to be used with the app
     cols : List[str]
-        The columns from df that can be selected for plotting throught the app
+        The columns from df that can be selected for plottint throught the app
 
     Returns
     -------
@@ -329,22 +328,6 @@ def init_layouts(
                     page_current=0,
                     page_size=25,
                 ),
-            ],
-        ),
-        "/pvt": dbc.Col(
-            style={"height": "100%"},
-            children=[
-                pivot.PivotTable(
-                    id="pvt-table",
-                    data=df,
-                    cols=[],
-                    colOrder="key_a_to_z",
-                    rows=[],
-                    rowOrder="key_a_t_z",
-                    aggregatorName="Count",
-                    vals=[],
-                    rendererName="Table",
-                )
             ],
         ),
     }
