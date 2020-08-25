@@ -19,9 +19,9 @@ classifiers=[
 [tool.poetry.dependencies]
 python = "^3.8"
 pandas = "^1.0.3"
-dash = {git = "https://github.com/plotly/dash.git", branch = "dev", extras = ['testing']}
 dash-bootstrap-components = "^0"
 dash-daq = "^0"
+dash = {git = "https://github.com/plotly/dash.git", rev = "dev", extras = ["testing"]}
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
