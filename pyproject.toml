@@ -18,8 +18,8 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.8"
-dash = {git = "https://github.com/plotly/dash.git", branch = "dev", extras = ["testing"]}
 pandas = "^1.0.3"
+dash = {git = "https://github.com/plotly/dash.git", branch = "dev", extras = ['testing']}
 dash-bootstrap-components = "^0"
 dash-daq = "^0"
 
