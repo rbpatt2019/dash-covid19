@@ -25,7 +25,7 @@ dash = {git = "https://github.com/plotly/dash.git", rev = "dev", extras = ["test
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
-isort = "^4.3.21"
+isort = "^5"
 ipython = "^7.16.1"
 pylint = "^2.5.2"
 mypy = "^0"
