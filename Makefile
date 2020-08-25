@@ -50,7 +50,7 @@ lint: format
 	poetry check
 
 test: clean
-	pytest --webdriver Chrome --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=dash_covid19/ --cov-report term
+	pytest
 
 patch: update test
 	poetry version patch

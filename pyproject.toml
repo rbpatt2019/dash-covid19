@@ -44,6 +44,18 @@ poetry-version = "^0"
 sphinx-rtd-theme = "^0"
 selenium = "^3.141.0"
 
+[tool.pytest.ini_options]
+addopts = """
+-vv
+--webdriver Chrome
+--ignore=docs
+--instafail
+--mypy
+--mypy-ignore-missing-imports
+--doctest-modules
+--cov=dash_covid19/
+--cov-report term"""
+
 [tool.isort]
 multi_line_output = 3
 include_trailing_comma = "True"
