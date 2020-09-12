@@ -35,7 +35,7 @@ identify==1.5.0
 idna==2.10
 imagesize==1.2.0
 iniconfig==1.0.1
-ipython==7.17.0
+ipython==7.18.1
 ipython-genutils==0.2.0
 isort==5.4.2
 itsdangerous==1.1.0
