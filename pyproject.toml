@@ -63,10 +63,11 @@ float_to_top = false
 disable = """,
 C,
 W0611,
+W0612,
 """
 
 [tool.pylint.similarities]
-min-similarities-lines = 5
+min-similarity-lines = 10
 ignore-comments = true
 ignore-docstrings = true
 ignore-imports = true
