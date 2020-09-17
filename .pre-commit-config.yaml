@@ -1,16 +1,25 @@
 default_language_version:
-  python: python3.7
+  python: python3.8
 
 fail_fast: true
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v2.5.0
+  rev: v3.2.0
   hooks:
+  - id: end-of-file-fixer
   - id: trailing-whitespace
   - id: fix-encoding-pragma
   - id: check-yaml
   - id: check-toml
+- repo: https://github.com/timothycrosley/isort
+  rev: 5.4.2
+  hooks:
+    - id: isort
+- repo: https://github.com/pycqa/pylint
+  rev: pylint-2.6.0
+  hooks:
+    - id: pylint
 - repo: https://github.com/psf/black
   rev: 19.10b0
   hooks:

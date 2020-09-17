@@ -1,67 +1,84 @@
 alabaster==0.7.12
 appdirs==1.4.4
+appnope==0.1.0; sys_platform == "darwin"
 astroid==2.4.2
-atomicwrites==1.4.0; python_version >= "3.0" and sys_platform == "win32" or sys_platform == "win32" or python_version >= "3.5" and sys_platform == "win32"
+atomicwrites==1.4.0; python_version >= "3.0" and sys_platform == "win32" or sys_platform == "win32"
 attrs==20.2.0
 babel==2.8.0
+backcall==0.2.0
 beautifulsoup4==4.8.2
 black==19.10b0
 brotli==1.0.9
 certifi==2020.6.20
+cffi==1.14.3
 cfgv==3.2.0
 chardet==3.0.4
 click==7.1.2
 codecov==2.1.9
-colorama==0.4.3; python_version >= "3.0" and sys_platform == "win32" or sys_platform == "win32" or python_version >= "3.5" and sys_platform == "win32"
+colorama==0.4.3; python_version >= "3.0" and sys_platform == "win32" or sys_platform == "win32"
 coverage==5.3
-dash==1.14.0
+cryptography==3.0
+-e git+https://github.com/plotly/dash.git@98e81fc9b531608f6b5e3a6d49f7347772c4188a#egg=dash
 dash-bootstrap-components==0.10.6
-dash-core-components==1.10.2
+dash-core-components==1.12.1
 dash-daq==0.5.0
-dash-html-components==1.0.3
-dash-renderer==1.6.0
-dash-table==4.9.0
+dash-html-components==1.1.1
+dash-renderer==1.8.1
+dash-table==4.10.1
+decorator==4.4.2
 distlib==0.3.1
 docutils==0.16
 filelock==3.0.12
 flask==1.1.2
 flask-compress==1.5.0
+flask-talisman==0.7.0
 future==0.18.2
 gunicorn==20.0.4
 identify==1.5.2
 idna==2.8
 imagesize==1.2.0
-isort==4.3.21
+iniconfig==1.0.1
+ipython==7.18.1
+ipython-genutils==0.2.0
+isort==5.5.2
 itsdangerous==1.1.0
+jedi==0.17.2
 jinja2==2.11.2
 lazy-object-proxy==1.4.3
 lxml==4.5.0
 markupsafe==1.1.1
 mccabe==0.6.1
 more-itertools==8.5.0
-mypy==0.770
+mypy==0.782
 mypy-extensions==0.4.3
 nodeenv==1.5.0
 numpy==1.19.2
 packaging==20.4
 pandas==1.1.2
+parso==0.7.1
 pathspec==0.8.0
 percy==2.0.2
+pexpect==4.8.0; sys_platform != "win32"
+pickleshare==0.7.5
 plotly==4.10.0
 pluggy==0.13.1
 poetry-version==0.1.5
 pre-commit==2.7.1
+prompt-toolkit==3.0.7
+ptyprocess==0.6.0; sys_platform != "win32"
 py==1.9.0
+pycparser==2.20
 pygments==2.7.1
 pylint==2.6.0
+pyopenssl==19.1.0
 pyparsing==2.4.7
-pytest==5.3.5
+pytest==6.0.1
 pytest-cov==2.10.1
 pytest-instafail==0.4.2
-pytest-mock==2.0.0
-pytest-mypy==0.6.2
+pytest-mock==3.2.0; python_version >= "3.0"
+pytest-mypy==0.7.0
 pytest-runner==5.2
-pytest-sugar==0.9.2
+pytest-sugar==0.9.4
 python-dateutil==2.8.1
 pytz==2020.1
 pyyaml==5.3.1
@@ -83,6 +100,7 @@ sphinxcontrib-serializinghtml==1.1.4
 termcolor==1.1.0
 toml==0.10.1
 tomlkit==0.5.11
+traitlets==5.0.4
 typed-ast==1.4.1
 typing-extensions==3.7.4.3
 urllib3==1.24.3

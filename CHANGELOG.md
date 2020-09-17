@@ -1,6 +1,21 @@
 Changelog
 =========
 
+v1.3.3
+------
+- No changes to user.
+- Update dependencies.
+- Point dash to dev branch to get most up-to-date
+- Update pre-commit settings
+
+v1.3.2
+------
+- Dependency update. No change to user.
+
+v1.3.1
+------
+- Requirements update
+
 v1.3.0
 ------
 
