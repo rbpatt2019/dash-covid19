@@ -1,24 +1,21 @@
 alabaster==0.7.12
 appdirs==1.4.4
-appnope==0.1.0; sys_platform == "darwin"
+appnope==0.1.0; python_version >= "3.4" and sys_platform == "darwin" or sys_platform == "darwin"
 astroid==2.4.2
-atomicwrites==1.4.0; python_version >= "3.0" and sys_platform == "win32" or sys_platform == "win32"
+atomicwrites==1.4.0; sys_platform == "win32"
 attrs==20.2.0
 babel==2.8.0
 backcall==0.2.0
-beautifulsoup4==4.8.2
 black==19.10b0
 brotli==1.0.9
 certifi==2020.6.20
-cffi==1.14.3
 cfgv==3.2.0
 chardet==3.0.4
 click==7.1.2
 codecov==2.1.9
-colorama==0.4.3; python_version >= "3.0" and sys_platform == "win32" or sys_platform == "win32"
+colorama==0.4.3; python_version >= "3.4" and sys_platform == "win32" or sys_platform == "win32"
 coverage==5.3
-cryptography==3.0
--e git+https://github.com/plotly/dash.git@98e81fc9b531608f6b5e3a6d49f7347772c4188a#egg=dash
+dash==1.16.1
 dash-bootstrap-components==0.10.6
 dash-core-components==1.12.1
 dash-daq==0.5.0
@@ -31,13 +28,13 @@ docutils==0.16
 filelock==3.0.12
 flask==1.1.2
 flask-compress==1.5.0
-flask-talisman==0.7.0
 future==0.18.2
 gunicorn==20.0.4
 identify==1.5.2
-idna==2.8
+idna==2.10
 imagesize==1.2.0
 iniconfig==1.0.1
+ipdb==0.13.3
 ipython==7.18.1
 ipython-genutils==0.2.0
 isort==5.5.2
@@ -45,7 +42,6 @@ itsdangerous==1.1.0
 jedi==0.17.2
 jinja2==2.11.2
 lazy-object-proxy==1.4.3
-lxml==4.5.0
 markupsafe==1.1.1
 mccabe==0.6.1
 more-itertools==8.5.0
@@ -57,38 +53,31 @@ packaging==20.4
 pandas==1.1.2
 parso==0.7.1
 pathspec==0.8.0
-percy==2.0.2
-pexpect==4.8.0; sys_platform != "win32"
+pexpect==4.8.0; python_version >= "3.4" and sys_platform != "win32" or sys_platform != "win32"
 pickleshare==0.7.5
 plotly==4.10.0
 pluggy==0.13.1
 poetry-version==0.1.5
 pre-commit==2.7.1
 prompt-toolkit==3.0.7
-ptyprocess==0.6.0; sys_platform != "win32"
+ptyprocess==0.6.0; python_version >= "3.4" and sys_platform != "win32" or sys_platform != "win32"
 py==1.9.0
-pycparser==2.20
 pygments==2.7.1
 pylint==2.6.0
-pyopenssl==19.1.0
 pyparsing==2.4.7
-pytest==6.0.1
+pytest==6.0.2
+pytest-clarity==0.3.0a0
 pytest-cov==2.10.1
-pytest-instafail==0.4.2
-pytest-mock==3.2.0; python_version >= "3.0"
-pytest-mypy==0.7.0
-pytest-runner==5.2
 pytest-sugar==0.9.4
 python-dateutil==2.8.1
 pytz==2020.1
 pyyaml==5.3.1
 regex==2020.7.14
-requests==2.21.0
+requests==2.24.0
 retrying==1.3.3
 selenium==3.141.0
 six==1.15.0
 snowballstemmer==2.0.0
-soupsieve==2.0.1
 sphinx==3.2.1
 sphinx-rtd-theme==0.5.0
 sphinxcontrib-applehelp==1.0.2
@@ -103,9 +92,8 @@ tomlkit==0.5.11
 traitlets==5.0.4
 typed-ast==1.4.1
 typing-extensions==3.7.4.3
-urllib3==1.24.3
+urllib3==1.25.10
 virtualenv==20.0.31
-waitress==1.4.3
 wcwidth==0.2.5
 werkzeug==1.0.1
 wrapt==1.12.1
