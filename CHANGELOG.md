@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.3.4
+------
+- No change to user.
+- Up date dev dependencies.
+- improving linting.
+
 v1.3.3
 ------
 - No changes to user.
