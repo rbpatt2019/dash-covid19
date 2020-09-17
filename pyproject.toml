@@ -71,6 +71,9 @@ ignore-comments = true
 ignore-docstrings = true
 ignore-imports = true
 
+[tool.mypy]
+ignore_missing_imports = true
+
 [tool.coverage.report]
 exclude_lines = [
         "if __name__ == .__main__.:",

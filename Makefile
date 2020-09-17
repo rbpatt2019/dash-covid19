@@ -42,14 +42,15 @@ install:
 	poetry install --no-dev
 
 format: clean
-	poetry run isort -rc dash_covid19/
-	poetry run black dash_covid19/
+	poetry run isort dash_covid19/ tests/
+	poetry run black dash_covid19/ tests/
 
 lint: format
-	poetry run pylint dash_covid19/
+	poetry run pylint dash_covid19/ tests/
+	poetry run mypy --ignore-missing-imports dash_covid19/ tests/
 	poetry check
 
-test: clean
+test: lint
 	pytest
 
 patch: update test
