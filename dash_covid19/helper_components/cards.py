@@ -14,7 +14,7 @@ import dash_html_components as html
 
 
 def link_card(
-    id: str = "link-card",
+    uid: str = "link-card",
     title: str = "A Card!",
     text: str = "This is interesting!",
     href: str = "/somewhere",
@@ -44,7 +44,7 @@ def link_card(
     """
 
     return dbc.Card(
-        id=id,
+        id=uid,
         body=True,
         outline=False,
         color="secondary",
@@ -54,7 +54,7 @@ def link_card(
             html.H4(title, className="card-title", style={"text-align": "center"}),
             html.P(text, className="card-text", style={"text-align": "center"}),
             dbc.Button(
-                "Let's go!", id=id + "-button", href=href, block=True, color="primary",
+                "Let's go!", id=uid + "-button", href=href, block=True, color="primary",
             ),
         ],
     )

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-import pytest
 import dash
-from dash_covid19 import create_app
+import pytest
 from selenium.webdriver.chrome.options import Options
+
+from dash_covid19 import create_app
 
 
 def pytest_setup_options():

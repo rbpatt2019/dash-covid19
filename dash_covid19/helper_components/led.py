@@ -23,7 +23,7 @@ import dash_html_components as html
 
 
 def make_led(
-    id: str = "display", variable: str = "New Cases per Million"
+    uid: str = "display", variable: str = "New Cases per Million"
 ) -> List[dash.development.base_component.ComponentMeta]:
     """Generate an LED display for numeric data tied to a header with a helper
 
@@ -51,7 +51,7 @@ def make_led(
     """
     header = html.H3(
         f"{variable}",
-        id=id + "-head",
+        id=uid + "-head",
         style={
             "margin-top": "40px",
             "textAlign": "center",
@@ -59,10 +59,12 @@ def make_led(
             "cursor": "pointer",
         },
     )
-    help = dbc.Tooltip(
+    info = dbc.Tooltip(
         f"Current {variable} for selected country",
-        id=id + "-help",
-        target=id + "-head",
+        id=uid + "-help",
+        target=uid + "-head",
     )
-    led = daq.LEDDisplay(id=id, className="d-flex justify-content-center", color="#000")
-    return [header, help, led]
+    led = daq.LEDDisplay(
+        id=uid, className="d-flex justify-content-center", color="#000"
+    )
+    return [header, info, led]

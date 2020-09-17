@@ -24,7 +24,7 @@ import pandas as pd
 
 
 def make_slider(
-    df: pd.DataFrame, id: str = "slider", header: str = "Date Slider",
+    df: pd.DataFrame, uid: str = "slider", header: str = "Date Slider",
 ) -> List[dash.development.base_component.ComponentMeta]:
     """Generate a date slider with a header tied to a tooltip helper
 
@@ -42,7 +42,7 @@ def make_slider(
     ----------
     df : pd.DataFrame
         Data containing a 'date' column
-    id : str
+    uid : str
         Component ID. Must be unique across app
         Default text for Dropdown
     header : str
@@ -66,17 +66,17 @@ def make_slider(
     date_idx = range(len(df.date.unique()))
     header = html.H5(
         header,
-        id=id + "-head",
+        id=uid + "-head",
         className="mt-3",
         style={"textDecoration": "underline", "cursor": "pointer",},
     )
     tooltip = dbc.Tooltip(
         "Slide through the dates to see how patterns evolve over time",
-        id=id + "-help",
-        target=id + "-head",
+        id=uid + "-help",
+        target=uid + "-head",
     )
     slider = dcc.Slider(
-        id=id,
+        id=uid,
         min=min(date_idx),
         max=max(date_idx),
         value=max(date_idx),

@@ -24,7 +24,7 @@ import dash_html_components as html
 
 
 def make_log_switch(
-    id: str = "switch", axis: str = "X-axis"
+    uid: str = "switch", axis: str = "X-axis"
 ) -> List[dash.development.base_component.ComponentMeta]:
     """Generate a Boolean switch for axis scale tied to a header with a helper
 
@@ -52,13 +52,13 @@ def make_log_switch(
     """
     header = html.H5(
         f"{axis}: Log Scale?",
-        id=id + "-head",
+        id=uid + "-head",
         style={"textDecoration": "underline", "cursor": "pointer",},
     )
-    help = dbc.Tooltip(
+    info = dbc.Tooltip(
         f"Click to enable a log scale for the {axis}. Click again to return to linear.",
-        id=id + "-help",
-        target=id + "-head",
+        id=uid + "-help",
+        target=uid + "-head",
     )
-    switch = daq.BooleanSwitch(id=id, on=False)
-    return [header, help, switch]
+    switch = daq.BooleanSwitch(id=uid, on=False)
+    return [header, info, switch]

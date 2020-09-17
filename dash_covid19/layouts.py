@@ -10,8 +10,7 @@ the href to a key.
 
 One could also write this as multiple, small dash apps, each registered to a route,
 to take advantage of more standard Flask structure; however, since the app currently
-implements no additional Flask features, there is not currently any plans to do so.
-"""
+implements no additional Fluidthere is not currently any plans to duiding """
 from typing import Any, Dict, List, Tuple
 
 import dash
@@ -107,7 +106,7 @@ def init_layouts(
                     children=[
                         dbc.Col(
                             link_card(
-                                id="ovw-card",
+                                uid="ovw-card",
                                 title="Overview",
                                 text="Look at summary statistics for a selected country and examine their short-term trends.",
                                 href="/ovw",
@@ -116,7 +115,7 @@ def init_layouts(
                         ),
                         dbc.Col(
                             link_card(
-                                id="exp-card",
+                                uid="exp-card",
                                 title="Explore",
                                 text="Explore correlations within the data across time, using cross-filtered scatter plots.",
                                 href="/exp",
@@ -131,7 +130,7 @@ def init_layouts(
                     children=[
                         dbc.Col(
                             link_card(
-                                id="map-card",
+                                uid="map-card",
                                 title="World Map",
                                 text="Observe regional and global trends across time, using an interactive Mapbox plot.",
                                 href="/map",
@@ -140,7 +139,7 @@ def init_layouts(
                         ),
                         dbc.Col(
                             link_card(
-                                id="dt-card",
+                                uid="dt-card",
                                 title="Data Table",
                                 text="Examine the raw data to develop a better understanding of its structure and distribution",
                                 href="/dt",
@@ -161,18 +160,18 @@ def init_layouts(
                     children=[
                         dbc.Col(
                             children=make_led(
-                                id="ovw-ncpm", variable="New Cases Per Million"
+                                uid="ovw-ncpm", variable="New Cases Per Million"
                             )
                             + make_led(
-                                id="ovw-tcpm", variable="Total Cases per Million"
+                                uid="ovw-tcpm", variable="Total Cases per Million"
                             ),
                         ),
                         dbc.Col(
                             children=make_led(
-                                id="ovw-ndpm", variable="New Deaths per Million"
+                                uid="ovw-ndpm", variable="New Deaths per Million"
                             )
                             + make_led(
-                                id="ovw-tdpm", variable="Total Deaths per Million"
+                                uid="ovw-tdpm", variable="Total Deaths per Million"
                             )
                         ),
                     ],
@@ -182,7 +181,7 @@ def init_layouts(
                     style={"margin-top": "20px", "height": "40%"},
                     children=dbc.Col(
                         children=make_dd(
-                            id="ovw-dd",
+                            uid="ovw-dd",
                             label="Select a country...",
                             options=sorted(list(df.location.unique())),
                             default_index=0,

@@ -15,8 +15,8 @@ import flask
 import pandas as pd
 
 from dash_covid19.callbacks import init_callbacks
-from dash_covid19.layouts import init_layouts
 from dash_covid19.data import init_data
+from dash_covid19.layouts import init_layouts
 
 
 def create_app(testing: bool = False) -> Tuple[dash.dash.Dash, flask.app.Flask]:

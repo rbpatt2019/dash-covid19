@@ -14,7 +14,7 @@ html.H5_ header and a dbc.Tooltip_ tied to the header.
     https://dash-bootstrap-components.opensource.faculty.ai/docs/components/tooltip/
 
 """
-from typing import List
+from typing import List, Union
 
 import dash
 import dash_bootstrap_components as dbc
@@ -23,10 +23,10 @@ import dash_html_components as html
 
 
 def make_dd(
-    id: str = "dd",
+    uid: str = "dd",
     label: str = "Dropdown Menu",
     placeholder: str = "Select a variable",
-    options: List[str] = ["default"],
+    options: Union[None, List[str]] = None,
     default_index: int = 0,
 ) -> List[dash.development.base_component.ComponentMeta]:
     """Generate a Dropdown menu with a header tied to a tooltip
@@ -38,13 +38,13 @@ def make_dd(
 
     Parameters
     ----------
-    id : str
+    uid : str
         Component ID. Must be unique across app.
     label : str
         Label for Dropdown menu
     placeholder : str
         Default text for Dropdown
-    options : List[str]
+    options : Union[None, List[str]]
         Possible selections
     default_index : int
         Which selection to default to
@@ -59,22 +59,25 @@ def make_dd(
     >>> layout = dbc.Col(children=make_dd())
 
     """
+    if options is None:
+        options = ["Default"]
+
     header = html.H5(
         label,
-        id=id + "-head",
+        id=uid + "-head",
         style={
             "textAlign": "center",
             "textDecoration": "underline",
             "cursor": "pointer",
         },
     )
-    help = dbc.Tooltip(
+    info = dbc.Tooltip(
         f"Choose from columns in the dataset which is to be plotted on {label}",
-        id=id + "-help",
-        target=id + "-head",
+        id=uid + "-help",
+        target=uid + "-head",
     )
     dd = dcc.Dropdown(
-        id=id,
+        id=uid,
         placeholder=placeholder,
         persistence=True,
         persistence_type="session",
@@ -82,4 +85,4 @@ def make_dd(
         options=[{"label": i, "value": i} for i in options],
         value=options[default_index],
     )
-    return [header, help, dd]
+    return [header, info, dd]

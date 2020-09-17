@@ -19,7 +19,7 @@ import pandas as pd
 def line_plot(
     df: pd.DataFrame,
     variable: str = "total_cases",
-    title: str = f"<b>China</b>",
+    title: str = "<b>China</b>",
     scale: bool = False,
 ) -> Dict[str, Any]:
     """Helper function for creating line plots in a Dash Callback
