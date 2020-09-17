@@ -64,6 +64,7 @@ disable = """,
 C,
 W0611,
 W0612,
+E1102,
 """
 
 [tool.pylint.similarities]
