@@ -21,7 +21,7 @@ dash-core-components==1.14.1
 dash-daq==0.5.0
 dash-html-components==1.1.1
 dash-renderer==1.8.3
-dash-table==4.10.1
+dash-table==4.11.1
 decorator==4.4.2
 distlib==0.3.1
 docutils==0.16
