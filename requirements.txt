@@ -10,7 +10,7 @@ black==21.5b0
 brotli==1.0.9
 certifi==2020.12.5
 cfgv==3.2.0
-chardet==3.0.4
+chardet==4.0.0
 click==7.1.2
 codecov==2.1.9
 colorama==0.4.3; python_version >= "3.4" and sys_platform == "win32" or sys_platform == "win32"
