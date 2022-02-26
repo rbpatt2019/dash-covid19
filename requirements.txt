@@ -37,7 +37,7 @@ iniconfig==1.1.1
 ipdb==0.13.9
 ipython==8.1.0
 ipython-genutils==0.2.0
-isort==5.5.2
+isort==5.10.1
 itsdangerous==1.1.0
 jedi==0.17.2
 jinja2==2.11.2
