@@ -34,7 +34,7 @@ identify==2.4.11
 idna==3.3
 imagesize==1.3.0
 iniconfig==1.1.1
-ipdb==0.13.3
+ipdb==0.13.9
 ipython==7.18.1
 ipython-genutils==0.2.0
 isort==5.5.2
