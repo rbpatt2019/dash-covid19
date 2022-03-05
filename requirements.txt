@@ -4,7 +4,7 @@ appnope==0.1.0; python_version >= "3.4" and sys_platform == "darwin" or sys_plat
 astroid==2.10.0
 atomicwrites==1.4.0; sys_platform == "win32"
 attrs==21.4.0
-babel==2.8.0
+babel==2.9.1
 backcall==0.2.0
 black==19.10b0
 brotli==1.0.9
