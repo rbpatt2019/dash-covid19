@@ -22,7 +22,7 @@ dash-daq==0.5.0
 dash-html-components==2.0.0
 dash-renderer==1.9.1
 dash-table==5.0.0
-decorator==4.4.2
+decorator==5.1.1
 distlib==0.3.1
 docutils==0.16
 filelock==3.0.12
