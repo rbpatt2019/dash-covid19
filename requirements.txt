@@ -64,7 +64,7 @@ ptyprocess==0.7.0; python_version >= "3.4" and sys_platform != "win32" or sys_pl
 py==1.11.0
 pygments==2.15.0
 pylint==2.17.2
-pyparsing==2.4.7
+pyparsing==3.0.9
 pytest==6.0.2
 pytest-clarity==0.3.0a0
 pytest-cov==2.10.1
