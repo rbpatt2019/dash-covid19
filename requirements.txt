@@ -29,7 +29,7 @@ filelock==3.12.2
 flask==2.3.2
 flask-compress==1.13
 future==0.18.3
-gunicorn==20.0.4
+gunicorn==20.1.0
 identify==1.5.2
 idna==2.10
 imagesize==1.2.0
