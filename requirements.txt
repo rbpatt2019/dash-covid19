@@ -50,7 +50,7 @@ mypy-extensions==1.0.0
 nodeenv==1.8.0
 numpy==1.26.0
 packaging==23.1
-pandas==1.1.2
+pandas==2.1.1
 parso==0.7.1
 pathspec==0.8.0
 pexpect==4.8.0; python_version >= "3.4" and sys_platform != "win32" or sys_platform != "win32"
