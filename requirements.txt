@@ -92,7 +92,7 @@ tomlkit==0.12.1
 traitlets==5.11.2
 typed-ast==1.5.5
 typing-extensions==4.8.0
-urllib3==1.25.10
+urllib3==2.0.6
 virtualenv==20.0.31
 wcwidth==0.2.5
 werkzeug==1.0.1
