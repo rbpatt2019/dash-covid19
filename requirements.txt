@@ -7,7 +7,7 @@ attrs==23.1.0
 babel==2.13.0
 backcall==0.2.0
 black==23.9.1
-brotli==1.0.9
+brotli==1.1.0
 certifi==2020.6.20
 cfgv==3.2.0
 chardet==3.0.4
