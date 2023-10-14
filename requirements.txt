@@ -86,7 +86,7 @@ sphinxcontrib-htmlhelp==2.0.4
 sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.6
 sphinxcontrib-serializinghtml==1.1.9
-termcolor==1.1.0
+termcolor==2.3.0
 toml==0.10.1
 tomlkit==0.5.11
 traitlets==5.0.4
