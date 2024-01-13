@@ -30,7 +30,7 @@ flask==3.0.0
 flask-compress==1.14
 future==0.18.3
 gunicorn==21.2.0
-identify==1.5.2
+identify==2.5.33
 idna==2.10
 imagesize==1.2.0
 iniconfig==1.0.1
