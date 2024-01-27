@@ -91,7 +91,7 @@ toml==0.10.2
 tomlkit==0.12.3
 traitlets==5.14.1
 typed-ast==1.5.5
-typing-extensions==3.7.4.3
+typing-extensions==4.9.0
 urllib3==1.25.10
 virtualenv==20.0.31
 wcwidth==0.2.5
