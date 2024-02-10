@@ -28,7 +28,7 @@ docutils==0.20.1
 filelock==3.13.1
 flask==3.0.2
 flask-compress==1.14
-future==0.18.2
+future==0.18.3
 gunicorn==20.0.4
 identify==1.5.2
 idna==2.10
