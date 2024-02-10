@@ -24,7 +24,7 @@ dash-renderer==1.9.1
 dash-table==5.0.0
 decorator==5.1.1
 distlib==0.3.8
-docutils==0.16
+docutils==0.20.1
 filelock==3.0.12
 flask==1.1.2
 flask-compress==1.5.0
