@@ -3,7 +3,7 @@ appdirs==1.4.4
 appnope==0.1.4; python_version >= "3.4" and sys_platform == "darwin" or sys_platform == "darwin"
 astroid==3.0.3
 atomicwrites==1.4.1; sys_platform == "win32"
-attrs==20.2.0
+attrs==23.2.0
 babel==2.8.0
 backcall==0.2.0
 black==19.10b0
