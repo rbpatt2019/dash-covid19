@@ -60,7 +60,7 @@ pluggy==1.4.0
 poetry-version==0.2.0
 pre-commit==3.6.1
 prompt-toolkit==3.0.43
-ptyprocess==0.6.0; python_version >= "3.4" and sys_platform != "win32" or sys_platform != "win32"
+ptyprocess==0.7.0; python_version >= "3.4" and sys_platform != "win32" or sys_platform != "win32"
 py==1.9.0
 pygments==2.7.1
 pylint==2.6.0
