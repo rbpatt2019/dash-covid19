@@ -52,7 +52,7 @@ numpy==1.26.4
 packaging==24.0
 pandas==2.2.1
 parso==0.8.3
-pathspec==0.8.0
+pathspec==0.12.1
 pexpect==4.8.0; python_version >= "3.4" and sys_platform != "win32" or sys_platform != "win32"
 pickleshare==0.7.5
 plotly==4.10.0
