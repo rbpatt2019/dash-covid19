@@ -39,7 +39,7 @@ ipython==8.22.2
 ipython-genutils==0.2.0
 isort==5.13.2
 itsdangerous==2.1.2
-jedi==0.17.2
+jedi==0.19.1
 jinja2==2.11.2
 lazy-object-proxy==1.4.3
 markupsafe==1.1.1
