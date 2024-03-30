@@ -56,7 +56,7 @@ pathspec==0.12.1
 pexpect==4.9.0; python_version >= "3.4" and sys_platform != "win32" or sys_platform != "win32"
 pickleshare==0.7.5
 plotly==5.20.0
-pluggy==0.13.1
+pluggy==1.4.0
 poetry-version==0.1.5
 pre-commit==2.7.1
 prompt-toolkit==3.0.7
