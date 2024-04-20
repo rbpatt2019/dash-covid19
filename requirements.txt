@@ -32,7 +32,7 @@ future==1.0.0
 gunicorn==22.0.0
 identify==2.5.35
 idna==3.7
-imagesize==1.2.0
+imagesize==1.4.1
 iniconfig==1.0.1
 ipdb==0.13.3
 ipython==7.18.1
