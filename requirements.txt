@@ -58,7 +58,7 @@ pickleshare==0.7.5
 plotly==5.22.0
 pluggy==1.5.0
 poetry-version==0.2.0
-pre-commit==2.7.1
+pre-commit==3.7.0
 prompt-toolkit==3.0.7
 ptyprocess==0.6.0; python_version >= "3.4" and sys_platform != "win32" or sys_platform != "win32"
 py==1.9.0
