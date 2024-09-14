@@ -96,4 +96,4 @@ urllib3==2.2.3
 virtualenv==20.26.4
 wcwidth==0.2.13
 werkzeug==3.0.4
-wrapt==1.12.1
+wrapt==1.16.0
