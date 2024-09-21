@@ -23,7 +23,7 @@ dash-html-components==2.0.0
 dash-renderer==1.9.1
 dash-table==5.0.0
 decorator==5.1.1
-distlib==0.3.1
+distlib==0.3.8
 docutils==0.16
 filelock==3.0.12
 flask==1.1.2
