@@ -75,7 +75,7 @@ pyyaml==6.0.3
 regex==2026.4.4
 requests==2.33.1
 retrying==1.4.2
-selenium==3.141.0
+selenium==4.41.0
 six==1.15.0
 snowballstemmer==2.0.0
 sphinx==3.2.1
