@@ -93,7 +93,7 @@ traitlets==5.15.0
 typed-ast==1.5.5
 typing-extensions==4.15.0
 urllib3==2.7.0
-virtualenv==20.0.31
+virtualenv==21.4.1
 wcwidth==0.2.5
 werkzeug==1.0.1
 wrapt==1.12.1
