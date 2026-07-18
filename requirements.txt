@@ -51,7 +51,7 @@ nodeenv==1.10.0
 numpy==2.5.1
 packaging==26.2
 pandas==3.0.4
-parso==0.7.1
+parso==0.8.7
 pathspec==0.8.0
 pexpect==4.8.0; python_version >= "3.4" and sys_platform != "win32" or sys_platform != "win32"
 pickleshare==0.7.5
