@@ -78,7 +78,7 @@ retrying==1.4.2
 selenium==4.47.0
 six==1.17.0
 snowballstemmer==3.1.1
-sphinx==3.2.1
+sphinx==9.1.0
 sphinx-rtd-theme==0.5.0
 sphinxcontrib-applehelp==1.0.2
 sphinxcontrib-devhelp==1.0.2
