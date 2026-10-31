@@ -11,7 +11,7 @@ brotli==1.2.1
 certifi==2026.10.23
 cfgv==3.5.0
 chardet==7.7.0
-click==7.1.2
+click==8.5.0
 codecov==2.1.9
 colorama==0.4.3; python_version >= "3.4" and sys_platform == "win32" or sys_platform == "win32"
 coverage==5.3
